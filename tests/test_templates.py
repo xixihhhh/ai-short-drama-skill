@@ -22,7 +22,7 @@ class RepositoryTests(unittest.TestCase):
     def test_evals_are_valid_and_sufficient(self):
         data = json.loads((ROOT / "evals/evals.json").read_text(encoding="utf-8"))
         self.assertEqual(data["skill_name"], "dramake")
-        self.assertGreaterEqual(len(data["evals"]), 14)
+        self.assertGreaterEqual(len(data["evals"]), 15)
         self.assertEqual(len({item["id"] for item in data["evals"]}), len(data["evals"]))
         for item in data["evals"]:
             self.assertTrue(item.get("prompt"))
@@ -31,6 +31,14 @@ class RepositoryTests(unittest.TestCase):
     def test_skill_is_concise(self):
         lines = (ROOT / "skills/dramake/SKILL.md").read_text(encoding="utf-8").splitlines()
         self.assertLessEqual(len(lines), 500)
+
+    def test_high_density_douyin_pacing_preset(self):
+        chinese = (ROOT / "skills/dramake/references/story-and-pacing.md").read_text(encoding="utf-8")
+        english = (ROOT / "skills/dramake/references/en/story-and-pacing.md").read_text(encoding="utf-8")
+        for marker in ("3 秒", "10 秒", "18–24", "15–25", "4–7", "固定宏观目标", "不等于一句台词、一次切镜或一个生成请求"):
+            self.assertIn(marker, chinese)
+        for marker in ("3 seconds", "10 seconds", "18–24", "15–25", "4–7", "macro goal", "does not equal one line, one cut, or one generation request"):
+            self.assertIn(marker, english)
 
     def test_template_columns(self):
         path = ROOT / "skills/dramake/assets/templates/continuity-ledger.csv"

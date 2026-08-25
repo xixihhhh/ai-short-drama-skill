@@ -84,6 +84,12 @@
       "prompt": "I need the same story for Douyin 9:16 and YouTube 16:9. Just crop one master both ways.",
       "expected_output": "Share story, identity, voice, prop, and continuity canon but design composition, shot size, movement path, caption and cover safe areas separately; use dual-safe masters only when planned and reject blind center-cropping as the default.",
       "files": []
+    },
+    {
+      "id": 15,
+      "prompt": "Rewrite a slow, confusing 90-second Douyin drama for high retention. Its goal arrives late, dialogue repeats, and locations change arbitrarily. Do not solve this by creating dozens of five-second generated clips.",
+      "expected_output": "Select the high-density Douyin preset; show conflict within 3 seconds and the immediate objective within 10; plan 18–24 effective beats, one attempt-result micro-task every 15–25 seconds, multiple advancing dialogue turns plus 4–7 visible actions/reactions in each roughly 30-second voiced scene, one fixed macro goal, and causal scene bridges; state that effective beats do not equal cuts or generation requests.",
+      "files": []
     }
   ]
 }

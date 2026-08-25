@@ -11,6 +11,7 @@
 - Landscape and portrait versions required:
 - Subject / caption / cover safe areas:
 - Target duration:
+- Pacing preset: standard / high-density Douyin / emotional slow burn / custom
 - Audience and emotional promise:
 - Protagonists/subjects and reference rights:
 - Human characters, if any:
@@ -33,9 +34,16 @@
 
 - One-sentence promise:
 - 0–3s hook:
+- Clear conflict/cost within 3 seconds:
+- Immediate objective within 10 seconds:
 - Protagonist goal:
+- Fixed macro goal across the film:
 - Visible obstacle:
 - Escalation steps:
+- Target effective-beat count (for example, 18–24 in 90 seconds):
+- Micro-task loop every 15–25 seconds:
+- Dialogue turns and 4–7 visible actions/reactions per roughly 30-second voiced scene:
+- Causal bridge for every scene change:
 - Choice/action that changes the state:
 - Planted setup and payoff/reversal:
 - Ending button:

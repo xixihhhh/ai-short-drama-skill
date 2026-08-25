@@ -4,7 +4,7 @@ description: 面向 Codex、Claude Code、WorkBuddy 和其他 Agent Skills 客�
 license: MIT
 metadata:
   author: Dramake contributors
-  version: 0.3.1
+  version: 0.3.2
   category: video-production
   tags: ai-video, text-to-video, short-drama, codex, claude-code, workbuddy, douyin, hongguo-drama, wan-3, seedance, minimax-h3
 ---
@@ -93,6 +93,8 @@ metadata:
 8. 最后一记情绪、笑点、悬念或角色性动作。
 
 每个剧情段定义 `entry_state`、可观察节拍和 `exit_state`。20–30 秒长段通常写 4–6 个节拍；10–12 秒对白段通常写 2–3 个节拍。持续加入呼吸、眨眼、视线、表情、物种合适的反应、道具互动与背景生活，不能让角色说完一句话后静止。
+
+目标为 60–120 秒抖音高密度剧情时，启用对应预设：3 秒内出现明确冲突，10 秒内讲清即时目标，90 秒以 18–24 个有效节拍为起点，每 15–25 秒闭合一个微任务；约 30 秒连续配音场景包含多轮推进对话和 4–7 个可见动作/反应。一个固定宏观目标贯穿全片，换场必须有因果桥。有效节拍不等于切镜或生成请求，不得重新拆成碎片硬拼。
 
 出现以下任一情况，生成前退回修改：
 

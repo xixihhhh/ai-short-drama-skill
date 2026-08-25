@@ -30,6 +30,21 @@ A premise passes only if at least two are true:
 
 Compress or expand proportionally. Do not repeat exposition to fill time.
 
+## High-density Douyin/social pacing preset (60–120s)
+
+Select this preset for high-retention Douyin-style narrative. Do not impose it by default on slow-burn emotion, observational work, or experimental films.
+
+- Put a clear conflict, abnormal result, or approaching cost on screen within 3 seconds.
+- Make the protagonist's immediate objective understandable through action within 10 seconds.
+- Use 18–24 effective beats per 90 seconds as a planning baseline.
+- Complete one `attempt → result` micro-task loop every 15–25 seconds; let that result cause the next obstacle, cost, or information change.
+- In each roughly 30-second continuously voiced scene, stage multiple advancing dialogue turns plus 4–7 visible actions or reactions.
+- Keep one macro goal fixed across the film, and cause every scene change through the previous action, result, or information.
+
+An effective beat is a perceptible change in information, action, reaction, risk, relationship, or goal state. It does not equal one line, one cut, or one generation request. One 20–30-second generation block may contain several effective beats and internal shots; never turn the 18–24-beat target into a pile of 4–5-second clips. Distribute the 4–7 actions across performance—eyelines, prop handling, movement, pauses, listening, and reactions—rather than stacking seven fragile contact events.
+
+Audit the 3-second mark, 10-second mark, each 15–25-second micro-task boundary, and the ending: is conflict visible, is the objective clear, did the attempt produce a result, and did that result causally advance the same macro goal? Rewrite anything that works only through explanatory captions or off-screen explanation.
+
 ## Long-block beat design
 
 For each 20–30s block write 4–6 observable beats, usually every 4–7 seconds:

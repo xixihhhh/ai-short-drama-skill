@@ -2,6 +2,13 @@
 
 [简体中文](CHANGELOG.md)
 
+## 0.3.2 - 2026-08-25
+
+- Added an optional high-density 60–120s Douyin pacing preset: conflict by 3 seconds, an immediate objective by 10 seconds, and 18–24 effective beats per 90 seconds.
+- Added 15–25-second micro-task loops plus multiple dialogue turns and 4–7 visible actions/reactions per roughly 30-second voiced scene.
+- Required one macro goal across the film and a causal bridge for every scene change, while stating that effective beats do not equal cuts or generation requests.
+- Integrated the preset into both Skill languages, story/directing references, and production briefs, with a new evaluation scenario and automated regression test.
+
 ## 0.3.1 - 2026-08-25
 
 - Redesigned the GitHub README hero, quick start, workflow, model routing, validation, and documentation navigation.

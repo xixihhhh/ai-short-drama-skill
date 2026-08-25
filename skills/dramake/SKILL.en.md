@@ -4,7 +4,7 @@ description: For Codex, Claude Code, WorkBuddy, and other Agent Skills clients, 
 license: MIT
 metadata:
   author: Dramake contributors
-  version: 0.3.1
+  version: 0.3.2
   category: video-production
   tags: ai-video, text-to-video, short-drama, codex, claude-code, workbuddy, douyin, hongguo-drama, wan-3, seedance, minimax-h3
 ---
@@ -110,6 +110,8 @@ Read [story-and-pacing.md](references/en/story-and-pacing.md) and [directing-cam
 For every scene, define one `directorial_intention`, a visible `value_before → value_after` turn, POV, power shift, subtext, and a filmable carrier. Camera, light, blocking, performance, sound, and cut must serve that same intention. “Cinematic” is not an intention.
 
 For each block, define `entry_state`, observable beats, and `exit_state`. Use 4–6 beats for a 20–30 second long block, 2–3 beats for a 10–12 second dialogue block, and evidence-based density for other short blocks. A long request is a scene container, not one action stretched across its duration. Include continuous micro-acting: breathing, blinking, eye-lines, facial or species-appropriate reactions, prop interaction, and background life.
+
+For a 60–120-second high-density Douyin narrative, enable the dedicated preset: visible conflict within 3 seconds, an immediate objective understood within 10 seconds, 18–24 effective beats per 90 seconds as a baseline, and one closed micro-task every 15–25 seconds. A roughly 30-second continuously voiced scene carries multiple advancing dialogue turns and 4–7 visible actions/reactions. Keep one macro goal across the film and causally bridge every scene change. Effective beats do not equal cuts or generation requests; never regress into a pile of fragments.
 
 Reject the script before generation when:
 

@@ -63,6 +63,10 @@ Pacing is not constant speed. Mark each block `arc_position`: open / rising / tu
 
 Most social narratives need a perceptible information, action, reaction, risk, or relationship change about every 4–8 seconds. A comic hold, emotional pause, or suspense delay may deliberately break the cadence when attention is still changing.
 
+Under the high-density Douyin preset, plan 18–24 effective beats per 90 seconds as a starting point, but an effective beat does not equal a cut. Create beats through performance, blocking, sound, information, and relationship change before deciding whether to change angle. One stable long block may carry several beats. Each 15–25-second micro-task needs a visible result, and that result—not an arbitrary location swap—causes the next scene.
+
+A roughly 30-second continuously voiced scene cannot contain one line followed by empty waiting. Stage multiple dialogue turns, each changing information, power, action, or emotional direction, and distribute 4–7 visible actions/reactions through the scene. Listening, eyelines, handling, movement, pauses, interruption, and choice count; this does not require seven fragile contacts or seven cuts.
+
 ## Continuous performance
 
 Give speech a concurrent action, a listener reaction, and an exit. Maintain breathing, blinking, eye shifts, hand/paw contact, weight shifts, and restrained background life without stealing focus.
