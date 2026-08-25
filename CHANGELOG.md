@@ -2,6 +2,13 @@
 
 [English](CHANGELOG.en.md)
 
+## 0.3.1 - 2026-08-25
+
+- 重做 GitHub README 首屏、快速开始、工作流、模型路由、验证与文档导航；
+- 新增“与同类方案的区别”以及 Story Doctor、Visual Director、Continuity Keeper 等八类内置能力说明；
+- 增加 Codex、Claude Code、WorkBuddy 和 Agent Skills 兼容关键词，并明确验证级别与安装边界；
+- 保持中文默认与英文镜像同步。
+
 ## 0.3.0 - 2026-08-25
 
 - 正式命名为 Dramake，定位为“小白也能从文字串起导演级短剧”的单一 Skill；

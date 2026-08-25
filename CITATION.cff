@@ -4,7 +4,7 @@ message: "如 Dramake 对你的短剧制作或研究有帮助，请引用本仓�
 type: software
 authors:
   - name: "Dramake contributors"
-version: 0.3.0
+version: 0.3.1
 date-released: 2026-08-25
 license: MIT
 keywords:

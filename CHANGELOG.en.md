@@ -2,6 +2,13 @@
 
 [简体中文](CHANGELOG.md)
 
+## 0.3.1 - 2026-08-25
+
+- Redesigned the GitHub README hero, quick start, workflow, model routing, validation, and documentation navigation.
+- Added a direct comparison with common alternatives and eight built-in capability modules such as Story Doctor, Visual Director, and Continuity Keeper.
+- Added Codex, Claude Code, WorkBuddy, and Agent Skills compatibility keywords with explicit validation and installation boundaries.
+- Kept the Chinese default and English mirror synchronized.
+
 ## 0.3.0 - 2026-08-25
 
 - Adopted the Dramake name and one-Skill positioning: a beginner can start from text and connect a director-level short-drama pipeline.

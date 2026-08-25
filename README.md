@@ -1,155 +1,191 @@
-# Dramake — 文字转 AI 短剧的连续性导演
+<div align="center">
 
-[English](README.en.md)
+# Dramake
 
-![把导演梦拍成真的：文字、剧本、分镜到成片](assets/dramake-cover.png)
+### 把一段文字，拍成一部能看懂、能衔接、能发布的 AI 短剧
 
-[![许可证：MIT](https://img.shields.io/badge/许可证-MIT-green.svg)](LICENSE)
-![Skill v0.3.0](https://img.shields.io/badge/Skill-v0.3.0-blue)
-![横屏与竖屏](https://img.shields.io/badge/画幅-横屏%20%7C%20竖屏-orange)
-[![欢迎贡献](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+一个面向普通创作者的导演级 Agent Skill。不会编剧、分镜、配音或剪辑，也能从点子、文案、小说或剧本开始，串起完整的 AI 短剧生产线。
 
-Dramake 是给普通创作者的文字转短剧 Skill：即使不会编剧、分镜、配音或剪辑，也能从一个点子、一段文案、小说或剧本出发，由一个 Skill 串起故事、分镜、生成、配音、剪辑和质检，做出能看懂、能衔接、能发布的导演级 AI 短剧与 AI 短片。
+[English](README.en.md) · [快速开始](#quick-start) · [Agent 兼容](#agent-compatibility) · [工作流](#workflow) · [模型路由](#model-routing) · [文档](#docs)
 
-Dramake 面向抖音、红果短剧、视频号、快手、B站、YouTube 等渠道，支持真人短剧、独立短片、单元剧、连续剧、萌宠故事、拟人奇幻、漫剧、UGC 与品牌剧情。它重点解决剧情断裂、碎片硬拼、人物/服装漂移、站桩对白、穿模、口型与声线不一致、音乐反复重启、付费失控和成片无法上线。
+<p>
+  <a href="https://github.com/xixihhhh/ai-short-drama-skill/releases/latest"><img src="https://img.shields.io/github/v/release/xixihhhh/ai-short-drama-skill?style=flat-square&amp;color=7c3aed" alt="Release"></a>
+  <a href="skills/dramake/SKILL.md"><img src="https://img.shields.io/badge/Skill-v0.3.1-2563eb?style=flat-square" alt="Skill v0.3.1"></a>
+  <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-14%20passed-16a34a?style=flat-square" alt="14 tests passed"></a>
+  <a href="README.en.md"><img src="https://img.shields.io/badge/docs-中文%20%7C%20English-0891b2?style=flat-square" alt="Chinese and English"></a>
+  <a href="#agent-compatibility"><img src="https://img.shields.io/badge/agents-Codex%20%7C%20Claude_Code%20%7C%20WorkBuddy-f97316?style=flat-square" alt="Codex, Claude Code, and WorkBuddy"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111827?style=flat-square" alt="MIT License"></a>
+</p>
 
-平台、接口和生成工具由用户自行选择。Skill 根据当前能力、价格、隐私与素材上传规则选路，不锁定单一网站、API、MCP 或服务商。
+<br>
 
-## 从文字到成片
+<img src="assets/dramake-cover.png" alt="Dramake 从文字、剧本、分镜到 AI 短剧成片" width="100%">
 
-`原始文字 → 故事诊断 → 剧情合同 → 剧本/节拍 → 角色与世界母版 → 分镜/生成段 → 模型与费用路由 → 候选视频 → 证据质检 → 连续性剪辑 → 配音/混音 → 冷观众检查 → 发布`
+</div>
 
-输入可以是一个点子、一段文案、小说章节、完整剧本、分镜表、参考图或已有视频。任务可以只停在诊断、改剧本、做生产包，也可以继续执行和修片。
+> Dramake 不是提示词合集。它把故事、角色、镜头、模型、声音、预算和质检放进同一条可追踪的生产线，让生成结果更像一部影片，而不是一堆互不相干的小视频。
 
-## 支持范围
+可用于 Codex、Claude Code、WorkBuddy 及其他支持 `SKILL.md` / Agent Skills 的智能体。面向抖音、红果短剧、视频号、快手、B站、TikTok、YouTube 等渠道；支持真人短剧、独立短片、单元剧、连续剧、萌宠、拟人奇幻、漫剧、UGC 与品牌剧情。执行平台、API、MCP 和模型入口始终由用户选择。
 
-- 15–45 秒强钩子小短片、广告和账号起量内容；
-- 45–120 秒完整独立短片；
-- 1–4 分钟真人、动画、宠物、奇幻、UGC 或品牌剧情；
-- 固定角色与世界规则的单元剧；
-- 有季线、关系、知识和道具状态的连续短剧；
-- 小说、长文、故事梗概与现有脚本改编；
-- 原生对白、参考音频、外部配音/TTS、口型同步和混合后期；
-- `9:16`、`16:9`、`1:1` 与自定义画幅。
+<a id="quick-start"></a>
 
-## 五个核心设计
+## 1 分钟上手
 
-### 1. 生成段与剪辑节拍分开
-
-`generation_block` 是 8–30 秒的模型请求与连续性容器；`edit_beat` 是 2–8 秒的信息、动作、反应、对白和切镜单位。长段减少外部接缝，但内部仍要有 3–6 个明确变化，避免“一句话站十秒”。
-
-### 2. 上游验收后才解锁下游
-
-独立定妆、声线、音乐探索、备选开头和非依赖插镜可以并行；连续剧情必须先下载上游成片、抽帧、听音频并检查剧情、身份、物理和尾部状态。只有“验收尾部状态 + 角色/材质母版 + 连续性账本”才能解锁下一段。
-
-### 3. 模型、执行平台、质量和付费授权分开
-
-- 模型按长段、首尾帧、参考音频、原生对白、编辑/续写和分辨率等能力选路；
-- 执行平台由用户选择；
-- 质量档为 Sketch / Economy / Balanced / Premium / Hero Insert / Final Polish；
-- 授权档为 plan-only / single-test / approved-batch / autopilot-with-cap。
-
-选择 Premium 不等于授权无限花费。批量模式必须记录允许上传的素材、请求数、重试数、预算上限和停止条件。
-
-### 4. 配音是独立生产线
-
-- 模型原生对白优先口型与表演；
-- 参考音频锁定角色声线、语速、口音与情绪；
-- 外部配音/TTS 结合口型工具、反应镜头、侧脸、远景、插镜和画外音；
-- 混合方案保留好的原生台词和拟音，旁白、电话声、环境与 BGM 后期统一；
-- 无对白项目使用连续环境底、单一音乐结构和精选拟音。
-
-随机生成的音乐不会直接裸拼成终片。
-
-### 5. 技术过关不等于剧情能发
-
-终片分别通过剧情可懂性、身份/画风、物理/连续性和声音四道门。未读梗概的冷观众也必须能复述：谁想要什么 → 被什么阻挡 → 做了什么 → 为什么得到这个结果。
-
-## 横屏与竖屏
-
-项目开始时锁定发布渠道、画幅、安全区、主体大小、字幕区和封面裁切区。同一项目需要横竖双版本时，共用剧情、角色、场景、道具、声线和连续性账本，但分别设计构图、景别、运动路径与字幕安全区，并分别验收。
-
-默认不把 16:9 成片直接居中裁成 9:16，也不把 9:16 画面机械补边成 16:9。
-
-## 模型路由
-
-每次执行前核实当前入口的参数、时长、参考素材限制、音频能力、队列、存储规则和价格。下表是起始假设，不是永久排名，也不限制其他模型。
-
-| 模型系列 | 优先测试任务 | 主要风险 |
-|---|---|---|
-| Wan 3 长段生成 | 20–30 秒多节拍剧情段、减少外部接缝、720p 经济/均衡档 | 后半段身份、服装、骨骼与画风漂移 |
-| Seedance 2.5 多模态 | 高价值对白、参考音频、多图/视频参考、编辑、续写与修复 | 成本与参考过载 |
-| Seedance 2.0 | 4–15 秒对白、动作、过渡和均衡档镜头 | 长片外部接缝更多 |
-| Seedance 2.0 Fast | 预演、覆盖、备选和经济档测试 | 进终片前仍需严格质检 |
-| MiniMax H3 音画生成 | 4–15 秒高运动重点镜头、首尾帧控制和关键音画段 | 不适合把全部普通镜头都做成高成本段 |
-
-## 内容配置
-
-| 配置 | 必须锁定 |
-|---|---|
-| 真人剧情 | 脸、手、年龄、发型、服装结构、视线、轴线、表演与关系认知 |
-| 宠物/动物 | 物种解剖、毛色地图、眼睛、比例、行为、接触与人物关系 |
-| 拟人/奇幻 | 身体结构、拟人程度、能力触发、限制、代价与后果 |
-| 动画/漫剧 | 设计语法、线条、阴影、比例、动作节奏与背景层级 |
-| 品牌/产品剧情 | 几何、材质、比例、标签安全区、合规说法与剧情功能 |
-| UGC/口播/访谈 | 说话人、镜头语法、信息密度、自然瑕疵、动作与房间底噪 |
-
-## 安装
+安装：
 
 ```bash
 npx skills add xixihhhh/ai-short-drama-skill --skill dramake
 ```
 
-手动安装：
-
-```bash
-git clone https://github.com/xixihhhh/ai-short-drama-skill.git
-cp -R ai-short-drama-skill/skills/dramake ~/.codex/skills/dramake
-```
-
-## 调用示例
+然后把故事直接交给 Agent：
 
 ```text
-使用 Dramake，把这篇故事做成 90 秒真人家庭短剧。
-先保证普通观众能看懂人物目标、阻碍、选择和结果，再做分镜与模型路由。
-抖音版 9:16，横屏版 16:9；两版共用角色和声线，但分别构图验收。
-给我 Economy 和 Balanced 两套费用方案。上游片段通过剧情、连续性、物理和声音检查后，
-再生成依赖它的下一段。
+使用 Dramake，把下面的故事做成 90 秒真人家庭短剧。
+先检查剧情是否让普通观众看得懂，再输出剧本、角色母版、分镜、
+模型与费用路线、配音方案和质检标准。抖音版 9:16，交付 720p。
+在父段通过剧情、身份、物理和声音检查前，不要生成依赖它的下一段。
 ```
 
-## 质量与付费模式
+你也可以只让它完成某一段工作：诊断故事、改剧本、做分镜、修站桩对白、统一声线、检查粗剪，或修复一个失败镜头。
 
-1. **Sketch**：最低可用预演，只验证剧情与调度；
-2. **Economy**：通常 720p，长段优先，只修失败单元；
-3. **Balanced**：把强模型、参考和音频用在真正提高通过率的位置；
-4. **Premium**：富多模态、参考音频、编辑/续写与选择性高分辨率；
-5. **Hero Insert**：集中预算做钩子、脆弱对白、变形、动作、揭示或高潮；
-6. **Final Polish**：只放大、修复、调色和混音已验收素材。
+<a id="agent-compatibility"></a>
 
-付费授权档：`plan-only`、`single-test`、`approved-batch`、`autopilot-with-cap`。费用账本同时记录报价、实付和 `cost_per_accepted_second`（每个可用成片秒数的成本）。
+## 在哪些 Agent 里使用
 
-## 物理、连续性与文字门禁
+Dramake 采用标准 `SKILL.md + references + assets` 目录结构。核心指令不依赖某个聊天产品，但不同 Agent 的安装位置和工具权限不同。
 
-所有接触动作必须可见：`接近 → 接触 → 施力 → 物体/身体响应 → 稳定结果`。
+| Agent / 客户端 | 兼容方式 | 建议安装 |
+|---|---|---|
+| **OpenAI Codex** | 当前版本已完成格式、引用、模板和安装包验证 | `npx skills add xixihhhh/ai-short-drama-skill --skill dramake` |
+| **Claude Code** | 遵循 Agent Skills / `SKILL.md` 目录规范 | 使用 Skills 安装器，或复制到 `.claude/skills/dramake/` |
+| **WorkBuddy** | 支持本地 Skill 的版本可手动导入完整 `dramake` 目录 | 复制到用户级 Skills 目录；以当前客户端导入入口为准 |
+| **其他 Agent Skills 客户端** | 能读取 `SKILL.md` 并访问同目录 references/assets 即可 | 下载 [dramake.skill](https://github.com/xixihhhh/ai-short-drama-skill/releases/latest) 或复制目录 |
 
-直接拒绝：人物或物体穿透、动物数量变化、额外肢体、悬空无支撑、道具瞬移、手机正反面反转、服装结构突变、无解释的位置/时间跳变、湿度或破损状态复原。
+兼容 Skill 不等于自动拥有视频生成能力。Agent 仍需连接用户选择的网页、API、MCP、本地模型或其他生成工具；Dramake 负责导演、路由、状态、预算与验收。
 
-视频模型不擅长稳定渲染文字、手机屏幕、信件、价签和倒计时。默认生成干净留白或替代性视觉证据，具体文字后期叠加。
+## 它和同类方案有什么不同
+
+Dramake 不是新的视频模型，也不是绑定某个网站的生成平台。它是一层“导演与制片系统”：把用户选择的模型、工具和素材组织成一条有状态、有预算、有验收标准的成片流程。
+
+| 常见同类方案 | 常见结果 | Dramake 的区别 |
+|---|---|---|
+| **视频提示词库** | 能写单镜头，但不维护整片状态 | 同时维护剧情、人物知识、服装、道具、动作阶段、声线和声音边界 |
+| **一键文生视频平台** | 生成快，但模型、费用与修复路径被平台决定 | 服务商中立；模型、入口、质量档和付费授权分别选择 |
+| **逐镜头批量工作流** | 五六秒一段，最后像素材拼盘 | 区分长 `generation_block` 与短 `edit_beat`，减少外缝但保持段内节奏 |
+| **只锁角色脸的连续性方案** | 脸相似，服装、手机、动作和声线仍漂移 | 长期母版 + 短期验收状态 + 每个维度唯一权威参考 |
+| **所有镜头一次并行生成** | 上游已经错了，下游继续复制错误 | 独立任务可并行；依赖剧情必须等父段真实验收后解锁 |
+| **只检查画面清晰度** | 技术漂亮，但剧情看不懂、声音像拼接 | 剧情、身份/画风、物理/连续性、声音四道独立门禁 |
+| **“高级档”直接批量付费** | 重试和成本失控 | 质量档不等于消费许可；预算、上传、候选和停止条件单独授权 |
+
+### 一个入口，内置八类能力
+
+目前只需要安装一个 `dramake` Skill。下面是它内部协同工作的能力模块，不是八个需要分别安装的碎片 Skill。
+
+| 内置能力 | 负责什么 | 主要产物 |
+|---|---|---|
+| **Story Doctor** | 从点子/小说/剧本中修因果、动机、铺垫、反转和节奏 | 剧情合同、节拍表、冷观众问题 |
+| **Visual Director** | 把情绪目标变成景别、调度、表演、运镜和剪辑动机 | 导演合同、分镜与镜头计划 |
+| **Continuity Keeper** | 维护父子段、轴线、动作阶段、道具、湿度、光线和场景边界 | 连续性账本、验收尾帧、转场方案 |
+| **Identity & Style Lock** | 锁人物/动物/产品、服装拓扑、材质和横竖屏视觉规则 | 角色圣经、画风母版、参考权威矩阵 |
+| **Voice & Audio Director** | 统一说话人、声线、口型路线、环境、音乐和 J/L cut | Voice Bible、音频连续性与混音图 |
+| **Model Router** | 在 Wan 3、Seedance、MiniMax H3 或其他模型间按能力选路 | 可替换模型卡与逐段生成路线 |
+| **Budget Guard** | 分离质量档与付费权限，计算候选、重试和上限 | 费用计划、授权模式、支出账本 |
+| **QA & Repair** | 抽帧、听音、检查剧情/物理/漂移，选择最小修复 | QA 报告、保留/后期修/编辑/重抽/重写决定 |
+
+<a id="workflow"></a>
+
+## 从文字到成片
+
+| 阶段 | Dramake 做什么 | 通过条件 |
+|---|---|---|
+| **01 故事** | 从文字提取主角、欲望、阻碍、升级、铺垫与回报 | 冷观众能说清目标、行动与结果 |
+| **02 母版** | 锁定角色、服装、材质、场景、道具、声线与画风 | 每个维度只有一个权威参考 |
+| **03 导演设计** | 编排导演意图、价值变化、节拍、景别、表演和运镜 | 每个镜头都能回答“为什么这样拍” |
+| **04 生成路由** | 按长段、对白、首尾帧、参考音频、编辑和预算选模型 | 质量档与付费授权明确分离 |
+| **05 证据验收** | 下载真实素材，抽帧、听音、慢放检查物理和连续性 | 父段验收后才解锁依赖段 |
+| **06 成片后期** | 连续性剪辑、配音、环境、音乐、J/L cut 与终混 | 画面、剧情和声音像同一部影片 |
+
+### 两个时间尺度
+
+- `generation_block`：8–30 秒的模型请求与连续性容器，减少外部硬接缝；
+- `edit_beat`：2–8 秒的信息、动作、反应、对白或切镜单位，保证段内节奏。
+
+长视频不等于站桩长镜头。20–30 秒生成段通常包含 4–6 个可观察节拍，以及有动机的内部切镜或阶段变化。
+
+## 它重点解决什么
+
+| 常见失败 | Dramake 的处理方式 |
+|---|---|
+| 剧情突然跳地点、观众看不懂 | 剧情合同、人物知识状态、场景桥与冷观众门禁 |
+| 一句话说完后站着不动 | 台词、并行动作、听者反应、微表演与退出动作共同编排 |
+| 多段像随机素材硬拼 | 验收尾部状态、轴线、动作阶段、声音边界和有动机的转场 |
+| 人脸、毛色、服装和道具漂移 | 长期母版 + 短期验收状态 + 参考权威矩阵 |
+| 穿模、额外肢体、手机翻面 | `接近 → 接触 → 施力 → 响应 → 稳定结果` 物理门禁 |
+| 每段声线、底噪和音乐都不同 | Voice ID、参考音频、人工 A/B、连续环境和统一终混 |
+| 选了 Premium 就失控花钱 | 模型、执行入口、质量档、付费授权与重试上限分别记录 |
+
+<a id="model-routing"></a>
+
+## 模型路由，不绑定平台
+
+每次执行前核实当前入口的时长、参考素材、音频、编辑、分辨率、价格与保存规则。下表是测试起点，不是永久排名。
+
+| 模型系列 | 优先测试任务 | 主要风险 |
+|---|---|---|
+| **Wan 3** | 20–30 秒多节拍剧情段、减少外部接缝、720p 经济/均衡档 | 后半段身份、服装、骨骼和画风漂移 |
+| **Seedance 2.5** | 高价值对白、音频/图像/视频参考、编辑、续写与修复 | 参考过载与成本 |
+| **Seedance 2.0** | 4–15 秒对白、动作、过渡和均衡镜头 | 长片需要更多外部接缝 |
+| **Seedance 2.0 Fast** | 预演、覆盖、备选与经济档测试 | 进入终片前仍需严格验收 |
+| **MiniMax H3** | 4–15 秒高运动重点镜头、首尾帧和关键音画段 | 不必把普通镜头全部做成高成本段 |
+
+其他模型也可以接入。Dramake 路由的是能力，不是品牌忠诚度。
+
+## 横屏、竖屏与多种内容
+
+| 成片形式 | 内容配置 | 发布画幅 |
+|---|---|---|
+| 15–45 秒强钩子小短片 | 真人、萌宠、品牌、UGC | `9:16` 抖音 / TikTok / Shorts |
+| 45–120 秒独立短片 | 家庭、喜剧、奇幻、动作、动画 | `9:16`、`16:9`、`1:1` |
+| 1–4 分钟单元剧 | 固定角色和世界规则，每集独立解决问题 | 竖屏或横屏独立设计 |
+| 1–4 分钟连续短剧 | 维护关系、知识、伤势、道具和季线状态 | 抖音、红果短剧及其他渠道 |
+
+横竖双版本共享剧情、角色、道具和声线母版，但分别设计构图、景别、运动路径、字幕与封面安全区；默认不把一个版本机械裁成另一个版本。
+
+## 声音与配音
+
+Dramake 可按场景选择原生对白、参考音频、外部配音/TTS、画外音或混合路线。原生对白优先解决口型和表演，角色声线用独立 Voice ID 与授权锚点维持；环境、音乐、电话声和问题音频在后期统一。
+
+随机生成的音乐不会直接裸拼成终片。同场景保留连续环境底，使用 J/L cut、对白避让和响度匹配，让闭眼听也像同一部影片。
+
+## 可靠性门禁
+
+| 验证项 | 当前状态 |
+|---|---:|
+| 自动化仓库测试 | **14 项通过** |
+| 中英文文档对应 | **29 组通过** |
+| Skill 官方格式校验 | **通过** |
+| 完整合法生产计划 | **可通过** |
+| 错误父子依赖、稀疏长段、越界镜头、未知声线 | **会被拒绝** |
+
+验证的是工作流、文件结构和计划约束，不是对任何视频模型结果的无条件保证。模型能力与价格在执行时复核，候选质量以真实视频、音频、抽帧和冷观众结果为准。
+
+<a id="docs"></a>
 
 ## 文档与工具
 
-- [主 Skill](skills/dramake/SKILL.md)
-- [英文 Skill](skills/dramake/SKILL.en.md)
-- [内容配置](skills/dramake/references/content-profiles.md)
-- [生成段与剪辑节拍](skills/dramake/references/generation-blocks-and-edit-beats.md)
-- [导演、镜头、运镜与节奏](skills/dramake/references/directing-camera-and-pacing.md)
-- [角色、声线与参考素材锁](skills/dramake/references/identity-voice-and-reference-locks.md)
-- [模型路由](skills/dramake/references/model-router.md)
-- [批量付费与授权](skills/dramake/references/authorization-and-batch.md)
-- [对白、参考音频与配音](skills/dramake/references/audio-and-dubbing.md)
-- [连续性与转场](skills/dramake/references/continuity-and-transitions.md)
-- [物理与失败检查](skills/dramake/references/physics-and-failure-modes.md)
-- [匿名实测记录](benchmarks/tested-observations.md)
+| 入口 | 用途 |
+|---|---|
+| [主 Skill](skills/dramake/SKILL.md) · [English Skill](skills/dramake/SKILL.en.md) | 完整工作流与触发说明 |
+| [导演、镜头与节奏](skills/dramake/references/directing-camera-and-pacing.md) | 导演意图、运镜合同、内部切镜和节奏曲线 |
+| [角色、声线与参考锁](skills/dramake/references/identity-voice-and-reference-locks.md) | 人物、服装、材质、声音与参考权威 |
+| [连续性与转场](skills/dramake/references/continuity-and-transitions.md) | 父子状态、尾帧、重新锚定与场景边界 |
+| [对白、配音与混音](skills/dramake/references/audio-and-dubbing.md) | 原生对白、参考音频、外部配音和声音连续性 |
+| [模型路由](skills/dramake/references/model-router.md) · [费用授权](skills/dramake/references/authorization-and-batch.md) | 可替换模型、预算、批量和停止条件 |
+| [物理与失败模式](skills/dramake/references/physics-and-failure-modes.md) · [QA 修复](skills/dramake/references/qa-and-repair.md) | 穿模、解剖、文字、手机方向与最小修复 |
+| [匿名实测记录](benchmarks/tested-observations.md) · [验证报告](evals/benchmark-report.md) | 已观察问题与验证边界 |
+
+<details>
+<summary><strong>本地校验命令</strong></summary>
 
 ```bash
 python3 scripts/validate_plan.py \
@@ -159,19 +195,33 @@ python3 scripts/validate_plan.py \
   --voice-bible skills/dramake/assets/templates/voice-bible.csv \
   --audio-continuity skills/dramake/assets/templates/audio-continuity.csv \
   --cost skills/dramake/assets/templates/cost-plan.csv
+
 python3 -m unittest discover -s tests
 python3 scripts/check_bilingual.py
 ```
 
+</details>
+
 ## 示例
 
-- [真人家庭短剧](examples/live-action-90s/README.md)
-- [宠物主角独立短片](examples/standalone-90s/README.md)
-- [单元剧](examples/anthology-episode/README.md)
-- [连续短剧](examples/serialized-episode/README.md)
+| 项目 | 适合查看的能力 |
+|---|---|
+| [90 秒真人家庭短剧](examples/live-action-90s/README.md) | 真人表演、因果与对白 |
+| [90 秒宠物独立短片](examples/standalone-90s/README.md) | 写实可爱、物种动作与接触 |
+| [单元剧](examples/anthology-episode/README.md) | 固定角色与每集独立回报 |
+| [连续短剧](examples/serialized-episode/README.md) | 跨集关系、知识和道具状态 |
 
-示例是制作清单，不宣称未验收的生成结果已经是成片。
+这些示例是制作清单，不会把未验收的模型输出冒充成已完成影片。
 
-## 许可证
+## 安装、贡献与许可
 
-MIT，见 [LICENSE](LICENSE)。Dramake 是独立社区项目。
+- 下载最新安装包：[Dramake Releases](https://github.com/xixihhhh/ai-short-drama-skill/releases/latest)
+- 提交失败案例或模型兼容信息：[Issues](https://github.com/xixihhhh/ai-short-drama-skill/issues)
+- 参与改进：[贡献指南](CONTRIBUTING.md)
+- 许可证：[MIT](LICENSE)
+
+<div align="center">
+
+**从文字开始。用证据验收。把片段变成作品。**
+
+</div>

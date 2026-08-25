@@ -1,12 +1,12 @@
 ---
 name: dramake
-description: 把一句话点子、故事梗概、小说、文案、剧本、分镜或已有素材，串成可理解、可衔接、可发布的 AI 短剧与 AI 短片。适用于抖音、红果短剧、视频号、快手、B站、YouTube 等横屏或竖屏内容；支持真人、独立短片、单元剧、连续剧、宠物、拟人奇幻、动画/漫剧、UGC 和品牌剧情。用于故事诊断、编剧、分镜、角色一致性、Wan 3、Seedance 2.5/2.0/Fast、MiniMax H3 等模型选路、15–30 秒长段、原生对白、参考音频、配音、付费预算、连续性剪辑、物理质检和冷观众验收，尤其用于避免碎片硬拼、随机跳切、站桩对白、身份/服装漂移、穿模、口型/声线不一致、音乐重启和剧情看不懂。
+description: 面向 Codex、Claude Code、WorkBuddy 和其他 Agent Skills 客户端，把一句话点子、故事梗概、小说、文案、剧本、分镜或已有素材，串成可理解、可衔接、可发布的 AI 短剧与 AI 短片。适用于抖音、红果短剧、视频号、快手、B站、YouTube 等横屏或竖屏内容；支持真人、独立短片、单元剧、连续剧、宠物、拟人奇幻、动画/漫剧、UGC 和品牌剧情。用于故事诊断、编剧、分镜、角色一致性、Wan 3、Seedance 2.5/2.0/Fast、MiniMax H3 等模型选路、15–30 秒长段、原生对白、参考音频、配音、付费预算、连续性剪辑、物理质检和冷观众验收，尤其用于避免碎片硬拼、随机跳切、站桩对白、身份/服装漂移、穿模、口型/声线不一致、音乐重启和剧情看不懂。
 license: MIT
 metadata:
   author: Dramake contributors
-  version: 0.3.0
+  version: 0.3.1
   category: video-production
-  tags: ai-video, text-to-video, short-film, short-drama, douyin, hongguo-drama, wan-3, seedance, minimax-h3
+  tags: ai-video, text-to-video, short-drama, codex, claude-code, workbuddy, douyin, hongguo-drama, wan-3, seedance, minimax-h3
 ---
 
 # Dramake

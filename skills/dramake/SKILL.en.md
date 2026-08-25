@@ -1,12 +1,12 @@
 ---
 name: dramake
-description: Turn an idea, story outline, manuscript, copy, screenplay, storyboard, or existing media into a coherent, publishable AI short drama or short film. Use for landscape or portrait content on Douyin, Hongguo Short Drama, WeChat Channels, Kuaishou, Bilibili, YouTube, and other channels; live action, standalone shorts, anthology episodes, serialized drama, pets, anthropomorphic fantasy, animation/motion comics, UGC, and branded narratives. Covers story diagnosis, scripting, storyboarding, character consistency, Wan 3, Seedance 2.5/2.0/Fast, MiniMax H3, 15–30 second blocks, native dialogue, reference audio, dubbing, spend control, continuity editing, physical QA, and cold-viewer review. Especially useful for avoiding clip piles, random jumps, static talking heads, identity/wardrobe drift, penetration, voice drift, music restarts, and confusing plots.
+description: For Codex, Claude Code, WorkBuddy, and other Agent Skills clients, turn an idea, story outline, manuscript, copy, screenplay, storyboard, or existing media into a coherent, publishable AI short drama or short film. Use for landscape or portrait content on Douyin, Hongguo Short Drama, WeChat Channels, Kuaishou, Bilibili, YouTube, and other channels; live action, standalone shorts, anthology episodes, serialized drama, pets, anthropomorphic fantasy, animation/motion comics, UGC, and branded narratives. Covers story diagnosis, scripting, storyboarding, character consistency, Wan 3, Seedance 2.5/2.0/Fast, MiniMax H3, 15–30 second blocks, native dialogue, reference audio, dubbing, spend control, continuity editing, physical QA, and cold-viewer review. Especially useful for avoiding clip piles, random jumps, static talking heads, identity/wardrobe drift, penetration, voice drift, music restarts, and confusing plots.
 license: MIT
 metadata:
   author: Dramake contributors
-  version: 0.3.0
+  version: 0.3.1
   category: video-production
-  tags: ai-video, text-to-video, short-film, short-drama, douyin, hongguo-drama, wan-3, seedance, minimax-h3
+  tags: ai-video, text-to-video, short-drama, codex, claude-code, workbuddy, douyin, hongguo-drama, wan-3, seedance, minimax-h3
 ---
 
 # Dramake

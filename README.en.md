@@ -1,155 +1,192 @@
-# Dramake — Turn Text into Director-Level AI Short Drama
+<div align="center">
 
-[简体中文](README.md)
+# Dramake
 
-![Even a beginner can create director-level short drama by connecting text, script, storyboard, generation, dubbing, editing, and QA](assets/dramake-cover.png)
+### Turn one piece of text into a coherent, publishable AI short drama
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-![Skill v0.3.0](https://img.shields.io/badge/Skill-v0.3.0-blue)
-![Landscape and portrait](https://img.shields.io/badge/aspect-landscape%20%7C%20portrait-orange)
-[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.en.md)
+A director-level Agent Skill for everyday creators. Start from an idea, copy, fiction, or screenplay—even without screenwriting, storyboarding, dubbing, or editing experience.
 
-Dramake is a text-to-drama Skill for everyday creators. Even without screenwriting, storyboarding, dubbing, or editing experience, a beginner can start from an idea, copy, fiction, or a screenplay and use one Skill to connect story, storyboard, generation, dubbing, editing, and QA into a coherent, publishable, director-level AI short drama or short film.
+[简体中文](README.md) · [Quick start](#quick-start) · [Agent compatibility](#agent-compatibility) · [Workflow](#workflow) · [Model routing](#model-routing) · [Docs](#docs)
 
-Dramake is built for Douyin, Hongguo Short Drama, WeChat Channels, Kuaishou, Bilibili, YouTube, and other channels. It supports live action, standalone shorts, anthology episodes, serialized drama, pet stories, anthropomorphic fantasy, motion comics, UGC, and branded narratives. It addresses confusing plots, clip piles, random jumps, identity and wardrobe drift, static dialogue, broken physics, lip-sync and voice drift, music restarts, uncontrolled spend, and cuts that are not publishable.
+<p>
+  <a href="https://github.com/xixihhhh/ai-short-drama-skill/releases/latest"><img src="https://img.shields.io/github/v/release/xixihhhh/ai-short-drama-skill?style=flat-square&amp;color=7c3aed" alt="Release"></a>
+  <a href="skills/dramake/SKILL.en.md"><img src="https://img.shields.io/badge/Skill-v0.3.1-2563eb?style=flat-square" alt="Skill v0.3.1"></a>
+  <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-14%20passed-16a34a?style=flat-square" alt="14 tests passed"></a>
+  <a href="README.md"><img src="https://img.shields.io/badge/docs-中文%20%7C%20English-0891b2?style=flat-square" alt="Chinese and English"></a>
+  <a href="#agent-compatibility"><img src="https://img.shields.io/badge/agents-Codex%20%7C%20Claude_Code%20%7C%20WorkBuddy-f97316?style=flat-square" alt="Codex, Claude Code, and WorkBuddy"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111827?style=flat-square" alt="MIT License"></a>
+</p>
 
-Users choose their execution platform, interface, and generation tools. The Skill routes from current capability, price, privacy, and upload policy without locking the workflow to one website, API, MCP, or service.
+<br>
 
-## From Text to Final Cut
+<img src="assets/dramake-cover.png" alt="Dramake connects text, screenplay, storyboard, AI video generation, dubbing, editing, and QA" width="100%">
 
-`source text → story diagnosis → story contract → script/beats → character/world canon → storyboard/generation blocks → model and cost route → video candidates → evidence QA → continuity edit → dubbing/mix → cold-viewer gate → release`
+</div>
 
-Input may be one idea, marketing copy, a novel chapter, a full script, a storyboard, reference assets, or existing video. The task may stop after diagnosis, script repair, or a production package, or continue into execution and repair.
+> Dramake is not a prompt collection. It puts story, identity, camera, models, sound, budget, and QA into one traceable production line, so the result feels like one film instead of a pile of unrelated clips.
 
-## Supported Scope
+Use it with Codex, Claude Code, WorkBuddy, and other agents that support `SKILL.md` / Agent Skills. Built for Douyin, Hongguo Short Drama, WeChat Channels, Kuaishou, Bilibili, TikTok, YouTube, and more. It supports live action, standalone shorts, anthology episodes, serial drama, pet stories, anthropomorphic fantasy, motion comics, UGC, and branded narratives. The user always chooses the execution platform, API, MCP, and model surface.
 
-- 15–45s hook-driven microshorts, ads, and account-growth content;
-- 45–120s complete standalone shorts;
-- 1–4 minute live-action, animated, pet, fantasy, UGC, or branded narratives;
-- anthology/unit episodes with stable characters and world rules;
-- serialized drama with season, relationship, knowledge, and prop state;
-- adaptation from fiction, long-form text, outlines, and existing scripts;
-- native dialogue, reference audio, external dubbing/TTS, lip sync, and hybrid post;
-- `9:16`, `16:9`, `1:1`, and custom aspect ratios.
+<a id="quick-start"></a>
 
-## Five Core Designs
+## One-minute quick start
 
-### 1. Separate generation blocks from edit beats
-
-A `generation_block` is the 8–30s model request and continuity container. An `edit_beat` is the 2–8s unit of information, action, reaction, dialogue, and cutting. Long outputs reduce external seams, but each still needs 3–6 meaningful changes instead of one line stretched across ten seconds.
-
-### 2. Unlock downstream work only after parent acceptance
-
-Independent character looks, voice anchors, music exploration, alternate hooks, and non-dependent inserts may run in parallel. A dependent scene starts only after the parent file is downloaded, frame-sampled, listened to, and checked for story, identity, physics, and exit state. Accepted tail state + canonical identity/material anchor + continuity ledger unlocks the child.
-
-### 3. Separate model, execution platform, quality, and spend authorization
-
-- Route models by long duration, first/last frame, reference audio, native dialogue, edit/extend, and resolution capability.
-- Let the user choose the execution platform.
-- Quality tiers are Sketch / Economy / Balanced / Premium / Hero Insert / Final Polish.
-- Authorization modes are plan-only / single-test / approved-batch / autopilot-with-cap.
-
-Choosing Premium never authorizes unlimited spend. Batch mode records allowed uploads, requests, retries, hard budget, and stop conditions.
-
-### 4. Treat dubbing as its own production line
-
-- Model-native dialogue prioritizes lip sync and performance.
-- Reference audio locks voice, pace, accent, and emotion.
-- External dubbing/TTS combines lip-sync tools, reactions, profiles, wide shots, inserts, and voice-over.
-- Hybrid keeps good native lines and Foley while rebuilding narration, phone voices, ambience, and music in post.
-- No-dialogue work uses a continuous ambience bed, one music structure, and selected Foley.
-
-Random generated music is never concatenated straight into the final mix.
-
-### 5. Technical success does not make a story publishable
-
-The final cut passes four independent gates: narrative comprehension, identity/style, physics/continuity, and audio. A cold viewer who never read the synopsis must be able to retell: who wanted what → what stopped them → what they did → why the result happened.
-
-## Landscape and Portrait
-
-At project start, lock release channel, aspect ratio, safe area, subject scale, caption area, and cover crop. When one project needs landscape and portrait versions, share the story, character, scene, prop, voice, and continuity canon, but design and review composition, shot size, movement path, and caption-safe area separately.
-
-Do not default to center-cropping 16:9 into 9:16 or padding 9:16 into 16:9.
-
-## Model Router
-
-Before execution, verify the active surface's parameters, duration, reference limits, audio capability, queue, storage rules, and price. The table is a starting hypothesis, not a permanent ranking, and does not exclude other models.
-
-| Model family | First task to test | Main risk |
-|---|---|---|
-| Wan 3 long generation | 20–30s multi-beat story blocks, fewer external seams, 720p economy/balanced work | late identity, wardrobe, anatomy, and style drift |
-| Seedance 2.5 multimodal | high-value dialogue, reference audio, rich image/video refs, edit, extend, and repair | cost and reference overload |
-| Seedance 2.0 | 4–15s dialogue, action, transition, and balanced shots | more external seams in long films |
-| Seedance 2.0 Fast | previews, coverage, alternates, and economy tests | final use still requires strict QA |
-| MiniMax H3 audiovisual | 4–15s high-motion hero shots, first/last-frame control, and key audiovisual beats | uneconomical for every ordinary shot |
-
-## Content Profiles
-
-| Profile | Required locks |
-|---|---|
-| Live-action drama | face, hands, age, hair, wardrobe structure, eyelines, axis, performance, relationship knowledge |
-| Pet/animal | species anatomy, coat map, eyes, proportions, behavior, contact, and human-animal bond |
-| Anthropomorphic/fantasy | body plan, degree of anthropomorphism, power trigger, limit, cost, and consequence |
-| Animation/motion comic | design grammar, line, shading, proportions, motion rhythm, and background depth |
-| Brand/product narrative | geometry, materials, scale, label-safe plates, compliant claims, and plot function |
-| UGC/talking head/interview | speaker, lens grammar, information density, authentic imperfection, movement, and room tone |
-
-## Install
+Install:
 
 ```bash
 npx skills add xixihhhh/ai-short-drama-skill --skill dramake
 ```
 
-Manual install:
-
-```bash
-git clone https://github.com/xixihhhh/ai-short-drama-skill.git
-cp -R ai-short-drama-skill/skills/dramake ~/.codex/skills/dramake
-```
-
-## Example Request
+Then give your story directly to the agent:
 
 ```text
-Use Dramake to turn this story into a 90-second live-action family short drama.
-Make sure a cold viewer can understand the protagonist's goal, obstacle, choice, and result before storyboarding.
-The Douyin version is 9:16 and the landscape version is 16:9. Share characters and voices,
-but compose and review each version separately. Offer Economy and Balanced cost routes.
-Generate no dependent block until its parent passes narrative, continuity, physics, and audio review.
+Use Dramake to turn the story below into a 90-second live-action family short.
+Check that a cold viewer can understand the story before producing the script,
+character canon, storyboard, model/cost route, dubbing plan, and QA criteria.
+The Douyin version is 9:16 at 720p. Do not generate a dependent block until
+its parent passes narrative, identity, physics, and audio review.
 ```
 
-## Quality and Paid Modes
+You can also enter at any stage: story diagnosis, script repair, storyboard, static-dialogue repair, voice unification, rough-cut review, or one failed shot.
 
-1. **Sketch** — lowest useful preview; validates story and blocking.
-2. **Economy** — commonly 720p; prefer long blocks and repair only failed units.
-3. **Balanced** — use stronger models, references, and audio where they improve acceptance.
-4. **Premium** — rich multimodal control, reference audio, edit/extend, selective higher resolution.
-5. **Hero Insert** — focus spend on hook, fragile dialogue, transformation, action, reveal, or climax.
-6. **Final Polish** — upscale, repair, grade, and mix accepted media only.
+<a id="agent-compatibility"></a>
 
-Authorization modes are `plan-only`, `single-test`, `approved-batch`, and `autopilot-with-cap`. The spend ledger tracks quoted cost, actual cost, and `cost_per_accepted_second`.
+## Agent compatibility
 
-## Physics, Continuity, and Text Gates
+Dramake uses a standard `SKILL.md + references + assets` directory. Its core instructions do not depend on one chat product, although installation paths and tool permissions vary by agent.
 
-Every contact action must show: `approach → contact → force → object/body response → stable outcome`.
+| Agent / client | Compatibility route | Recommended install |
+|---|---|---|
+| **OpenAI Codex** | Current release validated for format, references, templates, and packaged installation | `npx skills add xixihhhh/ai-short-drama-skill --skill dramake` |
+| **Claude Code** | Follows the Agent Skills / `SKILL.md` directory convention | Use a Skills installer or copy to `.claude/skills/dramake/` |
+| **WorkBuddy** | Versions with local Skills can import the complete `dramake` directory | Copy into the user Skills directory; follow the current client's import surface |
+| **Other Agent Skills clients** | Compatible when they load `SKILL.md` and can access sibling references/assets | Download [dramake.skill](https://github.com/xixihhhh/ai-short-drama-skill/releases/latest) or copy the folder |
 
-Reject body/object penetration, animal-count changes, extra limbs, impossible support, teleporting props, reversed phone orientation, wardrobe topology changes, unexplained space/time jumps, and unexplained wetness or damage resets.
+Skill compatibility does not automatically provide a video-generation backend. The agent still needs the user's chosen website, API, MCP, local model, or generation tool; Dramake provides direction, routing, state, budget, and acceptance.
 
-Video models are unreliable at stable rendered text, phone screens, letters, prices, and countdowns. Default to clean plates or visual evidence and add exact text in post.
+## How it differs from similar tools
 
-## Documentation and Tools
+Dramake is not a new video model or a generation website. It is a director-and-producer layer that organizes the user's chosen models, tools, and media into a stateful, budgeted, evidence-gated route to a final cut.
 
-- [Main Chinese Skill](skills/dramake/SKILL.md)
-- [English Skill](skills/dramake/SKILL.en.md)
-- [Content profiles](skills/dramake/references/en/content-profiles.md)
-- [Generation blocks and edit beats](skills/dramake/references/en/generation-blocks-and-edit-beats.md)
-- [Directing, camera, movement, and pacing](skills/dramake/references/en/directing-camera-and-pacing.md)
-- [Identity, voice, and reference locks](skills/dramake/references/en/identity-voice-and-reference-locks.md)
-- [Model router](skills/dramake/references/en/model-router.md)
-- [Authorization and batch](skills/dramake/references/en/authorization-and-batch.md)
-- [Audio and dubbing](skills/dramake/references/en/audio-and-dubbing.md)
-- [Continuity and transitions](skills/dramake/references/en/continuity-and-transitions.md)
-- [Physics and failure modes](skills/dramake/references/en/physics-and-failure-modes.md)
-- [Anonymized tested observations](benchmarks/tested-observations.en.md)
+| Common alternative | Typical result | Dramake difference |
+|---|---|---|
+| **Video prompt library** | Good single-shot prompts without film-level state | Tracks story, character knowledge, wardrobe, props, action phase, voice, and audio boundaries |
+| **One-click text-to-video platform** | Fast output, but the platform decides model, cost, and repair route | Provider-neutral; model, surface, quality tier, and spend authorization remain separate choices |
+| **Shot-by-shot batch workflow** | Many five-second units that end as a clip pile | Separates long `generation_block` from short `edit_beat` to reduce seams without losing internal pace |
+| **Face-only consistency tool** | Similar face, drifting wardrobe, phone, action, and voice | Long-term canon + accepted transient state + one authority per controlled dimension |
+| **Generate every shot in parallel** | A bad parent silently contaminates every child | Independent work may parallelize; dependent story blocks wait for direct parent acceptance |
+| **Image-quality-only review** | Beautiful frames with unclear story and fragmented sound | Four independent gates: narrative, identity/style, physics/continuity, and audio |
+| **“Premium” as batch permission** | Unbounded retries and spend | Quality never implies authorization; uploads, candidates, retries, cap, and stop conditions are explicit |
+
+### One entry point, eight built-in capabilities
+
+You install one `dramake` Skill. The following are cooperating capability modules inside it—not eight fragmented Skills that require separate installation.
+
+| Built-in capability | Responsibility | Main outputs |
+|---|---|---|
+| **Story Doctor** | Repairs causality, motive, setup, reversal, and pace from an idea, fiction, or script | Story contract, beat sheet, cold-viewer questions |
+| **Visual Director** | Turns an emotional target into shot size, blocking, performance, camera, and cut motivation | Directing contract, storyboard, shot plan |
+| **Continuity Keeper** | Tracks parent state, axis, action phase, props, wetness, light, and scene boundaries | Continuity ledger, accepted tail, transition plan |
+| **Identity & Style Lock** | Locks people/animals/products, wardrobe topology, materials, and portrait/landscape visual rules | Character bible, medium canon, reference-authority matrix |
+| **Voice & Audio Director** | Unifies speaker, voice, lip-sync route, ambience, music, and J/L cuts | Voice Bible, audio continuity, mix map |
+| **Model Router** | Routes Wan 3, Seedance, MiniMax H3, or other models by actual capability | Replaceable model cards and per-block route |
+| **Budget Guard** | Separates quality from spend permission and calculates candidates, retries, and caps | Cost plan, authorization mode, spend ledger |
+| **QA & Repair** | Reviews frames/audio/story/physics/drift and chooses the smallest repair | QA report and keep/post/edit/reroll/rewrite decision |
+
+<a id="workflow"></a>
+
+## From Text to Final Cut
+
+| Stage | What Dramake does | Acceptance gate |
+|---|---|---|
+| **01 Story** | Extracts protagonist, desire, obstacle, escalation, plant, and payoff | A cold viewer can state the goal, action, and result |
+| **02 Canon** | Locks character, wardrobe, material, location, prop, voice, and medium | One authoritative reference per controlled dimension |
+| **03 Direction** | Designs intention, value turn, beats, shot size, performance, and movement | Every shot can answer “why film it this way?” |
+| **04 Generation route** | Selects models by long duration, dialogue, keyframes, audio reference, edit, and budget | Quality tier and spend authorization remain separate |
+| **05 Evidence review** | Downloads real outputs and inspects frames, sound, physics, and continuity | A dependent block unlocks only after parent acceptance |
+| **06 Final post** | Continuity edit, dubbing, ambience, score, J/L cuts, and mix | Picture, story, and sound feel like one production |
+
+### Two timescales
+
+- `generation_block`: an 8–30s model request and continuity container that reduces external seams;
+- `edit_beat`: a 2–8s unit of information, action, reaction, dialogue, or cutting that maintains pace.
+
+Long generation does not mean a static long take. A 20–30s block usually needs 4–6 observable beats and motivated internal cuts or phase changes.
+
+## What it is designed to fix
+
+| Common failure | Dramake response |
+|---|---|
+| The story jumps locations and viewers get lost | Story contract, character knowledge state, scene bridges, and cold-viewer gate |
+| One line ends and the actor freezes | Dialogue, concurrent action, listener reaction, micro-performance, and exit action |
+| Multiple clips feel randomly concatenated | Accepted tail state, axis, action phase, audio boundary, and motivated transition |
+| Face, coat, wardrobe, or prop drifts | Long-term canon + accepted transient state + reference-authority matrix |
+| Penetration, extra limbs, or a flipped phone | `approach → contact → force → response → stable outcome` physics gate |
+| Voice, room tone, and music change every clip | Voice ID, reference audio, human A/B, continuous ambience, and unified mix |
+| “Premium” silently turns into unlimited spend | Separate model, execution surface, quality, authorization, and retry cap |
+
+<a id="model-routing"></a>
+
+## Model routing without platform lock-in
+
+Before every run, verify the active surface's duration, references, audio, editing, resolution, price, and retention rules. This table is a testing starting point, not a permanent ranking.
+
+| Model family | First task to test | Primary risk |
+|---|---|---|
+| **Wan 3** | 20–30s multi-beat blocks, fewer external seams, 720p economy/balanced work | Late identity, wardrobe, anatomy, and style drift |
+| **Seedance 2.5** | High-value dialogue, audio/image/video references, edit, extend, and repair | Reference overload and cost |
+| **Seedance 2.0** | 4–15s dialogue, action, transition, and balanced shots | More external joins in a long film |
+| **Seedance 2.0 Fast** | Preview, coverage, alternates, and economy tests | Still needs strict review before final use |
+| **MiniMax H3** | 4–15s hero motion, first/last-frame control, and key audiovisual beats | No need to spend it on every ordinary shot |
+
+Other models can be added. Dramake routes by capability, not brand loyalty.
+
+## Landscape, portrait, and multiple formats
+
+| Deliverable | Content profile | Release format |
+|---|---|---|
+| 15–45s hook-driven microshort | Live action, pet, brand, UGC | `9:16` for Douyin / TikTok / Shorts |
+| 45–120s standalone short | Family, comedy, fantasy, action, animation | `9:16`, `16:9`, or `1:1` |
+| 1–4 minute anthology episode | Stable cast/world; one resolved problem per episode | Independently designed portrait or landscape |
+| 1–4 minute serialized drama | Persistent relationship, knowledge, injury, prop, and season state | Douyin, Hongguo Short Drama, and other channels |
+
+Portrait and landscape versions share story, character, prop, voice, and continuity canon, but receive separate composition, shot size, motion path, caption area, and cover-safe review. One version is not blindly cropped into the other.
+
+## Audio and dubbing
+
+Dramake can route each scene through native dialogue, reference audio, external dubbing/TTS, voice-over, or hybrid post. Native speech prioritizes lip sync and performance; recurring characters use separate Voice IDs and rights-cleared anchors; ambience, music, phone voices, and defective audio are unified in post.
+
+Random generated music is never concatenated directly into the final mix. Same-scene ambience continues across cuts, with J/L cuts, dialogue ducking, and loudness matching so the film also holds together with eyes closed.
+
+## Reliability gates
+
+| Verification | Current status |
+|---|---:|
+| Automated repository tests | **14 passed** |
+| Chinese/English document pairs | **29 passed** |
+| Official Skill-format validation | **Passed** |
+| Complete valid production plan | **Accepted** |
+| Bad parent dependency, sparse long block, overlong shot, unknown voice | **Rejected** |
+
+These checks validate workflow, file structure, and planning constraints—not unconditional model quality. Capabilities and prices are rechecked at execution time; candidate quality depends on direct video/audio inspection, frame review, physics, and cold-viewer results.
+
+<a id="docs"></a>
+
+## Documentation and tools
+
+| Entry | Purpose |
+|---|---|
+| [Chinese Skill](skills/dramake/SKILL.md) · [English Skill](skills/dramake/SKILL.en.md) | Full workflow and trigger guidance |
+| [Directing, camera, and pacing](skills/dramake/references/en/directing-camera-and-pacing.md) | Intention, camera contract, internal cuts, and pacing curve |
+| [Identity, voice, and reference locks](skills/dramake/references/en/identity-voice-and-reference-locks.md) | Character, wardrobe, material, voice, and reference authority |
+| [Continuity and transitions](skills/dramake/references/en/continuity-and-transitions.md) | Parent state, tail frames, re-anchoring, and scene boundaries |
+| [Dialogue, dubbing, and mix](skills/dramake/references/en/audio-and-dubbing.md) | Native speech, reference audio, external dubbing, and sound continuity |
+| [Model routing](skills/dramake/references/en/model-router.md) · [Spend authorization](skills/dramake/references/en/authorization-and-batch.md) | Replaceable models, budget, batching, and stop conditions |
+| [Physics and failures](skills/dramake/references/en/physics-and-failure-modes.md) · [QA and repair](skills/dramake/references/en/qa-and-repair.md) | Penetration, anatomy, text, phone direction, and minimal repair |
+| [Anonymized observations](benchmarks/tested-observations.en.md) · [Validation report](evals/benchmark-report.md) | Observed failures and evidence limits |
+
+<details>
+<summary><strong>Local validation commands</strong></summary>
 
 ```bash
 python3 scripts/validate_plan.py \
@@ -159,19 +196,33 @@ python3 scripts/validate_plan.py \
   --voice-bible skills/dramake/assets/templates/voice-bible.csv \
   --audio-continuity skills/dramake/assets/templates/audio-continuity.csv \
   --cost skills/dramake/assets/templates/cost-plan.csv
+
 python3 -m unittest discover -s tests
 python3 scripts/check_bilingual.py
 ```
 
+</details>
+
 ## Examples
 
-- [Live-action family short drama](examples/live-action-90s/README.en.md)
-- [Pet-led standalone short](examples/standalone-90s/README.en.md)
-- [Anthology/unit episode](examples/anthology-episode/README.en.md)
-- [Serialized short drama](examples/serialized-episode/README.en.md)
+| Project | Best for exploring |
+|---|---|
+| [90s live-action family drama](examples/live-action-90s/README.en.md) | Human performance, causality, and dialogue |
+| [90s pet-led standalone](examples/standalone-90s/README.en.md) | Live-action cuteness, species behavior, and contact |
+| [Anthology episode](examples/anthology-episode/README.en.md) | Recurring cast with per-episode payoff |
+| [Serialized drama](examples/serialized-episode/README.en.md) | Relationship, knowledge, and prop state across episodes |
 
-Examples are production manifests, not claims that unreviewed generations are finished films.
+Examples are production manifests. They never present unreviewed model output as a finished film.
 
-## License
+## Install, contribute, and license
 
-MIT. See [LICENSE](LICENSE). Dramake is an independent community project.
+- Download the latest package: [Dramake Releases](https://github.com/xixihhhh/ai-short-drama-skill/releases/latest)
+- Report failures or model compatibility: [Issues](https://github.com/xixihhhh/ai-short-drama-skill/issues)
+- Improve the project: [Contributing](CONTRIBUTING.en.md)
+- License: [MIT](LICENSE)
+
+<div align="center">
+
+**Start from text. Accept with evidence. Turn clips into a film.**
+
+</div>
