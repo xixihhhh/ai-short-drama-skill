@@ -11,7 +11,7 @@ A director-level Agent Skill for everyday creators. Start from an idea, copy, fi
 <p>
   <a href="https://github.com/xixihhhh/ai-short-drama-skill/releases/latest"><img src="https://img.shields.io/github/v/release/xixihhhh/ai-short-drama-skill?style=flat-square&amp;color=7c3aed" alt="Release"></a>
   <a href="skills/dramake/SKILL.en.md"><img src="https://img.shields.io/badge/Skill-v0.3.2-2563eb?style=flat-square" alt="Skill v0.3.2"></a>
-  <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-15%20passed-16a34a?style=flat-square" alt="15 tests passed"></a>
+  <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-16%20passed-16a34a?style=flat-square" alt="16 tests passed"></a>
   <a href="README.md"><img src="https://img.shields.io/badge/docs-中文%20%7C%20English-0891b2?style=flat-square" alt="Chinese and English"></a>
   <a href="#agent-compatibility"><img src="https://img.shields.io/badge/agents-Codex%20%7C%20Claude_Code%20%7C%20WorkBuddy-f97316?style=flat-square" alt="Codex, Claude Code, and WorkBuddy"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111827?style=flat-square" alt="MIT License"></a>
@@ -162,7 +162,7 @@ Random generated music is never concatenated directly into the final mix. Same-s
 
 | Verification | Current status |
 |---|---:|
-| Automated repository tests | **15 passed** |
+| Automated repository tests | **16 passed** |
 | Chinese/English document pairs | **29 passed** |
 | Official Skill-format validation | **Passed** |
 | Complete valid production plan | **Accepted** |

@@ -170,7 +170,7 @@ Use [model-router.md](references/en/model-router.md). Re-check the provider's cu
 
 General routing:
 
-- **Wan 3-class 30s generation:** long narrative blocks, fewer external joins, 720p economy/balanced work, native audio when useful.
+- **Wan 3-class 30s generation:** long narrative blocks, reference-driven multi-character native dialogue, fewer external joins, and 720p economy/balanced work. Choose mixed R2V or strict frame locking—not both—and check character/voice binding plus late-block drift.
 - **Seedance 2.5-class multimodal generation:** premium dialogue, multiple image/video/audio references, edit/extend, reference-audio continuity, last-frame workflows.
 - **Seedance 2.0:** balanced 4–15s multimodal/dialogue/transition shots.
 - **Seedance 2.0 Fast:** previews, coverage, alternate takes, and budget drafts; final use only after strict QA.

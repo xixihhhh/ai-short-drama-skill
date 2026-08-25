@@ -22,6 +22,9 @@
 - Visual medium:
 - Directorial voice:
 - Dialogue route: none / native / reference audio / external / hybrid
+- Reference mode: none / first frame / first-last / mixed R2V (check exclusivity)
+- One-to-one character image/video/audio bindings:
+- Native-audio exclusions: non-diegetic BGM / singing / other
 - Available models and providers:
 - Spend ceiling and currency:
 - Quality mode:

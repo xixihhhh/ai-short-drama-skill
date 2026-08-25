@@ -15,6 +15,17 @@ documented_capabilities:
   native_dialogue_or_audio: unknown
   edit: false
   extend: false
+mode_compatibility:
+  reference_media_with_first_frame: unknown
+  reference_media_with_last_frame: unknown
+  input_video_plus_output_duration_max_seconds: null
+audio_controls:
+  output_audio_switch: unknown
+  suppress_nondiegetic_music: unknown
+reference_bindings:
+  identity_and_wardrobe: []
+  motion_material_and_medium: []
+  character_voice: []
 pricing:
   currency: null
   unit: null

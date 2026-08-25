@@ -22,7 +22,7 @@ class RepositoryTests(unittest.TestCase):
     def test_evals_are_valid_and_sufficient(self):
         data = json.loads((ROOT / "evals/evals.json").read_text(encoding="utf-8"))
         self.assertEqual(data["skill_name"], "dramake")
-        self.assertGreaterEqual(len(data["evals"]), 15)
+        self.assertGreaterEqual(len(data["evals"]), 16)
         self.assertEqual(len({item["id"] for item in data["evals"]}), len(data["evals"]))
         for item in data["evals"]:
             self.assertTrue(item.get("prompt"))
@@ -38,6 +38,14 @@ class RepositoryTests(unittest.TestCase):
         for marker in ("3 秒", "10 秒", "18–24", "15–25", "4–7", "固定宏观目标", "不等于一句台词、一次切镜或一个生成请求"):
             self.assertIn(marker, chinese)
         for marker in ("3 seconds", "10 seconds", "18–24", "15–25", "4–7", "macro goal", "does not equal one line, one cut, or one generation request"):
+            self.assertIn(marker, english)
+
+    def test_wan3_reference_dialogue_route_has_real_constraints(self):
+        chinese = (ROOT / "skills/dramake/references/model-router.md").read_text(encoding="utf-8")
+        english = (ROOT / "skills/dramake/references/en/model-router.md").read_text(encoding="utf-8")
+        for marker in ("Wan 3 参考驱动对白长段", "Audio 1 → 角色 A", "无非叙事背景音乐", "互斥", "输入视频总时长 + 输出时长 ≤ 30 秒", "参考素材表达的是控制意图，不是保证"):
+            self.assertIn(marker, chinese)
+        for marker in ("Wan 3 reference-driven long dialogue blocks", "Audio 1 → Character A", "no non-diegetic background music", "mutually exclusive", "input-video duration plus output duration", "References express control intent, not a guarantee"):
             self.assertIn(marker, english)
 
     def test_template_columns(self):

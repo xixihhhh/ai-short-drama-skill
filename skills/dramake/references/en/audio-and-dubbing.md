@@ -45,6 +45,19 @@ Failed dialogue may be regenerated, shortened, or split into motivated reverse a
 
 Use only when the model/provider supports it and the user has rights. Reference audio should control voice/timing—not accidentally import unrelated BGM or noise. Trim silence and normalize the reference before upload.
 
+## Multi-character reference audio plus native long dialogue
+
+When a reference-driven video model accepts multiple audio references and produces native audio:
+
+- Give every character a separate Voice ID, voice master, and upload cutdown. Never combine two speakers into one reference.
+- Bind `Audio 1 → Character A`, `Audio 2 → Character B` in both prompt and asset table, alongside the matching character images.
+- Choreograph several dialogue turns in one 20–30-second performance scene rather than one video request per line. Maintain listening, eyelines, prop action, movement, interruption, and reaction between lines.
+- Request native audio containing dialogue, Foley, and scene ambience only, with no non-diegetic BGM, singing, or automatic score.
+- After generation, verify speaker assignment, voice identity, lip sync, pace, facial performance, action, wording, and repeated tails. A voice reference strengthens control but never replaces acceptance.
+- Keep accepted dialogue/Foley, then rebuild one continuous ambience and one coherent score in post instead of concatenating random clip mixes.
+
+If the active endpoint caps total reference-audio duration, retain the longer voice masters and derive short, non-overlapping, information-dense upload samples per character. Treat the current schema as authoritative.
+
 ## External dubbing
 
 Use a locked voice sample or consistent TTS/actor session. If exact lip sync is unavailable:

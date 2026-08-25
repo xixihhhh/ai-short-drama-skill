@@ -11,7 +11,7 @@
 <p>
   <a href="https://github.com/xixihhhh/ai-short-drama-skill/releases/latest"><img src="https://img.shields.io/github/v/release/xixihhhh/ai-short-drama-skill?style=flat-square&amp;color=7c3aed" alt="Release"></a>
   <a href="skills/dramake/SKILL.md"><img src="https://img.shields.io/badge/Skill-v0.3.2-2563eb?style=flat-square" alt="Skill v0.3.2"></a>
-  <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-15%20passed-16a34a?style=flat-square" alt="15 tests passed"></a>
+  <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-16%20passed-16a34a?style=flat-square" alt="16 tests passed"></a>
   <a href="README.en.md"><img src="https://img.shields.io/badge/docs-中文%20%7C%20English-0891b2?style=flat-square" alt="Chinese and English"></a>
   <a href="#agent-compatibility"><img src="https://img.shields.io/badge/agents-Codex%20%7C%20Claude_Code%20%7C%20WorkBuddy-f97316?style=flat-square" alt="Codex, Claude Code, and WorkBuddy"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111827?style=flat-square" alt="MIT License"></a>
@@ -161,7 +161,7 @@ Dramake 可按场景选择原生对白、参考音频、外部配音/TTS、画�
 
 | 验证项 | 当前状态 |
 |---|---:|
-| 自动化仓库测试 | **15 项通过** |
+| 自动化仓库测试 | **16 项通过** |
 | 中英文文档对应 | **29 组通过** |
 | Skill 官方格式校验 | **通过** |
 | 完整合法生产计划 | **可通过** |

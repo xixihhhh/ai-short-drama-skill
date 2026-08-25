@@ -7,6 +7,7 @@
 - Added an optional high-density 60–120s Douyin pacing preset: conflict by 3 seconds, an immediate objective by 10 seconds, and 18–24 effective beats per 90 seconds.
 - Added 15–25-second micro-task loops plus multiple dialogue turns and 4–7 visible actions/reactions per roughly 30-second voiced scene.
 - Required one macro goal across the film and a causal bridge for every scene change, while stating that effective beats do not equal cuts or generation requests.
+- Added a Wan 3 reference-driven multi-character native-dialogue route with one-to-one image/video/voice binding, full-block performance, clean native audio, R2V/frame-lock exclusivity, and input-video duration budgeting.
 - Integrated the preset into both Skill languages, story/directing references, and production briefs, with a new evaluation scenario and automated regression test.
 
 ## 0.3.1 - 2026-08-25
