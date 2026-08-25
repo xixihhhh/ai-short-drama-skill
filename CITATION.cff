@@ -1,15 +1,15 @@
 cff-version: 1.2.0
-title: "PawDirector: AI Pet Short Video & Drama Skill"
-message: "If PawDirector helps your production or research, please cite this repository."
+title: "ContinuityDirector: AI Short Film and Short Drama Skill"
+message: "If ContinuityDirector helps your production or research, please cite this repository."
 type: software
 authors:
-  - name: "PawDirector contributors"
-version: 0.1.0
+  - name: "ContinuityDirector contributors"
+version: 0.2.0
 date-released: 2026-08-25
 license: MIT
 keywords:
-  - AI pet video
-  - AI cat video
+  - AI short film
+  - AI short drama
   - short drama
   - video generation
   - character consistency

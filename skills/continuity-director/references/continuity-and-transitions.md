@@ -32,7 +32,7 @@ Good joins preserve at least two of action, direction, shape, gaze, sound, or li
 - whip/pan motion match;
 - gaze to object/reaction;
 - sound bridge with J-cut or L-cut;
-- matched paw/object shape;
+- matched hand/paw/object shape;
 - doorway or location reveal after visible travel.
 
 Avoid simultaneous unexplained changes in location, action, camera scale, direction, wardrobe, and weather.

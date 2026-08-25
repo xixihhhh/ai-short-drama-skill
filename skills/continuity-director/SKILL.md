@@ -1,30 +1,32 @@
 ---
-name: pawdirector
-description: Create coherent AI pet short videos, cat films, standalone shorts, anthology episodes, or serialized dramas. Use when planning, prompting, generating, reviewing, repairing, dubbing, budgeting, or editing pet-led AI video with models such as Wan 3, Seedance 2.5/2.0/Fast, or MiniMax H3. Especially useful for pet identity consistency, live-action hybrid realism, 15–30 second story blocks, native dialogue, reference audio, continuity, physical realism, cost routing, and avoiding anime drift, static talking heads, jump cuts, broken physics, or fragmented sound.
+name: continuity-director
+description: Create coherent AI short films, live-action vertical short dramas, standalone shorts, anthology episodes, serialized dramas, pet stories, animated dramas, or branded narrative videos. Use when planning, scripting, prompting, generating, reviewing, repairing, dubbing, budgeting, or editing multi-shot AI video with models such as Wan 3, Seedance 2.5/2.0/Fast, or MiniMax H3. Especially useful for character consistency, 15–30 second story blocks, native dialogue, reference audio, continuity, physical realism, provider-neutral cost routing, and avoiding style drift, static talking heads, random jump cuts, broken physics, confusing plots, or fragmented sound.
 license: MIT
 metadata:
-  author: PawDirector contributors
+  author: ContinuityDirector contributors
   version: 0.1.0
   category: video-production
-  tags: ai-video, pet-video, short-video, short-drama, wan-3, seedance, minimax-h3
+  tags: ai-video, short-film, short-video, short-drama, wan-3, seedance, minimax-h3
 ---
 
-# PawDirector
+# ContinuityDirector
 
-Direct AI pet films as productions, not prompt piles. Build a readable story, lock the pet and world, route each block to a suitable model and cost tier, approve real media evidence, then edit with continuous picture and sound.
+Direct AI short films as productions, not prompt piles. Build a readable story, lock characters and world state, route each block to a suitable model and cost tier, approve real media evidence, then edit with continuous picture and sound.
 
 This skill is provider-neutral. Do not require Atlas Cloud, a particular MCP, or any single website. Use the provider, API, app, or manual workflow available to the user. Confirm current model schemas and prices at execution time.
 
+Use [project-state.md](references/project-state.md) as the single production state machine. Provider payloads, model prompts, and timelines are derived from approved creative state and inspected media.
+
 ## Non-negotiable rules
 
-1. Treat the pet as the story engine, not decorative coverage.
+1. Give every protagonist a causal role. A human, animal, creature, product, or object protagonist must change the outcome, not decorate coverage.
 2. Make cause and effect understandable with the sound muted.
 3. Prefer fewer, longer story blocks when the model supports them, but choreograph internal beats and cuts.
 4. Never generate a downstream continuity block from an unreviewed parent clip.
 5. Lock identity, material, wardrobe structure, screen direction, props, weather, wetness, light, and audio state.
 6. Use real contact, force, weight, support, inertia, friction, and consequences. Reject penetration and impossible anatomy.
 7. Keep rendered text, phone UI, letters, prices, and countdowns out of generated footage. Add them in post.
-8. Native dialogue may solve lip sync; native music does not solve the final mix. Use one continuous post-production sound bed unless the narrative requires otherwise.
+8. Native dialogue may solve lip sync; native music does not solve the final mix. Build a continuous, centrally managed post-production sound system with scene ambience, intentional cues/score, and motivated bridges.
 9. A technically clean clip is not a publishable story. Require a cold-viewer comprehension pass.
 10. Do not claim to have watched, heard, or approved media without actual inspection evidence.
 
@@ -34,10 +36,20 @@ Choose one primary format for the current deliverable so its pacing can be valid
 
 - **Standalone microshort, 15–45s:** one hook, one escalating gag/problem, one payoff.
 - **Standalone short, 45–120s:** 2–4 story blocks, complete emotional or comic arc.
-- **Anthology/unit episode, 1–4 min:** stable pet characters and world rules; each episode resolves its own human or pet problem.
+- **Anthology/unit episode, 1–4 min:** stable characters and world rules; each episode resolves its own problem.
 - **Serialized drama, 1–4 min per episode:** episode objective plus season question; continuity persists across episodes.
 
-For pet-first social video, default to 45–120 seconds. Do not inflate a simple premise into 3–4 minutes.
+For social video, default to the shortest duration that supports setup, escalation, and payoff. Do not inflate a simple premise into 3–4 minutes.
+
+Then choose task depth:
+
+- **inspect/advice:** analyze existing story or media; do not mutate or spend;
+- **quick repair:** fix the smallest script, prompt, shot, join, voice, or mix unit without restarting the pipeline;
+- **production package:** create approved briefs, bibles, manifests, prompts, costs, and edit guidance without necessarily generating;
+- **execute/resume:** continue from current project state and only run the required downstream stages;
+- **full production:** run the state machine from brief through final review.
+
+Do not force a local edit or review request through the complete workflow.
 
 ## Gather the production brief
 
@@ -46,13 +58,13 @@ Use [production-brief.md](assets/templates/production-brief.md). Infer safe defa
 Minimum inputs:
 
 - platform, aspect ratio, target duration, audience, and language;
-- pet reference assets and permission to use them;
+- character, creature, product, location, or style reference assets and permission to use them;
 - format and desired emotional flavor;
 - available models/providers and approximate budget ceiling;
 - dialogue policy: none, model-native, reference-audio, external dubbing, or hybrid;
-- visual medium: default `live-action hybrid realism` unless the user explicitly asks for animation.
+- content profile and visual medium; do not default every project to live action or animation.
 
-Never expose API keys, private media URLs, prediction IDs, faces, pet photos, or local paths in a public example.
+Never expose API keys, private media URLs, prediction IDs, faces, reference photos, voices, or local paths in a public example.
 
 ## Choose quality and spend mode
 
@@ -62,10 +74,12 @@ Open [budget-and-quality.md](references/budget-and-quality.md). Build a cost pla
 - **Economy:** long blocks to reduce joins, usually 720p, one candidate plus targeted repairs.
 - **Balanced:** stronger continuity/audio model for dialogue and transitions; two candidates only for hook, climax, or fragile action.
 - **Premium:** richest multimodal references, audio reference/edit/extend where available, selective 1080p or higher output.
-- **Hero insert:** spend on a 4–15s high-motion, transformation, macro-paw, or climax shot; keep ordinary coverage economical.
+- **Hero insert:** spend on a 4–15s high-motion, transformation, emotional close-up, product reveal, creature detail, or climax shot; keep ordinary coverage economical.
 - **Final polish:** upscale and repair accepted takes only. Never pay to upscale rejected footage.
 
 Report estimated request count, expected retries, resolution, duration, and cost range. Separate provider price from creative recommendation.
+
+Separately choose a spend-authorization mode from [authorization-and-batch.md](references/authorization-and-batch.md): `plan-only`, `single-test`, `approved-batch`, or `autopilot-with-cap`. A quality tier never implies permission to spend. If the user has pre-authorized a provider, upload policy, budget cap, and retry cap, do not ask for confirmation on every request; stop only at the defined boundary.
 
 ## Build the story before prompts
 
@@ -73,41 +87,41 @@ Read [story-and-pacing.md](references/story-and-pacing.md). Deliver:
 
 1. one-sentence promise;
 2. 0–3s visual hook;
-3. pet-specific motivation;
+3. protagonist-specific motivation;
 4. visible goal and obstacle;
 5. escalation every 4–8 seconds;
 6. relationship/state change;
 7. payoff or reversal;
-8. final pet-instinct button.
+8. a final emotional, comic, suspense, visual, or character-specific button.
 
-For each block, define `entry_state`, 4–6 observable beats, and `exit_state`. A 30-second request is a scene container, not one action stretched for 30 seconds. Include continuous micro-acting: breathing, blinking, eye-lines, paw/ear/tail reactions, prop interaction, and background life.
+For each block, define `entry_state`, observable beats, and `exit_state`. Use 4–6 beats for a 20–30 second long block, 2–3 beats for a 10–12 second dialogue block, and evidence-based density for other short blocks. A long request is a scene container, not one action stretched across its duration. Include continuous micro-acting: breathing, blinking, eye-lines, facial or species-appropriate reactions, prop interaction, and background life.
 
 Reject the script before generation when:
 
-- the cat could be removed without changing the plot;
+- the stated protagonist could be removed without changing the plot;
 - motivation appears only in exposition;
 - a surprise has no planted setup;
 - a character repeats the same point;
 - location, time, or objective changes without an on-screen bridge;
 - a cold viewer cannot state goal, obstacle, choice, and result.
 
-## Lock pet, style, world, and state
+## Select a content profile, then lock character, style, world, and state
 
-Create a canonical master and [character-bible.md](assets/templates/character-bible.md) for every recurring pet. Record species, sex, coat map, eyes, body proportions, distinctive marks, wardrobe construction, allowed behaviors, forbidden mutations, and voice profile.
+Read [content-profiles.md](references/content-profiles.md). Select one primary profile and any necessary specialist overlay; profiles change constraints, not the core continuity workflow.
 
-For live-action/cute hybrid work:
+Create a canonical master and [character-bible.md](assets/templates/character-bible.md) for every recurring character or creature. Record identity, anatomy, face/body proportions, distinctive marks, wardrobe construction, allowed behaviors, forbidden mutations, and voice profile. For important locations and products, create equivalent world/prop masters.
 
-- write `real photographed cat`, `real fur strands`, `practical fabric`, `real-scale environment`, `live-action full-frame cinema`, and `cinematic practical/VFX integration`;
-- express cuteness through timing, paws, ears, tail, scale contrast, curiosity, embarrassment, and real feline behavior;
-- prohibit illustration, anime, storybook rendering, children's animation, plastic CGI fur, game assets, dolls, plush toys, chibi bodies, and miniature sets.
+For live-action work, anchor photography, real materials, practical wardrobe, real-scale environments, motivated lighting, and physically integrated VFX. For animation, explicitly lock the chosen design grammar, line/shading system, proportions, and motion language instead of applying live-action negatives.
 
-Do not use “cartoon style” to request cute acting. It changes the medium. Read [live-action-hybrid-style.md](references/live-action-hybrid-style.md).
+For live-action/cute animal hybrids, put cuteness into performance and species behavior—not animated-render vocabulary. Read [style-and-medium-locks.md](references/style-and-medium-locks.md).
 
 Maintain [continuity-ledger.csv](assets/templates/continuity-ledger.csv) as the source of truth. Every accepted block updates it.
 
 ## Design blocks and motivated joins
 
 Use 15–30s blocks when the selected model reliably supports them; use shorter blocks for complex dialogue, precision contact, or fragile identity. Never choose duration by habit.
+
+Use the dual-timescale plan in [generation-blocks-and-edit-beats.md](references/generation-blocks-and-edit-beats.md): a `generation_block` is the model request and continuity container, while an `edit_beat` is the 2–8 second unit of story information, performance, camera, and final cutting. Do not confuse “fewer model requests” with “fewer story beats.”
 
 Each long block needs:
 
@@ -172,7 +186,7 @@ Across all modes, place each clip on separate tracks. Normalize speech, carry ro
 ## Generate in gated order
 
 1. Approve story and block plan.
-2. Approve canonical pet/style/world references.
+2. Approve canonical character/style/world/prop references.
 3. Generate the hook block or highest-risk block first.
 4. Download and inspect the real output.
 5. Make a 12-frame contact sheet for a 30s block; inspect start, 25%, 50%, 75%, and end at minimum.
@@ -188,7 +202,7 @@ Parallelize independent assets, music exploration, voice anchors, non-dependent 
 
 Read [physics-and-failure-modes.md](references/physics-and-failure-modes.md).
 
-Before generation, list visible `physical_contact_points`. Use feline action primitives: walk, run, crouch, jump, paw, bat, bite, push with head/body, knead, balance with tail. Rewrite adult-like carrying, prolonged upright posture, or precision handwork.
+Before generation, list visible `physical_contact_points`. Use anatomy-appropriate action primitives for the subject. Human hands, animal paws, machines, liquids, fabric, vehicles, and magical effects need different contact and motion rules. Rewrite actions that exceed the subject's anatomy or the shot's complexity budget.
 
 Required visible order:
 
@@ -203,7 +217,7 @@ Use [qa-report.md](assets/templates/qa-report.md) and [qa-and-repair.md](referen
 Run four separate gates:
 
 1. **Narrative:** cold viewer can retell goal → obstacle → choice/action → outcome.
-2. **Identity/style:** pet, clothing, materials, and medium remain canonical.
+2. **Identity/style:** characters, creatures, products, clothing, materials, and medium remain canonical.
 3. **Physics/continuity:** contacts, direction, state, and joins are plausible.
 4. **Audio:** dialogue, loudness, ambience, BGM, and bridges are continuous.
 

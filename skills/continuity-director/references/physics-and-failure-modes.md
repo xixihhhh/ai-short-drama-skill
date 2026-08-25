@@ -16,19 +16,25 @@ For every object-moving action record:
 
 The visible order is `approach → contact → force → response → outcome`.
 
-## Cat anatomy
+## Human, creature, and object anatomy
+
+For humans, track handedness, joint limits, grip, gaze, balance, foot placement, body support, and object hand-offs. Avoid extra fingers, merged hands, reversed phones, and impossible body/object intersections.
+
+For animals, use species-appropriate locomotion and manipulation. For machines/vehicles, show control input, traction, inertia, collision response, and mechanical constraints. For cloth, liquid, smoke, hair, and VFX, maintain source, flow direction, occlusion, and environmental response.
+
+### Cat-specific overlay
 
 Use walk, run, crouch, stalk, jump, land, paw, bat, hook briefly with claws, bite, head-push, body-push, knead, squeeze through a truly open gap, and tail balance. Avoid prolonged bipedal stance, human wrists/fingers, precise tool grip, adult-style carrying, or unsupported heavy lifting.
 
-If a cat must do precise work, redesign the mechanism: oversized paw control, bite-pull loop, weight-triggered pedal, magnet, pulley, rolling object, cooperative human, or explicit magic that moves the object while the cat triggers it.
+If an animal must do precise work, redesign the mechanism: species-appropriate control, bite-pull loop, weight-triggered pedal, magnet, pulley, rolling object, cooperative human, or explicit magic that moves the object while the animal triggers it.
 
 ## Frequent rejection failures
 
-- pet intersects box, cake, glass, wall, vehicle, clothing, or another body;
+- subject intersects a box, glass, wall, vehicle, clothing, prop, or another body;
 - closed window traversal without opening;
 - motion before contact or force;
 - weightless heavy prop or taut rope without tension path;
-- third animal/person appears; actor disappears or duplicates;
+- extra animal/person/object appears; an actor disappears or duplicates;
 - phone flips front/back or changes hands without a cut;
 - clothing changes topology, not just folds;
 - prop count, scale, damage, wetness, or orientation resets;

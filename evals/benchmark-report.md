@@ -1,36 +1,44 @@
-# PawDirector Evaluation Report
+# ContinuityDirector Evaluation Report
 
 Date: 2026-08-25
 
-Five representative prompts were reviewed in two conditions: an independent baseline without repository access and an agent that read PawDirector plus relevant references.
+Nine prompts were reviewed in two conditions: a baseline agent without repository access and an agent that read the current skill plus only relevant direct references.
+
+## Coverage
+
+1. 90-second live-action family short with user-selected providers and an $8 cap.
+2. Three-minute anthology with recurring human voices and native dialogue.
+3. Defective 30-second tail with wardrobe, phone, and glass penetration errors.
+4. Local/official provider choice without Atlas Cloud.
+5. Static 10-second one-line dialogue shot.
+6. Stylized 2D motion comic with stable designs and no photorealism.
+7. Premium request asking for 12 parallel paid clips without cost/upload boundaries.
+8. Product label mutation plus extra finger.
+9. Realistic/cute pet short without children's-animation or plastic-CGI drift.
 
 ## Results
 
-| Case | PawDirector score | Result |
-|---|---:|---|
-| 90s pet short, $8, Wan 3 / Seedance 2.5 | 9.4/10 | Added long-block choreography, live-action medium lock, dynamic spend plan, parent gates, physics, and cold-viewer criteria |
-| 3-minute anthology with dialogue | 9.6/10 | Added unit-episode contract, voice bible, hybrid dubbing, ASR/listening checks, separate tracks, continuous sound bed |
-| Defective 30s tail frame | 10/10 | Correctly blocked child generation and specified minimal repair plus canonical re-anchor |
-| No Atlas Cloud | 10/10 | Explicitly provider-neutral; routed from current capabilities and user-selected channel |
-| Static 10s dialogue shot | 9.8/10 | Replaced empty hold with timed action, listener reaction, micro-acting, motivated camera, and exit state |
+| Case | Skill score |
+|---|---:|
+| Live-action story/cost route | 9.8 |
+| Anthology dialogue/audio | 9.7 |
+| Defective parent/tail state | 9.5 |
+| Provider neutrality | 10.0 |
+| Static dialogue repair | 8.5 before fix |
+| 2D animation profile | 9.8 |
+| Paid batch authorization | 10.0 |
+| Product text/hand defect | 9.5 |
+| Pet live-action hybrid overlay | 10.0 |
 
-Mean PawDirector score: **9.76/10**.
+Mean before follow-up fixes: **9.6/10**. The estimated baseline mean was **5.7/10**, with the largest gap in paid-generation authorization, dependent-block gating, sound continuity, and format-specific style locks.
 
-The independent baseline was already strong, particularly on voice and general continuity. PawDirector's most repeatable gains were:
+## Fixes made from the evaluation
 
-- explicit provider neutrality rather than an assumed platform;
-- parent/child media gates and accepted-tail-state rules;
-- pet-specific physical contact and anatomy constraints;
-- dynamic paid modes and targeted-retry strategy;
-- long-block internal beat requirements;
-- cold-viewer narrative comprehension as a P0 gate;
-- separation of native lip-synced speech from final ambience/music mixing.
-
-## Improvements made after evaluation
-
-- Clarified that one primary format is selected only to validate the current deliverable's pacing.
-- Explicitly left provider, model, distribution channel, dialogue route, and other production choices open unless the user decides them.
+- Unified beat density: 20–30s long block = 4–6 beats; 10–12s dialogue block = 2–3 beats; other short blocks use evidence-based density.
+- Defined common P0/P1 mappings for glass penetration, extra fingers, wardrobe topology, phone orientation, and generated labels.
+- Replaced ambiguous “one sound bed” wording with a centrally managed sound system supporting per-scene ambience and intentional cues.
+- Added a named Story Contract section to the production brief.
 
 ## Limits
 
-This evaluation tests instruction coverage, not generated-video quality. Model prices, schemas, and quality claims require current provider verification and real media review.
+This benchmark evaluates instruction coverage, not generated-video quality. Model claims require current surface verification; candidate quality requires inspection of real media and a cold-viewer test.

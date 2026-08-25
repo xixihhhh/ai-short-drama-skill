@@ -1,177 +1,216 @@
-# PawDirector — AI Pet Short Video & Drama Skill
+# ContinuityDirector — AI Short Film & Short Drama Skill
 
 [简体中文](README.zh-CN.md)
 
-Turn pet photos into coherent 15–120s AI shorts or episodic dramas—without anime drift, random jump cuts, broken physics, static talking heads, or fragmented sound.
+Create coherent AI short films, vertical dramas, episodic series, pet stories, animation, and branded narratives—without random clip piles, broken continuity, static dialogue, physics failures, voice drift, or fragmented sound.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-![Skill v0.1.0](https://img.shields.io/badge/Skill-v0.1.0-blue)
-![Models](https://img.shields.io/badge/routes-Wan%203%20%7C%20Seedance%202.5%2F2.0%20%7C%20MiniMax%20H3-orange)
+![Skill v0.2.0](https://img.shields.io/badge/Skill-v0.2.0-blue)
+![Provider neutral](https://img.shields.io/badge/providers-user--selectable-orange)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-**PawDirector** is a provider-neutral agent skill for AI pet video, AI cat video, short drama, and pet-led micro-cinema. It combines pet identity locks, 15–30 second story-block choreography, model-aware routing, native audio/reference-audio choices, continuity state transfer, physical-realism QA, cost tiers, and smallest-unit repair.
+**ContinuityDirector** is a provider-neutral Agent Skill for AI video production. It turns an idea, script, manuscript, brief, storyboard, or reference asset pack into a continuity-first production: story contract, character/world locks, 15–30 second generation blocks, 2–8 second edit beats, model and provider routing, spend authorization, native dialogue/reference audio/dubbing, physical QA, smallest-unit repair, sound mixing, and cold-viewer review.
 
-It does not require Atlas Cloud or any other vendor. Use an official product, API, aggregator, web app, or MCP that exposes the capabilities you need.
+It does not require Atlas Cloud, any MCP, or any single website. Users choose official products, APIs, aggregators, local workflows, or web UIs. The skill routes from capabilities and checks the active surface before spending.
 
-## Why PawDirector?
+## What It Produces
 
-- **The pet drives the plot.** Hooks, conflict, action, and payoff come from feline anatomy, instinct, personality, and relationship—not decorative cat cutaways.
-- **Continuity is evidence-based.** Accepted tail frame + canonical master + state ledger; downstream clips stay locked until their parent is reviewed.
-- **Production, not prompt dumping.** Story, model route, paid mode, dialogue/dubbing, generation, contact-sheet review, sound edit, and cold-viewer QA live in one workflow.
+- 15–45s social microshorts and hook-driven ads;
+- 45–120s standalone short films;
+- 1–4 minute live-action, animated, pet, fantasy, UGC, or branded narratives;
+- recurring anthology/unit episodes;
+- serialized short drama with season continuity;
+- source adaptations with character, relationship, timeline, prop, and reveal state;
+- generation prompts, paid-batch plans, voice bibles, review evidence, edit and sound maps.
+
+## What Makes It Different
+
+### Dual-timescale directing
+
+A `generation_block` is the 8–30s model request; an `edit_beat` is the 2–8s story/camera/performance unit. This preserves fast pacing inside long outputs while reducing risky external joins.
+
+### Continuity dependency graph
+
+Independent assets, voices, music exploration, alternate hooks, and non-dependent inserts may run in parallel. A child scene cannot start from an unreviewed parent. Accepted tail state + canonical identity/material anchor + continuity ledger unlock the next block.
+
+### Separate model, provider, and spend decisions
+
+The creative route requests capabilities; the user chooses the channel/provider. Quality tiers (`Sketch` through `Premium`) are separate from authorization modes (`plan-only`, `single-test`, `approved-batch`, `autopilot-with-cap`). Saying “use Premium” never silently authorizes unlimited charges.
+
+### Audio is its own production system
+
+Choose per scene among native dialogue, reference-audio dialogue, external dubbing/TTS with lip sync, voice-over over B-roll, no-dialogue sound design, or hybrid. Generated music is not blindly concatenated; dialogue/Foley, ambience, score, loudness, reverb tails, and J/L cuts are rebuilt into one film.
+
+### Technical QA cannot approve a confusing story
+
+Every production has independent gates for narrative comprehension, identity/style, physics/continuity, and audio. A cold viewer who has not read the synopsis must be able to retell goal → obstacle → action/choice → result.
 
 ## Install
 
-Copy `skills/pawdirector` into your agent's skill directory, or install from the repository with a compatible skill manager:
-
 ```bash
-npx skills add <OWNER>/ai-pet-short-video-skill --skill pawdirector
+npx skills add xixihhhh/ai-short-drama-skill --skill continuity-director
 ```
 
-Manual install:
+Manual:
 
 ```bash
-git clone https://github.com/<OWNER>/ai-pet-short-video-skill.git
-cp -R ai-pet-short-video-skill/skills/pawdirector ~/.codex/skills/pawdirector
+git clone https://github.com/xixihhhh/ai-short-drama-skill.git
+cp -R ai-short-drama-skill/skills/continuity-director ~/.codex/skills/continuity-director
 ```
 
 Example request:
 
 ```text
-Use PawDirector to turn my two cat photos into a 90-second 9:16 live-action hybrid short.
-The cats should feel cute, but the fur, clothes, apartment and physics must remain real.
-Choose the provider and paid mode from my available tools, use native dialogue only where it improves lip sync,
-and do not unlock a dependent block until the previous output passes contact-sheet and continuity review.
+Use ContinuityDirector to plan a 90-second 9:16 live-action family short.
+I can use Wan 3, Seedance 2.5, Seedance 2.0 Fast, and MiniMax H3 through providers I choose.
+Offer Economy and Balanced routes, keep dialogue voices consistent, and do not generate a dependent block
+until its parent passes narrative, continuity, physics, and audio review.
 ```
 
-## Supported Productions
+## Content Profiles
 
-| Format | Typical length | Structure |
+One primary profile plus optional specialist overlays changes constraints without changing the production state machine.
+
+| Profile | Key locks |
+|---|---|
+| Live-action human drama | face, hands, wardrobe, eyelines, axis, performance, relationship knowledge |
+| Pet/animal story | species anatomy, identity, scale, behavior, contact, human bond |
+| Anthropomorphic/fantasy | body plan, degree of humanization, power trigger/limit/cost/consequence |
+| Animation/motion comic | design grammar, line/shading, proportions, pose rhythm, background depth |
+| Branded/product narrative | geometry, materials, claims, label-safe plates, product function in plot |
+| UGC/talking-head/explainer | speaker, lens grammar, authentic imperfection, information density, room tone |
+
+See [content profiles](skills/continuity-director/references/content-profiles.md).
+
+## Formats
+
+| Format | Typical length | Story contract |
 |---|---:|---|
-| Standalone microshort | 15–45s | hook → attempt → escalation → payoff |
-| Standalone short | 45–120s | 2–4 coherent story blocks |
-| Anthology/unit episode | 1–4 min | recurring pet/world, self-contained episode |
+| Microshort | 15–45s | hook → attempt → escalation → payoff |
+| Standalone short | 45–120s | complete goal, obstacle, change, release |
+| Anthology/unit episode | 1–4 min | recurring world, self-contained problem and result |
 | Serialized drama | 1–4 min/episode | episode payoff plus persistent season state |
+| Branded story | 15–120s | audience problem → dramatic use → verifiable product consequence |
 
-## Model Router: MiniMax H3 vs Wan 3 vs Seedance 2.5 vs 2.0
+## Model Router: Wan 3, Seedance 2.5/2.0, MiniMax H3
 
-These routes are capability hypotheses, not permanent rankings. Verify the current provider schema and price before generation.
+These are starting hypotheses, not permanent rankings. Verify the selected provider's current schema, duration, reference limits, audio behavior, queue, retention policy, and price.
 
-| Model family | Best starting use | Typical block strategy |
+| Model family | First route to test | Main risk |
 |---|---|---|
-| Wan 3 | long narrative pet blocks, fewer external joins | choreographed 20–30s blocks with 4–6 beats |
-| Seedance 2.5 | premium multimodal reference, dialogue/audio, edit/extend | dialogue, repair, continuation, reference-audio scenes |
-| Seedance 2.0 | balanced shorter dialogue/action/transition | controlled 4–15s units |
-| Seedance 2.0 Fast | preview, alternate, coverage, budget draft | strict QA before final use |
-| MiniMax H3 | hero action, transformation, macro paws, selective high resolution | high-control 4–15s inserts |
+| Wan 3-class long generation | 20–30s multi-beat story blocks, fewer external seams | late-block style/identity/anatomy drift |
+| Seedance 2.5-class multimodal | dialogue/reference audio, rich refs, edit/extend/repair, premium continuity | cost and over-constrained references |
+| Seedance 2.0 | balanced 4–15s dialogue/action/transition blocks | more external joins in long films |
+| Seedance 2.0 Fast | previews, coverage, alternates, economy tests | final use still requires strict QA |
+| MiniMax H3-class audiovisual | 4–15s hero action, first/last/reference modes, native sound | expensive if used for all ordinary coverage |
 
-See the provider-neutral [model router](skills/pawdirector/references/model-router.md).
+The provider-neutral [model router](skills/continuity-director/references/model-router.md) separates capability selection from provider execution.
 
 ## Quality and Paid Modes
 
-PawDirector supports six spend modes:
+Quality tiers:
 
-1. **Sketch** — lowest useful resolution, one candidate, story/motion validation.
-2. **Economy** — usually 720p, long blocks, targeted retries.
-3. **Balanced** — stronger references/audio; extra candidates only for hook and climax.
-4. **Premium** — reference audio, multimodal edit/extend, selective high resolution.
-5. **Hero Insert** — concentrate spend on one spectacular or fragile shot.
-6. **Final Polish** — upscale and repair accepted takes only.
+1. **Sketch** — lowest useful preview; validates story and blocking.
+2. **Economy** — commonly 720p; long blocks and targeted rerenders.
+3. **Balanced** — stronger model/reference/audio only where it changes acceptance probability.
+4. **Premium** — rich multimodal controls, reference audio, edit/extend, selective higher resolution.
+5. **Hero Insert** — concentrate spend on hook, fragile dialogue, transformation, action, reveal, or climax.
+6. **Final Polish** — upscale and repair accepted ranges only.
 
-Current prices are supplied by the user's chosen provider. The included estimator calculates request count and a best/expected/capped production plan without binding the workflow to one platform.
+Authorization modes:
 
-## Native Audio, Reference Audio, and Dubbing
+- **plan-only:** zero paid requests or uploads;
+- **single-test:** one named representative request;
+- **approved-batch:** fixed providers, upload policy, request count, retry count, and cap;
+- **autopilot-with-cap:** automatic routing/repair inside a hard cap; stop at scope, rights, provider, or P0 boundaries.
 
-PawDirector routes each scene among:
+The spend ledger tracks quoted and actual cost plus `cost_per_accepted_second`, so different billing models can be compared fairly.
 
-- no dialogue: continuous post BGM + ambience + Foley;
-- model-native speech for lip-synced performance;
-- reference-audio generation for recurring voice consistency;
-- external dubbing or TTS with lip-sync/cutaway strategy;
-- hybrid: native hero lines, post-produced narration/phone/off-screen lines and final mix.
+## Dialogue, Reference Audio, and Dubbing
 
-Generated clip music is not treated as the final soundtrack. Every clip remains a separate audio source; room tone, score, loudness, J/L cuts, and sound bridges are rebuilt as one film.
+- **Native dialogue:** best when model performance and lip sync are reliable; validate exact words, speaker, pace, emotion, and repeated tails with ASR plus listening.
+- **Reference-audio generation:** use one rights-cleared voice anchor per recurring character; assign each reference a single primary role.
+- **External dubbing/TTS:** lock the voice, then use lip sync, reactions, profiles, inserts, off-screen lines, or B-roll to protect visual credibility.
+- **Hybrid:** retain strong native hero lines and Foley; replace narration, phone/off-screen lines, ambience, score, and problem audio in post.
+- **No dialogue:** one continuous ambience/score plan plus curated Foley; no unrelated music restart at every generated boundary.
 
-## Tested Failure Patterns
+## Production State Machine
 
-The workflow includes lessons from actual local experiments—not a claim that one unfinished sample is a successful film:
+`brief → story contract → canonical assets → block/beat manifest → capability route → cost authorization → candidate → evidence review → accepted state → dependent generation → picture edit → audio mix → cold-viewer gate → delivery`
 
-- a 36-clip short-block version had 20/36 (55.6%) severe or blocking physical/visual issues;
-- four tested 30-second Wan 3 clips internally cut 2–4 times, showing that long blocks reduce external joins but still need timed internal beats;
-- native audio across twenty short units varied by 8.9 LU, with some boundaries jumping over 30 dB;
-- tail-frame chaining improved the next opening but did not prevent late-block wardrobe/anatomy drift;
-- “storybook / soft fantasy / cartoon” prompt language caused animated or plastic-CG drift; live-action medium locks improved material realism;
-- a technically approved edit still failed cold-viewer story comprehension, so narrative QA is now an independent P0 gate.
+Candidates never become continuity anchors automatically. Promote only inspected media to canon.
 
-Full observations and limits are in [benchmarks/tested-observations.md](benchmarks/tested-observations.md).
+## Evidence and Repair
 
-## Workflow
+For a 30-second candidate, capture the real file, metadata, 12-frame contact sheet, start/25/50/75/end frames, slow-motion contact notes, audio/ASR, and timestamped QA. Classify failures as narrative, asset, prompt, model, provider surface, edit, or audio.
 
-1. Select standalone, anthology, or serial form.
-2. Lock pet identity, wardrobe construction, voice, medium, and world state.
-3. Plan 4–6 observable beats per long block.
-4. Select provider-neutral capabilities and paid mode.
-5. Choose native dialogue, audio reference, external dubbing, or hybrid.
-6. Generate the highest-risk or hook block first.
-7. Inspect real media, 12-frame contact sheet, motion contacts, and audio/ASR.
-8. Accept/reject/repair, then export a verified tail state.
-9. Unlock dependent blocks and edit with motivated picture and sound transitions.
-10. Require a cold viewer to retell goal → obstacle → choice/action → result.
+Repair the smallest failing unit:
+
+- edit/inpaint a localized defect;
+- extend or bridge a broken transition;
+- regenerate from canonical state for identity/anatomy failure;
+- shorten a block that drifts late;
+- rewrite a scene whose cause/effect is unreadable;
+- remix rather than regenerate good picture for an audio discontinuity.
+
+## Lessons From Real Production Failures
+
+An anonymized local experiment found 20/36 fragmented short clips had severe or blocking visual/physical issues. Four tested 30-second outputs each contained 2–4 internal changes: long generation reduces external seams but still requires 4–6 timed beats. Native audio from twenty short units varied by 8.9 LU, with some boundaries exceeding 30 dB. Tail-frame chaining improved the next opening but did not prevent later wardrobe/anatomy drift. A technically improved cut still failed cold-viewer comprehension.
+
+These observations became executable gates, not claims that one model is universally best. See [tested observations](benchmarks/tested-observations.md).
+
+## Project Files
+
+The core skill stays compact and loads deeper references only when needed:
+
+- [SKILL.md](skills/continuity-director/SKILL.md)
+- [Generation blocks vs edit beats](skills/continuity-director/references/generation-blocks-and-edit-beats.md)
+- [Model router](skills/continuity-director/references/model-router.md)
+- [Authorization and batch](skills/continuity-director/references/authorization-and-batch.md)
+- [Budget and quality](skills/continuity-director/references/budget-and-quality.md)
+- [Audio and dubbing](skills/continuity-director/references/audio-and-dubbing.md)
+- [Continuity and transitions](skills/continuity-director/references/continuity-and-transitions.md)
+- [Physics and failure modes](skills/continuity-director/references/physics-and-failure-modes.md)
 
 ## Tools
 
 ```bash
-# Validate a continuity ledger and dynamic cost plan
 python3 scripts/validate_plan.py \
-  --continuity skills/pawdirector/assets/templates/continuity-ledger.csv \
-  --cost skills/pawdirector/assets/templates/cost-plan.csv
+  --continuity skills/continuity-director/assets/templates/continuity-ledger.csv \
+  --cost skills/continuity-director/assets/templates/cost-plan.csv
 
-# Estimate current provider costs after filling unit_price
-python3 scripts/estimate_cost.py skills/pawdirector/assets/templates/cost-plan.csv
-
-# Inspect a 30-second candidate
+python3 scripts/estimate_cost.py skills/continuity-director/assets/templates/cost-plan.csv
 bash scripts/make_contact_sheet.sh candidate.mp4 candidate_contact_12.jpg
 bash scripts/extract_tail_frame.sh candidate.mp4 candidate_tail.png
 ```
 
 ## Examples
 
-- [Standalone 90-second pet short](examples/standalone-90s/README.md)
+- [Live-action family microdrama](examples/live-action-90s/README.md)
+- [Pet-led standalone short](examples/standalone-90s/README.md)
 - [Anthology/unit episode](examples/anthology-episode/README.md)
-- [Serialized episode](examples/serialized-episode/README.md)
+- [Serialized drama](examples/serialized-episode/README.md)
 
-Examples are fictional, use no private pet media, and focus on manifests rather than claiming unreviewed generations are finished films.
+The examples are fictional manifests, not claims that unreviewed generations are finished films.
 
-## FAQ
+## Research Positioning
 
-### How do I keep the same cat across AI video shots?
+Popular 2026 projects tend to specialize in one model/prompt dialect or provide a large application pipeline. ContinuityDirector is a lightweight installable skill that combines:
 
-Use a canonical identity/material master plus the accepted previous state frame and a continuity ledger. Re-anchor after location changes, detected drift, or every two long blocks. A tail frame alone can carry existing errors forward.
+- cross-model, cross-provider, cross-format routing;
+- long generation blocks with fast internal edit beats;
+- explicit paid authorization and cost-per-accepted-second;
+- native dialogue/reference audio/external dubbing as equal routes;
+- accepted-media state transfer and physical causality;
+- independent narrative comprehension after technical QA.
 
-### Which model is best for a 30-second AI pet short?
+See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). No third-party prompt packs or unlicensed schemas are redistributed.
 
-There is no permanent winner. Start with a model that currently supports the required duration, aspect ratio, reference type, and audio mode. Wan 3-class long generation is a practical hypothesis for fewer joins; Seedance 2.5-class generation is useful when richer audio/reference/edit control matters.
-
-### How do I stop AI cat videos from looking like anime or plastic CGI?
-
-Lock the medium as live-action cinema, real fur, practical fabric, and a real-scale environment. Put cuteness in feline timing and behavior—not “cartoon style” rendering words. Reject blocks when sampled frames drift materially.
-
-### How do I maintain dialogue voice and lip sync across clips?
-
-Create an approved voice bible and sample. Use model-native dialogue or reference audio where supported; otherwise use external dubbing with a lip-sync pass, reaction shots, profiles, inserts, or off-screen delivery. Validate exact words and speaker with ASR plus listening.
-
-### How do I connect multiple generated clips without random jump cuts?
-
-Pass accepted state, preserve screen direction and action phase, overlap action, and bridge with motion, occlusion, gaze, matched shape, or sound. Never change location, action, scale, and direction all at once.
+The dated comparison is available in [AI Short-Film Workflow Landscape — 2026-08](research/2026-08-workflow-landscape.md).
 
 ## Independent Project
 
-PawDirector is an independent community project and is not affiliated with ByteDance, Alibaba, MiniMax, Atlas Cloud, or other model/provider owners. Model and product names belong to their respective owners.
-
-See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for research acknowledgements and licensing boundaries.
-
-## Contributing
-
-Provider adapters, dated model observations, failure cases, new pet formats, and reproducible QA improvements are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
+ContinuityDirector is not affiliated with ByteDance, Alibaba, MiniMax, Atlas Cloud, or any model/provider owner. Product names belong to their respective owners.
 
 ## License
 

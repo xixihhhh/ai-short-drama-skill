@@ -16,7 +16,7 @@
 ## Identity and style
 
 - Start / 25% / 50% / 75% / end:
-- Cat count, coat, eyes, body, wardrobe:
+- Character/object count, face/design, body/geometry, wardrobe/surface:
 - Live-action material consistency:
 
 ## Physics and continuity

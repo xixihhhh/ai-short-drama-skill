@@ -1,34 +1,58 @@
 {
-  "skill_name": "pawdirector",
+  "skill_name": "continuity-director",
   "evals": [
     {
       "id": 1,
-      "prompt": "I have two cat photos and want a cute 90-second 9:16 short. The apartment must look real, the cats can be slightly expressive, I have Wan 3 and Seedance 2.5, and I can spend about $8. Plan the production without generating yet.",
-      "expected_output": "A provider-neutral 2-4 block plan with a 0-3s hook, pet-specific motivation, live-action hybrid style lock, dynamic cost assumptions, model/audio route, continuity gates, physics contacts, and cold-viewer acceptance criteria.",
+      "prompt": "Plan a 90-second 9:16 live-action family short. I can use Wan 3 and Seedance 2.5 through providers I choose and have an $8 cap. Do not generate yet.",
+      "expected_output": "A provider-neutral story contract, 2-4 generation blocks with fast internal edit beats, human identity/wardrobe/axis/prop locks, model capability route, dynamic expected/capped spend, dialogue/audio choice, dependency gates, and cold-viewer acceptance criteria.",
       "files": []
     },
     {
       "id": 2,
-      "prompt": "Make a 3-minute anthology episode with recurring cats and human dialogue. Use native model speech where it helps lip sync, but keep each character's voice consistent and avoid random music restarts.",
-      "expected_output": "A self-contained episode contract, block choreography, voice bible/reference-audio decision, native/external/hybrid dialogue routing, separate audio-track plan, J/L cuts, continuous ambience/music, ASR and listening QA.",
+      "prompt": "Make a 3-minute anthology episode with recurring characters and human dialogue. Use native model speech where it helps lip sync, but keep each character's voice consistent and avoid random music restarts.",
+      "expected_output": "A unit-episode contract, voice bibles, native/reference/external/hybrid dialogue routing, block/beat choreography, separate audio tracks, continuous ambience/score, J/L cuts, ASR/listening QA, and episode continuity state.",
       "files": []
     },
     {
       "id": 3,
-      "prompt": "The first 30-second clip is accepted except that the cat's cape becomes a sweater at 22 seconds, the phone flips, and it walks through a closed glass door. Should I use its final frame to generate the next clip?",
-      "expected_output": "Do not unlock the child clip. Identify P0/P1 failures, reject or trim/repair the parent, require visible door opening and orientation/wardrobe locks, regenerate or edit the smallest failing unit, then export only an accepted tail state with canonical re-anchor.",
+      "prompt": "The first 30-second clip is accepted except that a cape becomes a sweater at 22 seconds, a phone flips, and the subject walks through a closed glass door. Use its final frame for the next clip.",
+      "expected_output": "Refuse to unlock the child clip. Classify P0/P1 failures, preserve only verified accepted ranges, repair or regenerate the smallest failing unit, show door opening/contact/orientation/wardrobe constraints, then export an accepted tail with canonical re-anchor.",
       "files": []
     },
     {
       "id": 4,
-      "prompt": "I do not use Atlas Cloud. I use a local web UI and sometimes official model sites. Can this skill still choose between MiniMax H3, Wan 3, and Seedance?",
-      "expected_output": "Yes. Explain capability-based provider-neutral routing, current-schema verification, user-selected channel/provider, and no mandatory MCP or vendor dependency.",
+      "prompt": "I do not use Atlas Cloud. I use local web UIs and official model sites. Choose between MiniMax H3, Wan 3, and Seedance for me.",
+      "expected_output": "Explain capability-first provider-neutral routing, honor user-selected channels, verify the active surface, avoid guessing dynamic limits/prices, and offer model routes without requiring MCP or vendor changes.",
       "files": []
     },
     {
       "id": 5,
       "prompt": "My ten-second dialogue shot has one sentence, then the actor and camera stay almost frozen for six seconds. Fix the generation brief.",
-      "expected_output": "Replace static duration with 2-3 visual beats, concise dialogue, concurrent gesture/prop action, listener reaction, micro-acting, camera motivation, and an exit state; explain that camera movement alone does not repair empty performance.",
+      "expected_output": "Replace empty duration with 2-3 timed edit beats, concurrent gesture/prop action, listener reaction, micro-acting, motivated camera, audio state, and a usable exit; state that camera movement alone cannot fix empty performance.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "Create a stylized 2D motion-comic episode. Do not make it photoreal. Keep the character designs stable across scenes.",
+      "expected_output": "Choose animation profile, avoid live-action negatives, lock proportions/line/shading/palette/pose rhythm/background depth, preserve continuity state, and use the same model/provider/cost/audio gates.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "Generate all 12 paid clips in parallel. I said Premium, so do not ask about costs or uploads.",
+      "expected_output": "Separate quality from authorization; require or infer only valid preauthorization for provider/upload/request/retry/cap, parallelize independent tasks only, gate dependent clips on accepted parents, and stop before unapproved spend/data boundaries.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "A product bottle looks perfect but the generated label text mutates and the hand holding it gains an extra finger. Can I just add subtitles and publish?",
+      "expected_output": "Treat hand/anatomy and product geometry/text as identity/physics issues, not subtitle fixes; use label-safe blank plate plus post overlay, locally edit or regenerate the defective unit, and approve only after frame-step evidence.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "Use my two cat photos for a cute 60-second realistic short, but do not make it look like children's animation or plastic CGI.",
+      "expected_output": "Apply the pet overlay within the general workflow, keep real fur/material/environment, place cuteness in species behavior and timing, use anatomy/contact gates, and retain provider/model/user choice.",
       "files": []
     }
   ]

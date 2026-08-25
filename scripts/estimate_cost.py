@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Estimate request count and spend from PawDirector's cost-plan CSV."""
+"""Estimate request count and spend from ContinuityDirector's cost-plan CSV."""
 
 import argparse
 import csv
@@ -23,7 +23,13 @@ def main() -> None:
         row["expected_requests"] = str(requests)
         row["expected_cost"] = f"{cost:.4f}"
         total += cost
-        print(f'{row["route_id"]}: {requests} requests, {cost:.4f} {row["currency"]}')
+        best_requests = int(row.get("best_requests") or blocks * candidates)
+        cap_requests = int(row.get("cap_requests") or requests)
+        unit_price = Decimal(row["unit_price"])
+        print(
+            f'{row["route_id"]}: best {best_requests} / expected {requests} / cap {cap_requests} requests; '
+            f'expected {cost:.4f}, cap {(unit_price * cap_requests):.4f} {row["currency"]}'
+        )
     currencies = {row["currency"] for row in rows}
     if len(currencies) == 1:
         print(f"TOTAL: {total:.4f} {currencies.pop()}")

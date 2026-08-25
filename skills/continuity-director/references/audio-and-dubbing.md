@@ -49,8 +49,16 @@ Use a locked voice sample or consistent TTS/actor session. If exact lip sync is 
 
 - keep lines off-screen or over reaction/cutaway shots;
 - use profile, wide, back-of-head, phone, or masked-mouth framing;
-- cut to paws, props, listener, environment, or consequence;
+- cut to hands/paws, props, listener, environment, or consequence;
 - use a dedicated lip-sync pass where appropriate.
+
+## Voice-over over B-roll
+
+Use when exact narration, localization, or speed matters more than visible lip sync. Keep the speaker off-screen or visually silent and let action, evidence, product use, reactions, or environment carry the image. Do not show a speaking mouth with unrelated narration.
+
+## Audio boundary state
+
+For every block record active speaker, unfinished phrase, room tone, ambience phase, BGM bar/phrase, reverb tail, and the sound or silence that motivates the next cut. Audio continuity is state transfer just like picture continuity.
 
 ## Final mix
 

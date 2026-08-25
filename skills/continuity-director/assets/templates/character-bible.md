@@ -3,9 +3,10 @@
 ## Identity
 
 - Canonical name / ID:
-- Species / sex:
-- Coat color map and markings:
-- Eye color and shape:
+- Character type: human / animal / creature / animated / product mascot / other
+- Species / sex or gender presentation, when relevant:
+- Face, skin, hair, coat, surface map, and markings:
+- Eye color and shape or key design features:
 - Face/body proportions:
 - Distinguishing features:
 - Scale relative to objects/others:
@@ -21,9 +22,9 @@
 ## Performance
 
 - Personality in three visible behaviors:
-- Feline action vocabulary:
-- Signature paw/ear/tail behavior:
-- Forbidden humanization/anatomy:
+- Anatomy-appropriate action vocabulary:
+- Signature face/hand/body/paw/ear/tail/object behavior:
+- Forbidden anatomy, mutation, or off-model behavior:
 
 ## Voice
 

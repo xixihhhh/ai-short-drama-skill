@@ -22,6 +22,8 @@ Route from required capability first, then compare providers, price, queue time,
 7. Which resolutions are native versus upscaled?
 8. What are current price, queue time, retry policy, and storage terms?
 
+Create one editable [model-card.yaml](../assets/templates/model-card.yaml) for every available route. Treat the active API/UI as the parameter truth. If duration, resolution, reference limits, pricing, or prompt dialect are unknown, use a conservative profile and do not guess.
+
 ## Provider neutrality
 
 The same model may be available through official products, aggregators, APIs, web apps, or MCP servers. Store provider adapters outside the creative manifest. The manifest should request capabilities such as:
@@ -45,5 +47,7 @@ Then select a currently available endpoint that satisfies it. Never require Atla
 - In a 2026-08 local project, Wan 3 regular 30-second outputs contained 2–4 internal scene changes and reduced the number of external joins. Prompts still required 4–6 timed beats.
 - In the same project, tail-frame chaining improved the next opening but did not prevent later wardrobe or anatomy drift.
 - Seedance 2.0-family short clips with native audio still required post-production sound continuity.
+
+For native audiovisual models such as current MiniMax H3 routes, explicitly compile visual timeline, synchronized dialogue/diegetic sound, overall soundscape, and non-diegetic music policy. A reference asset must have one primary controller role such as identity, action, camera, environment, timing, or audio.
 
 Record new evidence in a dated benchmark entry and update routing only after repeated results.

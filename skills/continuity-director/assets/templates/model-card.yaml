@@ -1,0 +1,31 @@
+model_family: replace-me
+provider: user-selected
+surface: api-or-web-or-local
+checked_at: YYYY-MM-DD
+documented_capabilities:
+  modes: []
+  duration_seconds: {min: null, max: null}
+  resolutions: []
+  aspect_ratios: []
+  reference_images: null
+  reference_videos: null
+  reference_audio: null
+  first_frame: false
+  last_frame: false
+  native_dialogue_or_audio: unknown
+  edit: false
+  extend: false
+pricing:
+  currency: null
+  unit: null
+  amount: null
+  source: null
+observations:
+  queue_time: unknown
+  strongest_uses: []
+  known_failures: []
+  evidence_links: []
+data_policy:
+  upload_visibility: unknown
+  retention: unknown
+notes: Capability documentation and dated observations are not the same claim.

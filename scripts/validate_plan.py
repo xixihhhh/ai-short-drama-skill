@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate basic PawDirector continuity and cost artifacts without provider APIs."""
+"""Validate basic ContinuityDirector continuity and cost artifacts without provider APIs."""
 
 import argparse
 import csv
@@ -7,12 +7,12 @@ from pathlib import Path
 
 
 CONTINUITY_REQUIRED = {
-    "block_id", "status", "location", "axis_screen_direction", "pet_identity",
-    "wardrobe_structure", "prop_state", "physical_contact_points", "entry_state", "exit_state"
+    "block_id", "status", "location", "axis_screen_direction", "character_identity",
+    "wardrobe_or_surface", "prop_state", "physical_contact_points", "entry_state", "exit_state"
 }
 COST_REQUIRED = {
     "route_id", "provider", "model", "blocks", "candidates", "unit_price",
-    "currency", "retry_factor", "price_checked_at"
+    "currency", "retry_factor", "authorization_mode", "cap_requests", "price_checked_at"
 }
 
 
@@ -44,7 +44,7 @@ def main() -> None:
     if errors:
         print("\n".join(errors))
         raise SystemExit(1)
-    print("PawDirector plan validation passed")
+    print("ContinuityDirector plan validation passed")
 
 
 if __name__ == "__main__":

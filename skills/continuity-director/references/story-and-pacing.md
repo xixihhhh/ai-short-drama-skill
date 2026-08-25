@@ -1,14 +1,14 @@
 # Story and Pacing
 
-## Pet-first premise filter
+## Protagonist-specific premise filter
 
 A premise passes only if at least two are true:
 
-- it exploits feline anatomy, instinct, scale, senses, habits, or owner relationship;
-- a paw/ear/tail/whisker or size contrast creates a memorable visual;
-- the pet makes a choice that changes the outcome;
+- it exploits the protagonist's identity, profession, anatomy, instinct, relationship, limitation, product function, or world rule;
+- a character-specific action, object, body detail, scale contrast, or behavior creates a memorable visual;
+- the protagonist makes a choice or action that changes the outcome;
 - the ending could not work with a generic mascot;
-- the premise can be understood in a silent three-second image.
+- the premise can be understood or strongly questioned from a silent three-second image.
 
 ## 60–120 second skeleton
 
@@ -18,7 +18,7 @@ A premise passes only if at least two are true:
 - 30–55s: escalation, complication, or misunderstood intention.
 - 55–80s: coordinated choice or reveal with planted setup.
 - 80–105s: visual payoff and emotional relief.
-- final 3–8s: cat-instinct punchline or repeatable tag.
+- final 3–8s: emotional release, reversal, comic button, suspense turn, product proof, or repeatable tag.
 
 Compress or expand proportionally. Do not repeat exposition to fill time.
 
@@ -41,7 +41,7 @@ Each beat specifies subject, action, contact, camera, reaction, audio, and resul
 
 Show the silent rough cut to someone who has not read the script. Ask:
 
-1. What did the cat/person want?
+1. What did the protagonist want?
 2. What stopped them?
 3. What changed?
 4. Why did the ending happen?

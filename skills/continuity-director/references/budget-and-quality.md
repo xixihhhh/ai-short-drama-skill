@@ -14,10 +14,10 @@ Do not hardcode provider prices in the skill. Put current prices into a project 
 
 ### Economy
 
-- Purpose: publishable simple pet short with controlled retries.
+- Purpose: publishable simple short with controlled retries.
 - Prefer long blocks when reliable to minimize paid joins.
 - Default 720p; one candidate, plus selective rerender of failed blocks.
-- Allocate extra retry budget to pet identity, contact-heavy action, and the hook.
+- Allocate extra retry budget to identity-critical shots, dialogue, contact-heavy action, the hook, reveal, and climax.
 
 ### Balanced
 
@@ -34,7 +34,7 @@ Do not hardcode provider prices in the skill. Put current prices into a project 
 
 ### Hero Insert
 
-- Purpose: 4–15s macro paw, transformation, high-speed action, emotional close-up, or spectacular reveal.
+- Purpose: 4–15s transformation, high-speed action, fragile dialogue, creature/product detail, emotional close-up, or spectacular reveal.
 - Route to the best short high-control model rather than upgrading the whole film.
 
 ### Final Polish

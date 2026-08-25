@@ -1,0 +1,2 @@
+route_id,provider,model,quality_mode,authorization_mode,duration_s,resolution,blocks,candidates,unit_price,currency,retry_factor,best_requests,expected_requests,cap_requests,best_cost,expected_cost,cap_cost,price_checked_at,notes
+R1,choose-at-runtime,capability-route,economy,plan-only,30,720p,3,1,0,USD,1.4,3,5,6,0,0,0,YYYY-MM-DD,replace dynamic price and authorization before paid generation

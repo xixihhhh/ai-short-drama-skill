@@ -2,21 +2,21 @@
 
 ## Standalone microshort: 15–45 seconds
 
-Use one strong visual promise, one cat-specific attempt, one escalation, and one payoff. A series may share characters and style without requiring previous episodes.
+Use one strong visual promise, one protagonist-specific attempt, one escalation, and one payoff. A series may share characters and style without requiring previous episodes.
 
 ## Standalone short: 45–120 seconds
 
-Use 2–4 story blocks. The viewer should understand setup, desire, obstacle, escalation, result, and final feline button without a synopsis.
+Use 2–4 story blocks. The viewer should understand setup, desire, obstacle, escalation, result, and final button without a synopsis.
 
 ## Anthology or unit episode
 
-Keep recurring pets, abilities, wardrobe, and location rules. Each episode introduces and resolves one external problem. Carry personality, not unresolved exposition.
+Keep recurring characters, abilities, relationships, wardrobe, and location rules. Each episode introduces and resolves one external problem. Carry personality and state, not unresolved exposition.
 
 Recommended episode contract:
 
-- familiar cold open behavior;
-- episode-specific human/pet problem;
-- the pet's trait or ability creates both trouble and solution;
+- familiar cold-open behavior or world rule;
+- episode-specific problem;
+- a protagonist trait, relationship, ability, limitation, or product function creates both trouble and solution;
 - consequence or relationship shift;
 - repeatable ending ritual.
 
