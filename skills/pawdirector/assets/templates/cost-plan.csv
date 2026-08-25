@@ -1,0 +1,2 @@
+route_id,provider,model,mode,duration_s,resolution,blocks,candidates,unit_price,currency,retry_factor,expected_requests,expected_cost,price_checked_at,notes
+R1,choose-at-runtime,capability-route,economy,30,720p,3,1,0,USD,1.4,5,0,YYYY-MM-DD,replace dynamic price before paid generation

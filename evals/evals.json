@@ -1,0 +1,35 @@
+{
+  "skill_name": "pawdirector",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have two cat photos and want a cute 90-second 9:16 short. The apartment must look real, the cats can be slightly expressive, I have Wan 3 and Seedance 2.5, and I can spend about $8. Plan the production without generating yet.",
+      "expected_output": "A provider-neutral 2-4 block plan with a 0-3s hook, pet-specific motivation, live-action hybrid style lock, dynamic cost assumptions, model/audio route, continuity gates, physics contacts, and cold-viewer acceptance criteria.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Make a 3-minute anthology episode with recurring cats and human dialogue. Use native model speech where it helps lip sync, but keep each character's voice consistent and avoid random music restarts.",
+      "expected_output": "A self-contained episode contract, block choreography, voice bible/reference-audio decision, native/external/hybrid dialogue routing, separate audio-track plan, J/L cuts, continuous ambience/music, ASR and listening QA.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "The first 30-second clip is accepted except that the cat's cape becomes a sweater at 22 seconds, the phone flips, and it walks through a closed glass door. Should I use its final frame to generate the next clip?",
+      "expected_output": "Do not unlock the child clip. Identify P0/P1 failures, reject or trim/repair the parent, require visible door opening and orientation/wardrobe locks, regenerate or edit the smallest failing unit, then export only an accepted tail state with canonical re-anchor.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "I do not use Atlas Cloud. I use a local web UI and sometimes official model sites. Can this skill still choose between MiniMax H3, Wan 3, and Seedance?",
+      "expected_output": "Yes. Explain capability-based provider-neutral routing, current-schema verification, user-selected channel/provider, and no mandatory MCP or vendor dependency.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "My ten-second dialogue shot has one sentence, then the actor and camera stay almost frozen for six seconds. Fix the generation brief.",
+      "expected_output": "Replace static duration with 2-3 visual beats, concise dialogue, concurrent gesture/prop action, listener reaction, micro-acting, camera motivation, and an exit state; explain that camera movement alone does not repair empty performance.",
+      "files": []
+    }
+  ]
+}

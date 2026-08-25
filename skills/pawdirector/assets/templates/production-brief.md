@@ -1,0 +1,21 @@
+# Production Brief
+
+- Project / episode:
+- Format: standalone microshort / standalone / anthology / serial
+- Platform and aspect ratio:
+- Target duration:
+- Audience and emotional promise:
+- Pet protagonists and reference rights:
+- Human characters, if any:
+- 0–3s visual hook:
+- Pet-specific motivation:
+- Goal / obstacle / escalation / payoff:
+- Visual medium:
+- Dialogue route: none / native / reference audio / external / hybrid
+- Available models and providers:
+- Spend ceiling and currency:
+- Quality mode:
+- Delivery resolution:
+- Text policy: post-production by default
+- Safety/privacy constraints:
+- Definition of done:

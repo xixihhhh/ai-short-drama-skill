@@ -1,0 +1,2 @@
+block_id,status,accepted_parent_clip,location,time_weather,axis_screen_direction,pet_identity,wardrobe_structure,pet_pose_action,prop_state,wetness_damage,light_direction,audio_in,audio_out,physical_contact_points,entry_state,exit_state,tail_frame,notes
+B01,planned,,example interior,day,pet moves left-to-right,canonical master,short cape with one clasp,crouched beside box,box closed,dry,window camera-left,room tone,room tone + paw tap,paw-pad to box lid,pet sees closed box,pet hooks paw under lid,,replace example row
