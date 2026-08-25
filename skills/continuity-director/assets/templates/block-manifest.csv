@@ -1,2 +1,0 @@
-block_id,purpose,dependency,location_time,generated_duration_s,edit_beats,entry_state,exit_state,capability_needs,selected_route,dialogue_route,audio_in,audio_out,physical_contact_points,candidate_status,accepted_ranges,observed_exit_state,tail_frame,notes
-B01,hook,,example place and time,30,5,approved opening state,planned active exit,long-block;native-audio,user-selectable,hybrid,room tone,room tone plus action tail,subject to prop,candidate,,,,'candidate is not canon'

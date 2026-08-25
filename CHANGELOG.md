@@ -1,19 +1,25 @@
-# Changelog
+# 更新日志
+
+[English](CHANGELOG.en.md)
+
+## 0.3.0 - 2026-08-25
+
+- 正式命名为 Dramake，定位为“小白也能从文字串起导演级短剧”的单一 Skill；
+- 中文改为默认文档，并为 README、Skill、参考资料、模板、示例、实测记录、贡献指南和 Issue 模板提供同步英文镜像；
+- 新增导演意图、价值翻转、镜头合同、运镜动机、内部切镜预算、节奏曲线与场景边界规则；
+- 新增角色/服装/材质/声线/参考权威矩阵，阻止尾帧漂移、声线串角色与输出链无限传播；
+- 增强原生对白、参考音频、外部配音、混合后期、J/L cut、环境底与人工 A/B 声线验收；
+- 同时支持横屏与竖屏，要求分别构图、运镜、安全区和验收，不默认机械裁切；
+- 新增镜头、声线、音频连续性模板及跨文件校验，拦截未验收父段、稀疏长段、越界镜头、未知声线和无授权付费计划；
+- 扩展为 14 个场景评估用例，并明确评估覆盖不等于生成视频质量。
 
 ## 0.2.0 - 2026-08-25
 
-- Generalized the skill from pet-focused video to live-action, pet, fantasy, animation, branded, UGC, anthology, and serialized productions.
-- Added dual-timescale generation blocks and edit beats.
-- Separated model, provider, quality tier, and spend authorization.
-- Added approved-batch and autopilot-with-cap execution modes plus cost per accepted second.
-- Added editable model cards, project canon state, provider-adapter boundaries, content profiles, audio boundary state, and five-way repair dispositions.
-- Added August 2026 competitor/workflow research while keeping all instructions independently written and provider neutral.
+- 从宠物视频扩展到真人、宠物、奇幻、动画、品牌、UGC、单元剧和连续剧；
+- 分离生成段与剪辑节拍、模型能力与执行入口、质量档与付费授权；
+- 增加项目状态、内容配置、声音边界和五种修复决定。
 
 ## 0.1.0 - 2026-08-25
 
-- Initial provider-neutral ContinuityDirector skill.
-- Added standalone, anthology, and serialized formats.
-- Added capability routing for Wan 3, Seedance 2.5/2.0/Fast, and MiniMax H3 families.
-- Added six paid quality modes and dynamic cost planning.
-- Added native dialogue, reference audio, external dubbing, hybrid mix, continuity, physics, and cold-viewer QA.
-- Added anonymized local observations, templates, validation, contact-sheet, and tail-frame tools.
+- 首个服务商中立的 AI 短片/短剧 Skill；
+- 支持独立短片、单元剧、连续剧、动态费用、连续性、物理和冷观众验收。

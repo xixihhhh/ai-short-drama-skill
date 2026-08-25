@@ -1,44 +1,38 @@
-# ContinuityDirector Evaluation Report
+# Dramake v0.3.0 验证报告
 
-Date: 2026-08-25
+日期：2026-08-25
 
-Nine prompts were reviewed in two conditions: a baseline agent without repository access and an agent that read the current skill plus only relevant direct references.
+本版本使用 14 个代表性场景检查指令覆盖，并使用确定性测试验证文档结构、模板字段、版本同步和计划门禁。
 
-## Coverage
+## 覆盖场景
 
-1. 90-second live-action family short with user-selected providers and an $8 cap.
-2. Three-minute anthology with recurring human voices and native dialogue.
-3. Defective 30-second tail with wardrobe, phone, and glass penetration errors.
-4. Local/official provider choice without Atlas Cloud.
-5. Static 10-second one-line dialogue shot.
-6. Stylized 2D motion comic with stable designs and no photorealism.
-7. Premium request asking for 12 parallel paid clips without cost/upload boundaries.
-8. Product label mutation plus extra finger.
-9. Realistic/cute pet short without children's-animation or plastic-CGI drift.
+1. 90 秒真人家庭短剧、用户自选执行入口与费用上限；
+2. 3 分钟单元剧、常驻角色声线与原生对白；
+3. 服装、手机方向和玻璃穿透错误的父段门禁；
+4. 执行入口可替换；
+5. 10 秒一句话后站桩的节奏修复；
+6. 非写实 2D 漫剧；
+7. 未明确上传/费用边界的并行付费请求；
+8. 产品文字变异与额外手指；
+9. 真人环境中的写实可爱宠物；
+10. 小白从 300 字故事开始；
+11. 无动机堆叠推拉摇移环绕；
+12. 同一女主跨片段声线漂移；
+13. 跨地点/时间却错误要求尾帧无缝续写；
+14. 同一故事的抖音 9:16 与 YouTube 16:9 版本。
 
-## Results
+## 确定性检查
 
-| Case | Skill score |
-|---|---:|
-| Live-action story/cost route | 9.8 |
-| Anthology dialogue/audio | 9.7 |
-| Defective parent/tail state | 9.5 |
-| Provider neutrality | 10.0 |
-| Static dialogue repair | 8.5 before fix |
-| 2D animation profile | 9.8 |
-| Paid batch authorization | 10.0 |
-| Product text/hand defect | 9.5 |
-| Pet live-action hybrid overlay | 10.0 |
+仓库测试会检查：
 
-Mean before follow-up fixes: **9.6/10**. The estimated baseline mean was **5.7/10**, with the largest gap in paid-generation authorization, dependent-block gating, sound continuity, and format-specific style locks.
+- 中英文镜像、Skill/CITATION/README 版本一致；
+- 主 Skill 行数与通用内容范围；
+- 连续性、生成段、镜头、声线、音频和费用模板字段；
+- 未验收父段不得解锁、20–30 秒长段节拍不能过稀；
+- 镜头不得超过生成段时长、引用声线必须存在；
+- 质量档不能冒充付费授权；
+- 已移除的品牌、说明页与旧命名不得残留公开文件。
 
-## Fixes made from the evaluation
+## 验证边界
 
-- Unified beat density: 20–30s long block = 4–6 beats; 10–12s dialogue block = 2–3 beats; other short blocks use evidence-based density.
-- Defined common P0/P1 mappings for glass penetration, extra fingers, wardrobe topology, phone orientation, and generated labels.
-- Replaced ambiguous “one sound bed” wording with a centrally managed sound system supporting per-scene ambience and intentional cues.
-- Added a named Story Contract section to the production brief.
-
-## Limits
-
-This benchmark evaluates instruction coverage, not generated-video quality. Model claims require current surface verification; candidate quality requires inspection of real media and a cold-viewer test.
+这些检查验证的是 Skill 的指令覆盖、文件一致性和计划约束，不是对任一模型最终视频质量的保证。模型能力、价格和参数必须在执行时核实；候选质量必须检查真实媒体、音频、抽帧、物理与冷观众结果。没有真实候选证据时，不给出“已通过成片质量”的结论。

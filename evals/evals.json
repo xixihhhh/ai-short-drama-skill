@@ -1,5 +1,5 @@
 {
-  "skill_name": "continuity-director",
+  "skill_name": "dramake",
   "evals": [
     {
       "id": 1,
@@ -21,8 +21,8 @@
     },
     {
       "id": 4,
-      "prompt": "I do not use Atlas Cloud. I use local web UIs and official model sites. Choose between MiniMax H3, Wan 3, and Seedance for me.",
-      "expected_output": "Explain capability-first provider-neutral routing, honor user-selected channels, verify the active surface, avoid guessing dynamic limits/prices, and offer model routes without requiring MCP or vendor changes.",
+      "prompt": "I choose my own local web UIs and official model sites. Choose between MiniMax H3, Wan 3, and Seedance for me without forcing me to change platform.",
+      "expected_output": "Explain capability-first platform-neutral routing, honor user-selected channels, verify the active surface, avoid guessing dynamic limits/prices, and offer model routes without requiring MCP or platform changes.",
       "files": []
     },
     {
@@ -53,6 +53,36 @@
       "id": 9,
       "prompt": "Use my two cat photos for a cute 60-second realistic short, but do not make it look like children's animation or plastic CGI.",
       "expected_output": "Apply the pet overlay within the general workflow, keep real fur/material/environment, place cuteness in species behavior and timing, use anatomy/contact gates, and retain provider/model/user choice.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "I know nothing about filmmaking. Turn this 300-word story into a 75-second short drama and tell me only the choices I truly need to make.",
+      "expected_output": "Route from beginner input, diagnose and visualize the source text, infer safe defaults, create a story and directing contract, expose only material choices, then connect script, storyboard, generation, audio, edit, cost, and QA without teaching jargon first.",
+      "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "Make every shot cinematic with dolly, orbit, crane, whip pan, and handheld so the ten-second scene never feels static.",
+      "expected_output": "Reject decorative camera stacking, define one scene intention, one primary move per shot with start/path/motivation/end, budget roughly two shots for ten seconds, use performance and reaction to carry pace, and simplify camera during fragile contact.",
+      "files": []
+    },
+    {
+      "id": 12,
+      "prompt": "The same heroine sounds like a different person in every generated clip even though the words are correct. Fix the workflow.",
+      "expected_output": "Create one rights-cleared voice anchor and Voice ID, lock language/accent/timbre/pitch/pace/pronunciation/emotion, separate voice identity from room and microphone, choose reference-audio or unified external dubbing where supported, and run ASR plus human A-B voice QA.",
+      "files": []
+    },
+    {
+      "id": 13,
+      "prompt": "Clip one ends at a rainy station. Clip two starts the next morning in a kitchen. Use clip one's tail frame so the transition is seamless.",
+      "expected_output": "Classify this as a scene boundary rather than seamless continuation, use an on-screen or sound-motivated bridge, reopen from canonical character/kitchen references, preserve only persistent identity/prop/voice state, and reset output-sourced chain depth.",
+      "files": []
+    },
+    {
+      "id": 14,
+      "prompt": "I need the same story for Douyin 9:16 and YouTube 16:9. Just crop one master both ways.",
+      "expected_output": "Share story, identity, voice, prop, and continuity canon but design composition, shot size, movement path, caption and cover safe areas separately; use dual-safe masters only when planned and reject blind center-cropping as the default.",
       "files": []
     }
   ]

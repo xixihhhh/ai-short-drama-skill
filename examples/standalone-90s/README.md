@@ -1,32 +1,34 @@
-# Example: The Cats Steal Back the Sun (90s standalone)
+# 示例：猫咪偷回太阳——90 秒宠物独立短片
 
-Fictional manifest example; no private media is included and no unreviewed clip is claimed as a finished film.
+[English](README.en.md)
 
-## Promise
+虚构制作清单，不包含私有素材，也不把未验收片段称为成片。
 
-Two apartment cats mistake a collapsed sun-shaped warming lamp for the real sun and build a ridiculous feline mechanism to raise it before their human wakes.
+## 承诺
 
-## Why it is pet-specific
+两只家猫把倒下的太阳形取暖灯当成真正的太阳，在主人醒来前搭出荒诞但物理可行的猫咪装置把它升回去。
 
-- heat-seeking and sunbeam obsession;
-- paw, bite-pull loop, body weight, tail balance, and cooperative pushing;
-- cute seriousness versus tiny scale;
-- final instinctive choice: after fixing the “sun,” both cats immediately occupy the same tiny warm spot.
+## 为什么必须是猫
 
-## Block plan
+- 追热与追太阳光斑的本能；
+- 爪子、咬拉、体重、尾巴平衡与合作推力；
+- 认真表情和微小尺度形成可爱反差；
+- 修好后两只猫立刻挤进同一小块暖光，形成最后一记。
 
-| Block | Duration | Entry → beats → exit |
+## 段落
+
+| 段 | 时长 | 进入 → 节拍 → 退出 |
 |---|---:|---|
-| B01 Hook/problem | 25–30s | dark room → paw tests dead warm spot → cats trace cable → lamp shade drops safely → orange cat commits to repair |
-| B02 Escalation | 25–30s | cable/stand visible → bite-pull loop and weight pedal fail → blue-eyed cat stabilizes base → mechanism begins moving |
-| B03 Payoff | 25–30s | accepted moving state → cooperative final push → lamp rises and warms room → cats celebrate → both squeeze into one sun patch |
+| B01 钩子/问题 | 25–30 秒 | 黑暗房间 → 爪子测试冷掉的光斑 → 沿电线找灯 → 灯罩安全落下 → 橘猫决定修 |
+| B02 升级 | 25–30 秒 | 电线/底座可见 → 咬拉与体重踏板失败 → 蓝眼猫稳住底座 → 装置开始移动 |
+| B03 回报 | 25–30 秒 | 承接已验收运动 → 合作推起 → 灯升起并照暖 → 猫咪庆祝 → 挤进同一光斑 |
 
-Each block must include exact contact points and a verified tail state. Text, timers, and phone UI are absent.
+每段写明接触点、主要运镜、物理终点和验收尾状态。文字、倒计时和手机 UI 不进入生成画面。
 
-## Route examples
+## 路线示例
 
-- Economy: long 720p I2V/R2V model with native ambience disabled or replaceable.
-- Balanced: stronger multimodal model for the contact-heavy B02; cheaper long route for B01/B03.
-- Hero insert: 5–8s macro paw/claw catching the fabric loop with a high-control short model.
+- Economy：可靠的 720p 长段 I2V/R2V，随机音乐关闭或可替换；
+- Balanced：B02 复杂接触使用更强多模态模型，B01/B03 使用经济长段；
+- Hero Insert：用高控制短模型生成 5–8 秒爪子抓住布环的微距镜头。
 
-Providers remain user-selectable.
+执行入口由用户选择。

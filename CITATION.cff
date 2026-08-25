@@ -1,15 +1,21 @@
 cff-version: 1.2.0
-title: "ContinuityDirector: AI Short Film and Short Drama Skill"
-message: "If ContinuityDirector helps your production or research, please cite this repository."
+title: "Dramake: Text-to-AI Short Film and Short Drama Skill"
+message: "如 Dramake 对你的短剧制作或研究有帮助，请引用本仓库。"
 type: software
 authors:
-  - name: "ContinuityDirector contributors"
-version: 0.2.0
+  - name: "Dramake contributors"
+version: 0.3.0
 date-released: 2026-08-25
 license: MIT
 keywords:
   - AI short film
   - AI short drama
   - short drama
+  - text to video
   - video generation
   - character consistency
+  - Douyin
+  - Hongguo Short Drama
+  - Wan 3
+  - Seedance
+  - MiniMax H3

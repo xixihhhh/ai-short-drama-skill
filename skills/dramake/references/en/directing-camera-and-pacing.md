@@ -1,0 +1,78 @@
+# Directing, Camera, Movement, and Pacing
+
+“Cinematic” is not direction. Decide what the scene should make the viewer feel, then make camera, light, blocking, performance, sound, and cutting serve one intention.
+
+## Director's read
+
+Before generating a scene, record:
+
+- `dramatic_function`: introduce, deepen, turn, or pay off;
+- `value_before → value_after`: safe→threatened, stranger→ally, control→helplessness;
+- `pov`: whose experience the viewer occupies;
+- `power_shift`: where power moves;
+- `subtext`: the gap between spoken words and real desire;
+- `directorial_intention`: one testable audience-effect sentence;
+- `visible_carrier`: a filmable action, reaction, sound, or spatial change.
+
+A scene with no state turn is usually decoration and should be cut, merged, or given a function.
+
+## One-intention principle
+
+Every choice should answer “why this here”:
+
+| Instrument | Carries | Example |
+|---|---|---|
+| Shot size | intimacy, judgment, isolation, scale | close for a decision; wide negative space for isolation |
+| Height/angle | power and sympathy | low empowers, high diminishes, eye level equalizes |
+| Lens feel | psychological space | long compresses/isolates; wide opens or pressures |
+| Camera move | the viewer's impulse | push discovers, pull abandons/reveals, stillness adds weight |
+| Blocking | relationship in space | approach, retreat, block, yield, enter, exit |
+| Performance | evidence of subtext | smiling while gripping a cup, not “she is nervous” |
+| Sound | density, threat, intimacy, turn | thin ambience before a turn; one sync cue at the endpoint |
+| Cut | breath and pressure | hold to accumulate; cut to release or accelerate |
+
+Contrast is allowed; unrelated craft choices are not.
+
+## Camera contract
+
+Use one primary camera move per shot and record:
+
+- `camera_start`: shot size, angle, height, subject relationship;
+- `camera_path`: locked, push, pull, track, follow, arc, pan/tilt, handheld;
+- `camera_motivation`: what it follows, reveals, or changes;
+- `camera_end`: final composition and edit handoff;
+- `subject_endpoint`: stable action/reaction endpoint.
+
+Movement cannot exist only to “make it dynamic.” If stillness serves the intention, stay still. Reduce camera complexity for contact-heavy, transformation, or multi-character action.
+
+## Internal-shot budget
+
+Conservative starting hypotheses, to be validated per model/surface:
+
+- one internal shot usually needs about 4–6 seconds for action, reaction, and exit;
+- a 10-second block usually supports 2 shots;
+- a 12–15-second block usually supports 2–3 shots;
+- a 20–30-second block usually supports 4–6 narrative beats and 2–5 shots, or one phased long take;
+- each shot owns one primary action, one primary move, and one sound job.
+
+When shot count exceeds duration capacity, models compress, skip, or cut mid-action. Reduce shots or increase duration instead of adding adjectives.
+
+## Pacing curve
+
+Pacing is not constant speed. Mark each block `arc_position`: open / rising / turn / climax / release, then plan `shot_scale_trend`, `movement_trend`, `cut_rate_trend`, `sound_density_trend`, and one meaningful `pattern_break`.
+
+Most social narratives need a perceptible information, action, reaction, risk, or relationship change about every 4–8 seconds. A comic hold, emotional pause, or suspense delay may deliberately break the cadence when attention is still changing.
+
+## Continuous performance
+
+Give speech a concurrent action, a listener reaction, and an exit. Maintain breathing, blinking, eye shifts, hand/paw contact, weight shifts, and restrained background life without stealing focus.
+
+## Scene boundary
+
+Continue from accepted parent state inside one scene. A new location, time, or core spatial relationship is a scene boundary: use a motivated transition and re-anchor from character and world canon rather than treating it as seamless extension.
+
+Default output-sourced chain depth to 2. Relax only after repeated validation on the active model/surface; re-anchor immediately when drift appears.
+
+## Acceptance
+
+Can the intention be stated in one sentence? Does every craft choice serve it? Is performance visible behavior? Are camera and light motivated? Does the shot match the project's directorial voice? Is complexity low enough to preserve faces, hands, text, props, and contact? Simplify or rewrite every failed answer.

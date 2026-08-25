@@ -1,15 +1,15 @@
 ---
-name: Model compatibility
-about: Report a dated capability or provider difference
-title: "[model] "
+name: 模型兼容性
+about: 报告带日期的模型或执行入口能力差异
+title: "[模型] "
 labels: model-compatibility
 ---
 
-- Model and version:
-- Provider/channel:
-- Date checked:
-- Endpoint/mode:
-- Input types and limits:
-- Duration/resolution/audio options:
-- Documentation link or media evidence:
-- PawDirector route affected:
+- 模型与版本：
+- 执行入口：
+- 核实日期：
+- 模式 / 接口：
+- 输入类型与限制：
+- 时长 / 分辨率 / 声音 / 参考能力：
+- 文档链接或媒体证据：
+- 受影响的 Dramake 路线：

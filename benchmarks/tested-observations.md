@@ -1,46 +1,46 @@
-# Tested Observations
+# 匿名实测记录
 
-These are anonymized observations from local experiments on 2026-08-24/25. They are not universal rankings and do not contain private media, API keys, prediction IDs, or provider URLs.
+以下是 2026-08-24/25 本地实验的匿名观察，不是通用排名，不包含私有媒体、密钥、请求 ID 或执行入口 URL。
 
-## Fragmented short-block experiment
+## 碎片短段实验
 
-- 36 clips, approximately five seconds each.
-- 12 blocking, 8 severe, 3 minor, and 13 individually acceptable visual/physical assessments.
-- Severe or blocking rate: 20/36 = 55.6%.
-- Individually acceptable clips still lacked designed entry/exit action, axis, and motivated joins, so acceptance did not imply a coherent film.
+- 36 个约 5 秒片段；
+- 视觉/物理评估中，12 个阻断、8 个严重、3 个轻微、13 个单段可接受；
+- 严重或阻断比例：20/36 = 55.6%；
+- 即使单段可接受，若没有设计进入/退出动作、轴线和有动机的接缝，仍无法形成连贯影片。
 
-**Workflow change:** prefer longer story blocks when appropriate; require accepted state transfer and narrative cold-viewer QA.
+**流程改进：**适合时优先长剧情段；只有已验收状态可以向下传递；技术通过之外必须做冷观众剧情验收。
 
-## Thirty-second long-block experiment
+## 30 秒长段实验
 
-- Four completed 720×1280, 30fps, ~30.023s clips were available for review; the planned full 120-second film was not completed and is not claimed as validated.
-- Scene detection showed 2–4 internal changes per clip.
+- 可供检查的是 4 个已完成的 720×1280、30fps、约 30.023 秒片段；计划中的完整 120 秒影片未完成，因此不声称它已验证；
+- 场景检测显示每段出现 2–4 次内部变化。
 
-**Workflow change:** a 30-second request is a container for 4–6 time-coded beats and motivated internal cuts—not one vague action.
+**流程改进：**30 秒请求是 4–6 个带时间节拍和有动机内部切镜的容器，不是一条模糊动作指令。
 
-## Style experiment
+## 画风实验
 
-- “soft fantasy,” “storybook,” “rounder cute proportions,” and similar medium language produced animation/CG drift.
-- “live-action hybrid realism,” real fur, practical wardrobe, real-scale interiors, photographic lenses, and explicit negative media constraints produced more realistic materials.
+- “柔和奇幻”“绘本”“更圆更可爱”等介质词容易产生动画/CG 漂移；
+- “真人混合写实”、真实毛发、实际服装、真实尺度室内、摄影镜头语言和明确负面介质约束，更容易保留真实材质。
 
-**Workflow change:** put cuteness in performance and feline behavior, never in animated-render vocabulary unless animation is explicitly desired.
+**流程改进：**未明确选择动画时，把可爱放进表演、物种行为、尺度和节奏，不放进动画渲染词汇。
 
-## Tail-frame chaining
+## 尾帧串联
 
-- An accepted tail frame improved roof/light/yarn-direction continuity at the next opening.
-- Later in the same long block, a cat adopted prolonged human-like posture and a short cape expanded into a sweater-like garment.
+- 已验收尾帧改善了下一段开头的屋顶、光线和毛线方向连续性；
+- 同一长段后部仍出现猫长时间人类式站姿、短斗篷扩成毛衣等漂移。
 
-**Workflow change:** use accepted tail state plus canonical identity/material anchor and re-anchor regularly; a tail frame cannot guarantee the whole future block.
+**流程改进：**同时使用已验收尾部状态和长期身份/材质母版，并定期重新锚定；尾帧不能保证整段未来状态。
 
-## Native audio concatenation
+## 原生音频拼接
 
-- Twenty short native-audio units had integrated loudness spanning -25.83 to -16.93 LUFS, a difference of 8.9 LU.
-- Some half-second boundary RMS changes exceeded 30 dB, with one observed around 40 dB.
+- 20 个原生音频短段的综合响度为 -25.83 至 -16.93 LUFS，相差 8.9 LU；
+- 部分 0.5 秒边界 RMS 变化超过 30 dB，曾观察到约 40 dB。
 
-**Workflow change:** preserve useful native dialogue/Foley, but rebuild continuous ambience, score, loudness, and J/L bridges in post.
+**流程改进：**保留有用的原生对白/拟音，但在后期重建连续环境、音乐结构、响度和 J/L 声音桥。
 
-## Narrative versus technical QA
+## 剧情验收与技术验收
 
-A technically improved cut still failed a cold-viewer test: the causal story, pet role, setup, and ending were unclear.
+一版技术明显改善的粗剪仍未通过冷观众测试：因果、主角作用、铺垫和结局均不清楚。
 
-**Workflow change:** narrative comprehension is an independent P0 gate. Technical approval cannot promote an unreadable story.
+**流程改进：**剧情可懂性是独立 P0 门禁。技术通过不能让看不懂的故事进入正式成片。

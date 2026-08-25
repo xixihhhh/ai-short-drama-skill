@@ -1,2 +1,0 @@
-block_id,status,accepted_parent_clip,location,time_weather,axis_screen_direction,character_identity,wardrobe_or_surface,pose_action,prop_state,wetness_damage,light_direction,audio_in,audio_out,physical_contact_points,entry_state,exit_state,tail_frame,notes
-B01,planned,,example interior,day,subject moves left-to-right,canonical master,fixed approved construction,crouched beside box,box closed,dry,window camera-left,room tone,room tone + contact sound,hand paw or tool to box lid,subject sees closed box,subject begins opening lid,,replace example row

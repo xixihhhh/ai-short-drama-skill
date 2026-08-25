@@ -1,0 +1,68 @@
+# Story and Pacing
+
+## Extract filmable information from text
+
+Record characters and relationships, what each person knows, location/timeline, goals, obstacles, secrets, props, rules, plants, reversals, and ending. Convert internal explanation into action, reaction, eyeline, space, sound, or choice.
+
+## Story contract
+
+Define one audience promise, a 0–3s hook, protagonist-specific motive, visible goal and obstacle, escalating attempts, a choice that changes state, a planted payoff/reversal, and a final emotional/comic/suspense/character button.
+
+## Protagonist-specific premise filter
+
+A premise passes only if at least two are true:
+
+- it exploits the protagonist's identity, profession, anatomy, instinct, relationship, limitation, product function, or world rule;
+- a character-specific action, object, body detail, scale contrast, or behavior creates a memorable visual;
+- the protagonist makes a choice or action that changes the outcome;
+- the ending could not work with a generic mascot;
+- the premise can be understood or strongly questioned from a silent three-second image.
+
+## 60–120 second skeleton
+
+- 0–3s: impossible/cute visual or immediate consequence.
+- 3–12s: establish desire and rule through action.
+- 12–30s: first attempt and clear failure.
+- 30–55s: escalation, complication, or misunderstood intention.
+- 55–80s: coordinated choice or reveal with planted setup.
+- 80–105s: visual payoff and emotional relief.
+- final 3–8s: emotional release, reversal, comic button, suspense turn, product proof, or repeatable tag.
+
+Compress or expand proportionally. Do not repeat exposition to fill time.
+
+## Long-block beat design
+
+For each 20–30s block write 4–6 observable beats, usually every 4–7 seconds:
+
+`entry → attempt → resistance/reaction → escalation → decision → exit`
+
+Each beat specifies subject, action, contact, camera, reaction, audio, and resulting state. Add micro-actions after dialogue so the performer does not freeze.
+
+## Reversal rules
+
+- Track `plant → audience_assumption → reveal → reinterpretation → consequence`.
+- Plant the object, behavior, or misunderstanding before payoff.
+- The reveal must reinterpret earlier action, not introduce an unrelated fact.
+- Emotional progression must change through visible choices.
+- Surprise without clarity is confusion; warmth without conflict is sentimentality.
+
+## Information distribution
+
+Every scene changes at least one goal, fact, relationship, risk, location state, or decision. Do not repeat one point in different sentences. Break long dialogue into a line during action → listener reaction/misread → new information/counter → physical choice/exit.
+
+## Scene bridge
+
+A change in location, time, objective, or character knowledge needs a visible departure/arrival, door or travel action, incoming sound, match action, establishing shot, narration/post card, or another causal bridge. Never jump from an accident to an unrelated phone call at home without explanation.
+
+## Cold-viewer test
+
+Show the silent rough cut to someone who has not read the script. Ask:
+
+1. What did the protagonist want?
+2. What stopped them?
+3. What changed?
+4. Why did the ending happen?
+
+Any wrong answer is a P0 story problem, even if every frame looks good.
+
+Reject before generation when removing the protagonist does not change the result, motivation exists only in dialogue, a pet/product only decorates the scene, the conflict is contrived, a complex rule arrives late, simple conflict is padded by repeated dialogue, or the cold viewer cannot retell goal, obstacle, action, and outcome.

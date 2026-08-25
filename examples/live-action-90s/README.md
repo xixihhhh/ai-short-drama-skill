@@ -1,26 +1,29 @@
-# Example: The Unclaimed Dinner — 90s Live-Action Short
+# 示例：没人认领的晚餐——90 秒真人短剧
 
-Fictional production-manifest example. No generated output is claimed as a finished film.
+[English](README.en.md)
 
-## Hook and promise
+虚构制作清单示例，不宣称任何生成结果已是成片。
 
-At closing time, a restaurant server places a second bowl opposite the only customer—then hides when the door opens.
+## 钩子与承诺
 
-The silent question is immediate; the reveal must be planted through behavior and props rather than phone text or exposition.
+打烊时，服务员在唯一顾客对面放下第二只碗——门一响，她却躲了起来。
 
-## Story blocks
+无声观看也应立刻产生问题；答案通过行为与道具铺垫，不靠手机文字或解释台词。
 
-| Block | Duration | Entry → internal edit beats → exit |
+## 剧情段
+
+| 段 | 时长 | 进入 → 内部节拍 → 退出 |
 |---|---:|---|
-| B01 Question | 20–25s | empty restaurant → second bowl → customer reacts → server hides → bell rings and customer stands |
-| B02 Misread conflict | 20–30s | elderly stranger enters → customer blocks the seat → argument through action/reaction → server reveals a stored coat → customer recognizes it |
-| B03 Reinterpretation | 20–25s | planted family object connects them → both realize the absent relative arranged the meeting → choice to sit together → server serves one shared dish |
-| B04 Button | 8–12s | tense silence → one familiar eating habit matches the earlier setup → restrained relief, not explanatory dialogue |
+| B01 提问 | 20–25 秒 | 空餐厅 → 第二只碗 → 顾客反应 → 服务员躲起 → 门铃响、顾客站起 |
+| B02 误读冲突 | 20–30 秒 | 老人进入 → 顾客挡住座位 → 动作/反应冲突 → 服务员拿出寄存外套 → 顾客认出 |
+| B03 重解释 | 20–25 秒 | 家庭物件连接两人 → 理解缺席亲人的安排 → 选择同桌 → 服务员端上共享菜 |
+| B04 最后一记 | 8–12 秒 | 紧张沉默 → 熟悉的吃饭习惯呼应前文 → 克制释然，不用解释台词 |
 
-## Production locks
+## 锁定
 
-- Who knows which fact at each beat.
-- Seating geography, eyelines, screen direction, bowl count, coat ownership, door state, and light direction.
-- Exact dialogue capacity; no repeated explanation.
-- One room-tone bed and music cue across all blocks.
-- Cold viewer must infer why the second bowl was placed and what changed.
+- 每人在哪个节拍知道什么；
+- 座位、视线、屏幕方向、碗数量、外套归属、门状态和光向；
+- 导演意图与每段价值变化；
+- 对白容量，禁止反复解释；
+- 全场统一底噪和有连接的音乐结构；
+- 冷观众必须理解第二只碗为什么出现，以及关系发生了什么变化。

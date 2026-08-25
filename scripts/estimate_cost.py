@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Estimate request count and spend from ContinuityDirector's cost-plan CSV."""
+"""Estimate request count and spend from Dramake's cost-plan CSV."""
 
 import argparse
 import csv

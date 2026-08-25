@@ -1,17 +1,19 @@
-# Example: Night Shift Lost-and-Found — Unit Episode
+# 示例：夜班失物招领——单元剧
 
-The same night-shift staff solve one strange lost-item case per episode. Characters and workplace rules recur; every episode is self-contained and can change genre between warm, comic, and suspenseful.
+[English](README.en.md)
 
-## Episode contract
+同一组夜班员工每集解决一件奇怪失物。角色和工作规则复用，每集独立完结，可在温暖、喜剧和悬疑之间变化。
 
-- Cold open: the lost object creates a visually strange consequence in the first three seconds.
-- One employee follows policy; another follows a human clue. Their conflict complicates the search.
-- The object changes meaning after a planted relationship or motive is revealed.
-- Resolution changes one relationship and updates no more than one persistent season fact.
-- A repeatable closing ritual ends the episode.
+## 单集合同
 
-## Sample episode: The Umbrella That Never Got Wet
+- 前三秒由失物造成视觉异常；
+- 一人遵守规章，一人追随人情线索，冲突让问题升级；
+- 提前种下的关系或动机让物件含义反转；
+- 解决改变一段关系，并最多更新一项季线事实；
+- 以固定收尾仪式结束。
 
-During a storm, an old umbrella arrives completely dry. Security footage or screen text is not used. Its bent ferrule, a dry bus ticket plate to be composited later, and two contradictory visitors plant the mystery. The apparent owner wants the umbrella destroyed; the finder wants it returned. The reveal reinterprets the dry fabric: it was carried inside a coat to protect a handmade drawing stored in its shaft. The staff's choice reunites the drawing with its intended recipient, then the workplace's leaking ceiling finally makes the umbrella wet.
+## 样例：从未淋湿的雨伞
 
-The reveal must be supported by earlier visible handling, the umbrella's unusual weight, and the recipient's established habit. It may not introduce a new backstory in the final line.
+暴雨中，一把完全干燥的旧伞被送来。无需监控画面或屏幕文字；弯曲伞尖、可后期合成的干车票和两名说法矛盾的来客负责铺垫。看似主人要求毁掉雨伞，拾到者坚持归还。揭示重解释干燥伞布：雨伞一直被藏在外套里，用来保护伞柄内的手绘画。员工的选择让画回到收件人手里，最后漏雨的天花板终于把伞打湿。
+
+揭示必须由早期持伞方式、异常重量和收件人习惯支撑，不能最后一句临时发明背景。

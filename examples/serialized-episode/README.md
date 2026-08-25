@@ -1,20 +1,23 @@
-# Example: Ten Minutes Before Closing — Serialized Episode Contract
+# 示例：打烊前十分钟——连续短剧合同
 
-A neighborhood service counter closes in ten minutes. Every episode forces one ordinary person to choose between an immediate practical loss and a relationship they have avoided. The same staff learn more about one another across the season.
+[English](README.en.md)
 
-## Serial constraints
+社区服务柜台十分钟后打烊。每集迫使一个普通人在眼前实际损失与长期逃避的关系之间做选择；固定员工也在一季中逐渐了解彼此。
 
-- Each episode resolves one immediate choice.
-- Season state tracks relationships, knowledge, promises, debts, injuries, props, and consequences.
-- Staff may bring a visitor to the choice but cannot make it for them.
-- Any recurring mystery or unusual rule needs setup, visible evidence, limit, and consequence.
-- A cliffhanger advances one season question but never replaces the episode payoff.
+## 连续剧约束
 
-## Episode manifest requirements
+- 每集解决一个眼前选择；
+- 季线维护关系、知识、承诺、债务、伤势、道具与后果；
+- 员工可以把来客带到选择前，不能替对方做决定；
+- 重复谜团或特殊规则必须有铺垫、可见证据、限制和后果；
+- 悬念推进一项季线问题，但不能取代本集回报。
 
-- local goal and payoff;
-- season question advanced by one observable fact;
-- relationship before/after state;
-- recurring-rule setup → use → consequence;
-- motivation and relationship contact before intervention;
-- cold-viewer comprehension without previous-episode exposition dump.
+## 单集清单要求
+
+- 本集目标与回报；
+- 用一个可见事实推进季线问题；
+- 关系前后状态；
+- 重复规则的铺垫 → 使用 → 后果；
+- 干预前的动机与关系接触；
+- 不依赖前情解释也能通过冷观众测试；
+- 场景、镜头、声线与连续性父子关系清晰。

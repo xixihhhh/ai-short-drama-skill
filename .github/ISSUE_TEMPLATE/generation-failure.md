@@ -1,14 +1,15 @@
 ---
-name: Generation failure
-about: Share a reproducible pet-video failure and repair
-title: "[failure] "
+name: 生成失败案例
+about: 提交可复现的剧情、角色、镜头、物理、声音或拼接失败
+title: "[失败案例] "
 labels: failure-case
 ---
 
-- Model/provider/date/settings:
-- Format and block duration:
-- Sanitized prompt or manifest:
-- Observed timestamps:
-- Identity/style/physics/continuity/audio category:
-- Evidence you have rights to share:
-- Attempted repair and result:
+- 模型 / 执行入口 / 日期 / 设置：
+- 内容形态 / 画幅 / 时长：
+- 已脱敏提示词或清单：
+- 失败时间点：
+- 类别：剧情 / 导演 / 身份 / 声线 / 画风 / 物理 / 连续性 / 声音
+- 你有权分享的证据：
+- 本次只改变的一个变量：
+- 已尝试修复与结果：
