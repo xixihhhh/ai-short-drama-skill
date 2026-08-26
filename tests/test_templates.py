@@ -22,7 +22,7 @@ class RepositoryTests(unittest.TestCase):
     def test_evals_are_valid_and_sufficient(self):
         data = json.loads((ROOT / "evals/evals.json").read_text(encoding="utf-8"))
         self.assertEqual(data["skill_name"], "dramake")
-        self.assertGreaterEqual(len(data["evals"]), 16)
+        self.assertGreaterEqual(len(data["evals"]), 17)
         self.assertEqual(len({item["id"] for item in data["evals"]}), len(data["evals"]))
         for item in data["evals"]:
             self.assertTrue(item.get("prompt"))
@@ -48,11 +48,26 @@ class RepositoryTests(unittest.TestCase):
         for marker in ("Wan 3 reference-driven long dialogue blocks", "Audio 1 → Character A", "no non-diegetic background music", "mutually exclusive", "input-video duration plus output duration", "References express control intent, not a guarantee"):
             self.assertIn(marker, english)
 
+    def test_prop_physics_and_impact_workflow(self):
+        templates = ROOT / "skills/dramake/assets/templates"
+        prop_zh = (templates / "prop-bible.md").read_text(encoding="utf-8")
+        prop_en = (templates / "en/prop-bible.md").read_text(encoding="utf-8")
+        physics_zh = (ROOT / "skills/dramake/references/physics-and-failure-modes.md").read_text(encoding="utf-8")
+        camera_en = (ROOT / "skills/dramake/references/en/directing-camera-and-pacing.md").read_text(encoding="utf-8")
+        for marker in ("prop_id", "text_plate_id", "中性光", "GPT Image", "状态机", "后期跟踪合成"):
+            self.assertIn(marker, prop_zh)
+        for marker in ("prop_id", "text_plate_id", "neutral-light", "GPT Image", "State machine", "track and composite"):
+            self.assertIn(marker, prop_en)
+        for marker in ("physical_start_state", "control_input", "world_motion_vector", "screen_motion_vector", "头盔脱落", "成片仍向前"):
+            self.assertIn(marker, physics_zh)
+        for marker in ("Impact shots and sensory peaks", "near-lens occlusion", "camera jolt", "consequence/recovery", "Hero Insert"):
+            self.assertIn(marker, camera_en)
+
     def test_template_columns(self):
         path = ROOT / "skills/dramake/assets/templates/continuity-ledger.csv"
         with path.open(newline="", encoding="utf-8") as handle:
             headers = next(csv.reader(handle))
-        for required in ("block_id", "accepted_parent_clip", "character_identity", "entry_state", "exit_state", "physical_contact_points"):
+        for required in ("block_id", "accepted_parent_clip", "character_identity", "entry_state", "exit_state", "physical_contact_points", "canonical_prop_ids", "prop_state_ids", "text_plate_ids"):
             self.assertIn(required, headers)
 
     def test_directing_voice_and_audio_templates(self):
@@ -61,10 +76,14 @@ class RepositoryTests(unittest.TestCase):
             "block-manifest.csv": (
                 "scene_id", "parent_block_id", "aspect_ratio", "directorial_intention",
                 "internal_shots", "camera_motivation", "reference_authority", "voice_ids",
+                "canonical_prop_ids", "text_plate_ids", "physical_event_contract", "impact_role",
             ),
             "shot-plan.csv": (
                 "shot_id", "value_before", "value_after", "camera_start", "camera_end",
-                "subject_endpoint", "audio_in", "audio_out",
+                "subject_endpoint", "audio_in", "audio_out", "canonical_prop_ids",
+                "prop_state_ids", "text_plate_ids", "physical_start_state", "control_input",
+                "world_motion_vector", "screen_motion_vector", "physical_phase_sequence",
+                "physical_end_state", "impact_role", "impact_pattern",
             ),
             "voice-bible.csv": (
                 "voice_id", "character_id", "pitch_center_range", "speaking_rate",
@@ -170,6 +189,8 @@ class RepositoryTests(unittest.TestCase):
                 "physical_contact_points": "hand-door", "camera_start": "medium", "camera_path": "push",
                 "camera_motivation": "reveal decision", "camera_end": "close", "subject_endpoint": "stable look",
                 "transition_in": "action", "transition_out": "eyeline", "reanchor_required": "false",
+                "physical_event_contract": "hand approaches; grips; pulls; door opens; remains open",
+                "impact_role": "none",
             }
             self.write_template_rows(paths["block-manifest.csv"], templates / "block-manifest.csv", [
                 {**block_base, "block_id": "B01", "purpose": "hook", "value_before": "safe",
@@ -187,6 +208,10 @@ class RepositoryTests(unittest.TestCase):
                 "screen_direction": "left-to-right", "reference_authority": "identity=hero-master.png",
                 "dialogue_or_sound": "short line", "audio_in": "room tone", "audio_out": "room tone",
                 "physical_contact_points": "hand-door", "transition_in": "action", "transition_out": "eyeline",
+                "physical_start_state": "hand away; door closed", "control_input": "right hand pulls handle",
+                "world_motion_vector": "door rotates inward", "screen_motion_vector": "door edge moves right",
+                "physical_phase_sequence": "approach; grip; pull; rotate; open",
+                "physical_end_state": "door open; hand released", "impact_role": "none",
                 "status": "planned",
             }
             self.write_template_rows(paths["shot-plan.csv"], templates / "shot-plan.csv", [
@@ -286,6 +311,8 @@ class RepositoryTests(unittest.TestCase):
             self.assertNotEqual(result.returncode, 0)
             self.assertIn("unknown voice_id", result.stdout)
             self.assertIn("shot exceeds parent block duration", result.stdout)
+            self.assertIn("contact block requires physical_event_contract", result.stdout)
+            self.assertIn("contact shot requires physical_start_state", result.stdout)
 
 
 if __name__ == "__main__":

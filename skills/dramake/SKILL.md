@@ -1,10 +1,10 @@
 ---
 name: dramake
-description: 面向 Codex、Claude Code、WorkBuddy 和其他 Agent Skills 客户端，把一句话点子、故事梗概、小说、文案、剧本、分镜或已有素材，串成可理解、可衔接、可发布的 AI 短剧与 AI 短片。适用于抖音、红果短剧、视频号、快手、B站、YouTube 等横屏或竖屏内容；支持真人、独立短片、单元剧、连续剧、宠物、拟人奇幻、动画/漫剧、UGC 和品牌剧情。用于故事诊断、编剧、分镜、角色一致性、Wan 3、Seedance 2.5/2.0/Fast、MiniMax H3 等模型选路、15–30 秒长段、原生对白、参考音频、配音、付费预算、连续性剪辑、物理质检和冷观众验收，尤其用于避免碎片硬拼、随机跳切、站桩对白、身份/服装漂移、穿模、口型/声线不一致、音乐重启和剧情看不懂。
+description: 面向 Codex、Claude Code、WorkBuddy 和其他 Agent Skills 客户端，把一句话点子、故事梗概、小说、文案、剧本、分镜或已有素材，串成可理解、可衔接、可发布的 AI 短剧与 AI 短片。适用于抖音、红果短剧、视频号、快手、B站、YouTube 等横屏或竖屏内容；支持真人、独立短片、单元剧、连续剧、宠物、拟人奇幻、动画/漫剧、UGC 和品牌剧情。用于故事诊断、编剧、分镜、角色/重复道具一致性、Wan 3、Seedance 2.5/2.0/Fast、MiniMax H3 等模型选路、15–30 秒长段、原生对白、参考音频、配音、付费预算、连续性剪辑、物理质检和冷观众验收，尤其用于避免碎片硬拼、随机跳切、站桩对白、身份/服装/道具漂移、文字变形、运动方向错误、穿模、平淡观察镜头、口型/声线不一致、音乐重启和剧情看不懂。
 license: MIT
 metadata:
   author: Dramake contributors
-  version: 0.3.2
+  version: 0.3.3
   category: video-production
   tags: ai-video, text-to-video, short-drama, codex, claude-code, workbuddy, douyin, hongguo-drama, wan-3, seedance, minimax-h3
 ---
@@ -109,7 +109,9 @@ metadata:
 
 阅读 [content-profiles.md](references/content-profiles.md)，选择一个主配置，必要时叠加专项规则。
 
-为每个常驻人物/动物创建母版与 [character-bible.md](assets/templates/character-bible.md)，记录身份、解剖、脸/身体比例、标记、服装结构、允许行为、禁止变异和声音。重要场景、道具与产品采用同等母版。使用 [identity-voice-and-reference-locks.md](references/identity-voice-and-reference-locks.md) 为每个控制维度指定唯一权威参考，并为每个常驻说话人建立独立声线锚点。
+为每个常驻人物/动物创建母版与 [character-bible.md](assets/templates/character-bible.md)，记录身份、解剖、脸/身体比例、标记、服装结构、允许行为、禁止变异和声音。使用 [identity-voice-and-reference-locks.md](references/identity-voice-and-reference-locks.md) 为每个控制维度指定唯一权威参考，并为每个常驻说话人建立独立声线锚点。
+
+在分镜前盘点所有重复、跨场景、剧情关键或带文字/Logo 的道具，为每件建立 [prop-bible.md](assets/templates/prop-bible.md)。先用用户选择并验证的高保真图像生成/编辑路线（可包括 GPT Image 类模型）固定中性光多视角几何、尺度、材质、连接件与状态；精确文字另建 `text_plate_id`，默认后期跟踪合成。每个镜头引用同一 `prop_id + state_id + text_plate_id`，不得让秤、印章、头盔、手机或包装跨幕重新设计。
 
 真人项目锁定真实摄影、皮肤/毛发、实际服装材质、真实尺度、动机光和物理融合特效。动画项目锁定设计语法、线条、阴影、比例与运动语言。真人环境中的可爱宠物，把可爱放进耳朵、尾巴、眼神、爪子、节奏和尺度反差，不使用塑料 CGI 或游戏渲染词汇。阅读 [style-and-medium-locks.md](references/style-and-medium-locks.md)。
 
@@ -125,6 +127,9 @@ metadata:
 - 每个节拍一个主要动作或信息变化；
 - 需要时有 2–5 次有动机的内部切镜/视角变化；
 - 稳定的时间、地点和轴线范围；
+- 重复道具的 `prop_id/state_id/text_plate_id` 与唯一允许变化；
+- 精确物理事件的起点、控制输入、世界/屏幕向量、阶段序列和终态；
+- 钩子/碰撞/揭示/高潮需要时的单一 `impact_role` 与可见后果；
 - 末尾 0.5–0.8 秒仍有动作的剪辑余量；
 - 下一段能承接的明确退出动作。
 
@@ -196,6 +201,8 @@ metadata:
 
 要求顺序：`接近 → 接触 → 施力 → 响应 → 稳定结果`。
 
+“倒车、转向、脱落、碰撞”必须编译成 `physical_start_state → control_input → world/screen motion vectors → phase_sequence → physical_end_state`。一个生成段只承担一个高风险精确物理事件；复杂事件拆成建立、峰值和后果镜头。提示词意图正确但画面实际方向错误，仍判失败。
+
 拒绝身体/物体穿透、额外或缺失动物、不可能支撑、道具瞬移、手机方向反转、服装结构改变、无解释复位或因果不可见。
 
 ## 质检、修复与剪辑
@@ -214,6 +221,7 @@ metadata:
 - 原始文字摘要、生产简报与选定形态；
 - 剧情合同、节拍表和剧本；
 - 角色/画风/世界/道具/声线母版；
+- 重复道具圣经、文字图层母版与状态机；
 - 横竖屏画幅与安全区方案；
 - 生成段与剪辑节拍清单；
 - 可替换的模型、声音与执行入口路线；

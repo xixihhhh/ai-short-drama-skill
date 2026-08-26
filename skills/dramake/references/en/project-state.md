@@ -7,6 +7,7 @@ Keep a small set of human-readable source-of-truth files. Adapters and provider 
 - `production-brief.md`: source text, channel, aspect, duration, audience, budget, and rights;
 - `story-contract.md`: audience promise, goal, obstacle, choice, result, plant/payoff;
 - `character-world-bible.md`: character, voice, location, prop, and style canon;
+- `prop-bible.md`: geometry, material, text layers, and state machine for recurring/cross-scene/text props;
 - `block-manifest.csv`: scenes, generation blocks, edit beats, model and audio routes;
 - `continuity-ledger.csv`: accepted visual, audio, and physical state;
 - `cost-plan.csv` and `spend-ledger.csv`: dynamic price, authorization, and actual spend;

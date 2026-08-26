@@ -1,10 +1,10 @@
 ---
 name: dramake
-description: For Codex, Claude Code, WorkBuddy, and other Agent Skills clients, turn an idea, story outline, manuscript, copy, screenplay, storyboard, or existing media into a coherent, publishable AI short drama or short film. Use for landscape or portrait content on Douyin, Hongguo Short Drama, WeChat Channels, Kuaishou, Bilibili, YouTube, and other channels; live action, standalone shorts, anthology episodes, serialized drama, pets, anthropomorphic fantasy, animation/motion comics, UGC, and branded narratives. Covers story diagnosis, scripting, storyboarding, character consistency, Wan 3, Seedance 2.5/2.0/Fast, MiniMax H3, 15–30 second blocks, native dialogue, reference audio, dubbing, spend control, continuity editing, physical QA, and cold-viewer review. Especially useful for avoiding clip piles, random jumps, static talking heads, identity/wardrobe drift, penetration, voice drift, music restarts, and confusing plots.
+description: For Codex, Claude Code, WorkBuddy, and other Agent Skills clients, turn an idea, story outline, manuscript, copy, screenplay, storyboard, or existing media into a coherent, publishable AI short drama or short film. Use for landscape or portrait content on Douyin, Hongguo Short Drama, WeChat Channels, Kuaishou, Bilibili, YouTube, and other channels; live action, standalone shorts, anthology episodes, serialized drama, pets, anthropomorphic fantasy, animation/motion comics, UGC, and branded narratives. Covers story diagnosis, scripting, storyboarding, character and recurring-prop consistency, Wan 3, Seedance 2.5/2.0/Fast, MiniMax H3, 15–30 second blocks, native dialogue, reference audio, dubbing, spend control, continuity editing, physical QA, and cold-viewer review. Especially useful for avoiding clip piles, random jumps, static talking heads, identity/wardrobe/prop drift, malformed text, wrong motion direction, penetration, flat observational camera, voice drift, music restarts, and confusing plots.
 license: MIT
 metadata:
   author: Dramake contributors
-  version: 0.3.2
+  version: 0.3.3
   category: video-production
   tags: ai-video, text-to-video, short-drama, codex, claude-code, workbuddy, douyin, hongguo-drama, wan-3, seedance, minimax-h3
 ---
@@ -126,7 +126,9 @@ Reject the script before generation when:
 
 Read [content-profiles.md](references/en/content-profiles.md). Select one primary profile and any necessary specialist overlay; profiles change constraints, not the core continuity workflow.
 
-Create a canonical master and [character-bible.md](assets/templates/en/character-bible.md) for every recurring character or creature. Record identity, anatomy, face/body proportions, distinctive marks, wardrobe construction, allowed behaviors, forbidden mutations, and voice profile. For important locations and products, create equivalent world/prop masters. Use [identity-voice-and-reference-locks.md](references/en/identity-voice-and-reference-locks.md) so each controlled dimension has exactly one authoritative reference and each recurring speaker has an independent voice anchor.
+Create a canonical master and [character-bible.md](assets/templates/en/character-bible.md) for every recurring character or creature. Record identity, anatomy, face/body proportions, distinctive marks, wardrobe construction, allowed behaviors, forbidden mutations, and voice profile. Use [identity-voice-and-reference-locks.md](references/en/identity-voice-and-reference-locks.md) so each controlled dimension has exactly one authoritative reference and each recurring speaker has an independent voice anchor.
+
+Before storyboarding, inventory every recurring, cross-scene, plot-critical, or text/logo-bearing prop and create a [prop-bible.md](assets/templates/en/prop-bible.md). First use a user-selected, validated high-fidelity image generation/editing route—including GPT Image-class models when chosen—to lock neutral-light multi-view geometry, scale, material, attachments, and states. Give exact copy a separate `text_plate_id` and track-composite it in post by default. Every shot references the same `prop_id + state_id + text_plate_id`; a scale, stamp, helmet, phone, or package cannot be redesigned across scenes.
 
 For live-action work, anchor photography, real materials, practical wardrobe, real-scale environments, motivated lighting, and physically integrated VFX. For animation, explicitly lock the chosen design grammar, line/shading system, proportions, and motion language instead of applying live-action negatives.
 
@@ -146,6 +148,9 @@ Each long block needs:
 - one main action per beat;
 - 2–5 motivated internal cuts or camera changes when needed;
 - stable location/time/axis within the block;
+- recurring-prop `prop_id/state_id/text_plate_id` plus the one allowed change;
+- precise physical-event start, control input, world/screen vectors, phase sequence, and end state;
+- one `impact_role` and visible consequence when a hook/collision/reveal/climax needs a sensory peak;
 - an active 0.5–0.8s edit handle at the end;
 - a clear exit action that the next block can catch.
 
@@ -229,6 +234,8 @@ Required visible order:
 
 `approach → contact → force → object/body response → stable outcome`
 
+Compile “reverse, turn, detach, collide” into `physical_start_state → control_input → world/screen motion vectors → phase_sequence → physical_end_state`. Give one generation block only one high-risk precision event; split complex events into setup, peak, and consequence shots. A correct written intention with wrong observed movement is still a rejection.
+
 Reject any clip with body/object penetration, extra or missing animals, impossible support, teleporting props, reversed phone orientation, clothing topology changes, unexplained resets, or unreadable physical cause.
 
 ## QA, repair, and edit
@@ -250,6 +257,7 @@ Return or save:
 
 - production brief and selected format;
 - character/style/world bibles;
+- recurring prop bibles, exact-text plates, and prop state machines;
 - beat sheet and block manifest;
 - provider-neutral model and audio route;
 - budget/candidate plan;

@@ -15,6 +15,7 @@ CONTINUITY_REQUIRED = {
     "wardrobe_or_surface", "phone_or_prop_orientation", "voice_ids", "audio_in",
     "audio_out", "open_motion_vectors", "physical_contact_points", "entry_state",
     "exit_state", "observed_exit_state", "tail_frame", "reanchor_source",
+    "canonical_prop_ids", "prop_state_ids", "text_plate_ids",
 }
 BLOCK_REQUIRED = {
     "block_id", "scene_id", "parent_block_id", "aspect_ratio", "generated_duration_s",
@@ -23,7 +24,8 @@ BLOCK_REQUIRED = {
     "voice_ids", "audio_in", "audio_out", "physical_contact_points", "camera_start",
     "camera_path", "camera_motivation", "camera_end", "subject_endpoint",
     "transition_in", "transition_out", "reanchor_required", "candidate_status",
-    "observed_exit_state", "tail_frame",
+    "observed_exit_state", "tail_frame", "canonical_prop_ids", "text_plate_ids",
+    "physical_event_contract", "impact_role",
 }
 SHOT_REQUIRED = {
     "shot_id", "scene_id", "block_id", "start_s", "end_s", "narrative_job",
@@ -31,6 +33,9 @@ SHOT_REQUIRED = {
     "listener_or_world_reaction", "camera_start", "camera_path", "camera_motivation",
     "camera_end", "subject_endpoint", "screen_direction", "reference_authority",
     "audio_in", "audio_out", "physical_contact_points", "transition_in", "transition_out",
+    "canonical_prop_ids", "prop_state_ids", "text_plate_ids", "physical_start_state",
+    "control_input", "world_motion_vector", "screen_motion_vector",
+    "physical_phase_sequence", "physical_end_state", "impact_role", "impact_pattern",
 }
 VOICE_REQUIRED = {
     "voice_id", "character_id", "language", "pronunciation_list", "timbre",
@@ -210,6 +215,11 @@ def validate_blocks(path: Path) -> list[str]:
         ):
             if not row.get(field):
                 errors.append(f"{path}:{line}: empty {field}")
+        if row.get("physical_contact_points") and not row.get("physical_event_contract"):
+            errors.append(f"{path}:{line}: contact block requires physical_event_contract")
+        impact_role = row.get("impact_role", "")
+        if impact_role not in {"none", "hook", "collision", "reveal", "climax"}:
+            errors.append(f"{path}:{line}: invalid impact_role {impact_role!r}")
     errors += find_cycles(parents, path, "block parent")
     return errors
 
@@ -235,6 +245,18 @@ def validate_shots(path: Path) -> list[str]:
         ):
             if not row.get(field):
                 errors.append(f"{path}:{line}: empty {field}")
+        if row.get("physical_contact_points"):
+            for field in (
+                "physical_start_state", "control_input", "world_motion_vector",
+                "screen_motion_vector", "physical_phase_sequence", "physical_end_state",
+            ):
+                if not row.get(field):
+                    errors.append(f"{path}:{line}: contact shot requires {field}")
+        impact_role = row.get("impact_role", "")
+        if impact_role not in {"none", "hook", "collision", "reveal", "climax"}:
+            errors.append(f"{path}:{line}: invalid impact_role {impact_role!r}")
+        elif impact_role != "none" and not row.get("impact_pattern"):
+            errors.append(f"{path}:{line}: impact shot requires impact_pattern")
     return errors
 
 

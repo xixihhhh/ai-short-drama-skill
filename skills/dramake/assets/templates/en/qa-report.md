@@ -23,9 +23,19 @@
 - Live-action material consistency:
 - Reference-authority conflict:
 
+## Recurring props and text
+
+- `prop_id / state_id / text_plate_id`:
+- Start / action peak / end match prop canon:
+- Geometry, scale, part count, material, color, and attachments:
+- Owner, orientation, open/attached, intact/damaged state:
+- Exact text comes from the same post plate; no mutation:
+
 ## Physics and continuity
 
 - Contact → force → response → outcome:
+- Planned versus observed world and screen motion vectors:
+- Control input, phase sequence, and stable end state are visible frame by frame:
 - Penetration, support, inertia, orientation:
 - Parent tail / child start comparison:
 - Screen direction, phone/prop orientation, wetness/damage:
@@ -38,6 +48,13 @@
 - Pace / pitch / intensity / pronunciation:
 - Random music/noise/loudness jump:
 - Required J/L bridge:
+
+## Camera impact
+
+- `impact_role / impact_pattern`:
+- Setup, approach/acceleration, endpoint, camera response, and consequence/recovery are complete:
+- One primary stimulus without stacked random movement:
+- Impact increases sensation while preserving direction and physical readability:
 
 ## Decision
 

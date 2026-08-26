@@ -10,8 +10,8 @@ A director-level Agent Skill for everyday creators. Start from an idea, copy, fi
 
 <p>
   <a href="https://github.com/xixihhhh/ai-short-drama-skill/releases/latest"><img src="https://img.shields.io/github/v/release/xixihhhh/ai-short-drama-skill?style=flat-square&amp;color=7c3aed" alt="Release"></a>
-  <a href="skills/dramake/SKILL.en.md"><img src="https://img.shields.io/badge/Skill-v0.3.2-2563eb?style=flat-square" alt="Skill v0.3.2"></a>
-  <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-16%20passed-16a34a?style=flat-square" alt="16 tests passed"></a>
+  <a href="skills/dramake/SKILL.en.md"><img src="https://img.shields.io/badge/Skill-v0.3.3-2563eb?style=flat-square" alt="Skill v0.3.3"></a>
+  <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-17%20passed-16a34a?style=flat-square" alt="17 tests passed"></a>
   <a href="README.md"><img src="https://img.shields.io/badge/docs-中文%20%7C%20English-0891b2?style=flat-square" alt="Chinese and English"></a>
   <a href="#agent-compatibility"><img src="https://img.shields.io/badge/agents-Codex%20%7C%20Claude_Code%20%7C%20WorkBuddy-f97316?style=flat-square" alt="Codex, Claude Code, and WorkBuddy"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111827?style=flat-square" alt="MIT License"></a>
@@ -87,7 +87,7 @@ You install one `dramake` Skill. The following are cooperating capability module
 | **Story Doctor** | Repairs causality, motive, setup, reversal, and pace from an idea, fiction, or script | Story contract, beat sheet, cold-viewer questions |
 | **Visual Director** | Turns an emotional target into shot size, blocking, performance, camera, and cut motivation | Directing contract, storyboard, shot plan |
 | **Continuity Keeper** | Tracks parent state, axis, action phase, props, wetness, light, and scene boundaries | Continuity ledger, accepted tail, transition plan |
-| **Identity & Style Lock** | Locks people/animals/products, wardrobe topology, materials, and portrait/landscape visual rules | Character bible, medium canon, reference-authority matrix |
+| **Identity & Style Lock** | Locks people/animals/products, wardrobe topology, recurring props, text plates, materials, and portrait/landscape rules | Character/prop bibles, medium canon, reference-authority matrix |
 | **Voice & Audio Director** | Unifies speaker, voice, lip-sync route, ambience, music, and J/L cuts | Voice Bible, audio continuity, mix map |
 | **Model Router** | Routes Wan 3, Seedance, MiniMax H3, or other models by actual capability | Replaceable model cards and per-block route |
 | **Budget Guard** | Separates quality from spend permission and calculates candidates, retries, and caps | Cost plan, authorization mode, spend ledger |
@@ -100,7 +100,7 @@ You install one `dramake` Skill. The following are cooperating capability module
 | Stage | What Dramake does | Acceptance gate |
 |---|---|---|
 | **01 Story** | Extracts protagonist, desire, obstacle, escalation, plant, and payoff | A cold viewer can state the goal, action, and result |
-| **02 Canon** | Locks character, wardrobe, material, location, prop, voice, and medium | One authoritative reference per controlled dimension |
+| **02 Canon** | Locks character, wardrobe, material, location, recurring props, text plates, voice, and medium | One authoritative reference per controlled dimension |
 | **03 Direction** | Designs intention, value turn, beats, shot size, performance, and movement | Every shot can answer “why film it this way?” |
 | **04 Generation route** | Selects models by long duration, dialogue, keyframes, audio reference, edit, and budget | Quality tier and spend authorization remain separate |
 | **05 Evidence review** | Downloads real outputs and inspects frames, sound, physics, and continuity | A dependent block unlocks only after parent acceptance |
@@ -121,7 +121,10 @@ Long generation does not mean a static long take. A 20–30s block usually needs
 | One line ends and the actor freezes | Dialogue, concurrent action, listener reaction, micro-performance, and exit action |
 | Multiple clips feel randomly concatenated | Accepted tail state, axis, action phase, audio boundary, and motivated transition |
 | Face, coat, wardrobe, or prop drifts | Long-term canon + accepted transient state + reference-authority matrix |
+| A stamp, scale, helmet, or printed prop mutates across scenes | Neutral-light multi-view prop bible + `prop/state/text_plate` IDs + exact text composited in post |
 | Penetration, extra limbs, or a flipped phone | `approach → contact → force → response → stable outcome` physics gate |
+| Reverse moves forward, steering/detachment never occurs | World/screen motion vectors + visible phases + stable end state, accepted from frame evidence |
+| A collision stays in a flat distant observer shot | Setup, approach, near-lens occlusion/scale growth, impact endpoint, camera response, and consequence |
 | Voice, room tone, and music change every clip | Voice ID, reference audio, human A/B, continuous ambience, and unified mix |
 | “Premium” silently turns into unlimited spend | Separate model, execution surface, quality, authorization, and retry cap |
 
@@ -162,8 +165,8 @@ Random generated music is never concatenated directly into the final mix. Same-s
 
 | Verification | Current status |
 |---|---:|
-| Automated repository tests | **16 passed** |
-| Chinese/English document pairs | **29 passed** |
+| Automated repository tests | **17 passed** |
+| Chinese/English document pairs | **30 passed** |
 | Official Skill-format validation | **Passed** |
 | Complete valid production plan | **Accepted** |
 | Bad parent dependency, sparse long block, overlong shot, unknown voice | **Rejected** |
@@ -178,7 +181,7 @@ These checks validate workflow, file structure, and planning constraints—not u
 |---|---|
 | [Chinese Skill](skills/dramake/SKILL.md) · [English Skill](skills/dramake/SKILL.en.md) | Full workflow and trigger guidance |
 | [Directing, camera, and pacing](skills/dramake/references/en/directing-camera-and-pacing.md) | Intention, camera contract, internal cuts, and pacing curve |
-| [Identity, voice, and reference locks](skills/dramake/references/en/identity-voice-and-reference-locks.md) | Character, wardrobe, material, voice, and reference authority |
+| [Identity, voice, and reference locks](skills/dramake/references/en/identity-voice-and-reference-locks.md) · [Recurring prop bible](skills/dramake/assets/templates/en/prop-bible.md) | Character, wardrobe, recurring/text props, material, voice, and reference authority |
 | [Continuity and transitions](skills/dramake/references/en/continuity-and-transitions.md) | Parent state, tail frames, re-anchoring, and scene boundaries |
 | [Dialogue, dubbing, and mix](skills/dramake/references/en/audio-and-dubbing.md) | Native speech, reference audio, external dubbing, and sound continuity |
 | [Model routing](skills/dramake/references/en/model-router.md) · [Spend authorization](skills/dramake/references/en/authorization-and-batch.md) | Replaceable models, budget, batching, and stop conditions |

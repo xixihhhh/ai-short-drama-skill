@@ -96,6 +96,12 @@
       "prompt": "Use a Wan 3 reference-to-video route for one 30-second two-cat dialogue scene. Bind two character images, one motion/material video, and two clean voice references; generate native dialogue but no music. Also use exact first and last frames.",
       "expected_output": "Recognize a reference-driven long-dialogue route; bind every image/video/audio to one character or control role; keep multiple dialogue turns in one choreographed block; request dialogue, Foley, and ambience without non-diegetic music; reject simultaneous mixed R2V and first/last-frame locking on a route where they are exclusive; account for any input-video-plus-output duration cap; choose the priority mode and validate character, voice, lip sync, wording, motion, and audio continuity from real output.",
       "files": []
+    },
+    {
+      "id": 17,
+      "prompt": "Improve my next AI short after these failures: a recurring clock-in stamp and a weighing device change shape between scenes; their printed words mutate; a vehicle prompted to reverse and veer left keeps moving forward; a cat's helmet never visibly falls; and the collision is filmed as a flat distant observer shot. Do not regenerate the old video—turn this into a reusable production workflow.",
+      "expected_output": "Inventory recurring, cross-scene, plot-critical, and text-bearing props before storyboarding; create neutral-light multi-view canonical prop masters with stable prop/state/text-plate IDs through a user-selected high-fidelity image route; separate geometry from exact post-composited text; propagate accepted prop states across scenes; compile reverse/turn/detach/collision into visible start, control input, world and screen vectors, phase sequence, and end state; split overloaded physics; reject observed motion that contradicts the prompt; design a motivated impact shot with setup, approach, near-lens scale/occlusion, synchronized endpoint, camera response, and visible consequence; add frame-step prop, text, vector, attachment, and impact QA.",
+      "files": []
     }
   ]
 }

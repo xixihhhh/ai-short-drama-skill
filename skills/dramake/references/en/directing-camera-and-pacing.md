@@ -45,6 +45,14 @@ Use one primary camera move per shot and record:
 
 Movement cannot exist only to “make it dynamic.” If stillness serves the intention, stay still. Reduce camera complexity for contact-heavy, transformation, or multi-character action.
 
+## Impact shots and sensory peaks
+
+Coherence does not require keeping the audience at an observational distance. Assign a small number of `impact_role` shots to hooks, collisions, reveals, or climaxes so the viewer feels speed, scale, sudden proximity, viewpoint imbalance, or sonic impact. Keep ordinary coverage readable so the peak has contrast.
+
+Choreograph an impact shot as `setup → acceleration/approach → near-lens occlusion or rapid scale growth → impact endpoint → motivated camera response → consequence/recovery`. “Hit the screen” should not ask the subject to penetrate the lens. Move the subject toward camera on a defined vector, briefly occlude most of frame, synchronize the contact point with a cut/Foley and a camera jolt aligned to force, then show consequences for subject and environment. Choose one primary stimulus—fast push, low head-on approach, subjective POV, foreground wipe, whip follow, momentary defocus, impact freeze/cut-to-black, or sound vacuum then hit—instead of stacking all of them.
+
+Impact must serve the story and preserve physical readability. When contact, direction, or anatomy is already fragile, isolate the peak as a shorter Hero Insert with clear setup and consequence shots around it. Never use unmotivated shake, random zoom, or constant large camera motion to hide an action that did not occur.
+
 ## Internal-shot budget
 
 Conservative starting hypotheses, to be validated per model/surface:
@@ -79,4 +87,4 @@ Default output-sourced chain depth to 2. Relax only after repeated validation on
 
 ## Acceptance
 
-Can the intention be stated in one sentence? Does every craft choice serve it? Is performance visible behavior? Are camera and light motivated? Does the shot match the project's directorial voice? Is complexity low enough to preserve faces, hands, text, props, and contact? Simplify or rewrite every failed answer.
+Can the intention be stated in one sentence? Does every craft choice serve it? Is performance visible behavior? Are camera and light motivated? Does a key sequence have a designed sensory peak instead of constant eye-level observation, and is its consequence visible? Does the shot match the project's directorial voice? Is complexity low enough to preserve faces, hands, text, props, and contact? Simplify or rewrite every failed answer.

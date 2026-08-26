@@ -15,6 +15,10 @@
 - Audience and emotional promise:
 - Protagonists/subjects and reference rights:
 - Human characters, if any:
+- Recurring / cross-scene / plot-critical props:
+- Text/number/logo props and post-layer strategy:
+- High-risk physical events (reverse/turn/detach/collision):
+- Key sensory peak / `impact_role`:
 - 0–3s visual hook:
 - Protagonist-specific motivation:
 - Goal / obstacle / escalation / payoff:
@@ -61,3 +65,16 @@
 - Subtext and visible carrier:
 - One-sentence directorial intention:
 - One reason connecting shot size / camera / light / performance / sound:
+- Impact structure (setup → approach → endpoint → camera response → consequence):
+- Primary stimulus and excluded effects:
+
+## Prop and Physics Contract
+
+- `prop_id / state_id / text_plate_id`:
+- Neutral-light multi-view masters and scale reference:
+- The one allowed prop-state change in this shot:
+- `physical_start_state`:
+- `control_input`:
+- `world_motion_vector / screen_motion_vector`:
+- `phase_sequence`:
+- `physical_end_state`:

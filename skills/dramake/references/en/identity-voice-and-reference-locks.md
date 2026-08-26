@@ -21,6 +21,14 @@ Record identity ID and master media; face/eyes/hair/coat map/proportions/scale; 
 
 Every block uses canon plus current accepted state. A tail frame alone propagates drift.
 
+## Recurring props and text masters
+
+Before storyboarding, inventory every prop that appears more than once, crosses scenes, drives a key action, or carries text/logo. Create a [prop-bible.md](../../assets/templates/en/prop-bible.md) and unique `prop_id`. Use a user-selected, validated high-fidelity image model—such as a GPT Image-class generation/editing route—to make neutral-light, low-distortion front/back/side/top/three-quarter masters. Lock scale, geometry, part count, material, color, attachments, and allowed states. A scale, stamp, phone, package, helmet, tool, or key must not be redesigned in each scene.
+
+Give text-bearing props two authorities: prop geometry canon controls shape, motion, occlusion, and light; `text_plate_id` controls exact copy, numbers, logo, font, and layout. Save exact text as a transparent PNG/vector and track-composite it in post by default instead of asking the video model to redraw it every frame. Even when an image model renders text reliably, approve one static text master first and use it as a texture or post layer—never let downstream shots rewrite it freely.
+
+At every appearance, record `prop_id + state_id + text_plate_id`, owner, orientation, open/attached state, intact/damaged state, wetness/dirt, and the only intended change from the previous state. Compare start, action peak, and end against authoritative views. A drifted prop cannot become the next reference.
+
 ## Voice lock
 
 For each recurring speaker, separately store:

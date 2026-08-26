@@ -2,6 +2,14 @@
 
 [简体中文](CHANGELOG.md)
 
+## 0.3.3 - 2026-08-26
+
+- Added a recurring/cross-scene/text prop bible: lock multi-view geometry, scale, material, and state with a validated high-fidelity image route, then carry `prop_id/state_id/text_plate_id` through storyboard, generation, and acceptance.
+- Separated exact text from prop geometry and defaulted to one tracked transparent PNG/vector plate in post, preventing stamps, scales, and packages from changing shape or copy across scenes.
+- Compiled reversing, steering, detachment, and collision into start state, control input, world/screen vectors, phase sequence, and stable outcome; reject any pixel motion that contradicts the plan.
+- Added an impact-shot structure and Hero Insert route for motivated near-lens occlusion, scale growth, camera response, synchronized sound, and visible consequence at hooks/collisions/climaxes.
+- Expanded continuity, block, shot, and QA templates; the validator rejects contact plans without a physical-event contract or impact shots without an impact pattern.
+
 ## 0.3.2 - 2026-08-25
 
 - Added an optional high-density 60–120s Douyin pacing preset: conflict by 3 seconds, an immediate objective by 10 seconds, and 18–24 effective beats per 90 seconds.

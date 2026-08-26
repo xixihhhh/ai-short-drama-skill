@@ -44,3 +44,11 @@ These are anonymized observations from local experiments on 2026-08-24/25. They 
 A technically improved cut still failed a cold-viewer test: the causal story, protagonist role, setup, and ending were unclear.
 
 **Workflow change:** narrative comprehension is an independent P0 gate. Technical approval cannot promote an unreadable story.
+
+## Recurring props, physical action, and impact shots
+
+- In one finished-cut review, recurring stamp/measurement props changed geometry between blocks and their printed copy mutated.
+- The prompt requested reversing, veering, and worn-object detachment, while observed pixels continued forward and never showed the key state change.
+- Story action was broadly coherent, but collisions and other peaks stayed in distant observer coverage without a sensory peak from scale, approach, endpoint, or consequence.
+
+**Workflow change:** lock recurring/text props and post text plates before storyboarding; compile key physics into start, control input, world/screen vector, visible phases, and end state, then accept observed pixels rather than prompt intent; reserve setup—approach—impact—camera response—consequence hero coverage for selected hooks, collisions, and climaxes.

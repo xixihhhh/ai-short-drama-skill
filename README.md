@@ -10,8 +10,8 @@
 
 <p>
   <a href="https://github.com/xixihhhh/ai-short-drama-skill/releases/latest"><img src="https://img.shields.io/github/v/release/xixihhhh/ai-short-drama-skill?style=flat-square&amp;color=7c3aed" alt="Release"></a>
-  <a href="skills/dramake/SKILL.md"><img src="https://img.shields.io/badge/Skill-v0.3.2-2563eb?style=flat-square" alt="Skill v0.3.2"></a>
-  <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-16%20passed-16a34a?style=flat-square" alt="16 tests passed"></a>
+  <a href="skills/dramake/SKILL.md"><img src="https://img.shields.io/badge/Skill-v0.3.3-2563eb?style=flat-square" alt="Skill v0.3.3"></a>
+  <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-17%20passed-16a34a?style=flat-square" alt="17 tests passed"></a>
   <a href="README.en.md"><img src="https://img.shields.io/badge/docs-中文%20%7C%20English-0891b2?style=flat-square" alt="Chinese and English"></a>
   <a href="#agent-compatibility"><img src="https://img.shields.io/badge/agents-Codex%20%7C%20Claude_Code%20%7C%20WorkBuddy-f97316?style=flat-square" alt="Codex, Claude Code, and WorkBuddy"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111827?style=flat-square" alt="MIT License"></a>
@@ -86,7 +86,7 @@ Dramake 不是新的视频模型，也不是绑定某个网站的生成平台。
 | **Story Doctor** | 从点子/小说/剧本中修因果、动机、铺垫、反转和节奏 | 剧情合同、节拍表、冷观众问题 |
 | **Visual Director** | 把情绪目标变成景别、调度、表演、运镜和剪辑动机 | 导演合同、分镜与镜头计划 |
 | **Continuity Keeper** | 维护父子段、轴线、动作阶段、道具、湿度、光线和场景边界 | 连续性账本、验收尾帧、转场方案 |
-| **Identity & Style Lock** | 锁人物/动物/产品、服装拓扑、材质和横竖屏视觉规则 | 角色圣经、画风母版、参考权威矩阵 |
+| **Identity & Style Lock** | 锁人物/动物/产品、服装拓扑、重复道具、文字图层、材质和横竖屏视觉规则 | 角色/道具圣经、画风母版、参考权威矩阵 |
 | **Voice & Audio Director** | 统一说话人、声线、口型路线、环境、音乐和 J/L cut | Voice Bible、音频连续性与混音图 |
 | **Model Router** | 在 Wan 3、Seedance、MiniMax H3 或其他模型间按能力选路 | 可替换模型卡与逐段生成路线 |
 | **Budget Guard** | 分离质量档与付费权限，计算候选、重试和上限 | 费用计划、授权模式、支出账本 |
@@ -99,7 +99,7 @@ Dramake 不是新的视频模型，也不是绑定某个网站的生成平台。
 | 阶段 | Dramake 做什么 | 通过条件 |
 |---|---|---|
 | **01 故事** | 从文字提取主角、欲望、阻碍、升级、铺垫与回报 | 冷观众能说清目标、行动与结果 |
-| **02 母版** | 锁定角色、服装、材质、场景、道具、声线与画风 | 每个维度只有一个权威参考 |
+| **02 母版** | 锁定角色、服装、材质、场景、重复道具、文字图层、声线与画风 | 每个维度只有一个权威参考 |
 | **03 导演设计** | 编排导演意图、价值变化、节拍、景别、表演和运镜 | 每个镜头都能回答“为什么这样拍” |
 | **04 生成路由** | 按长段、对白、首尾帧、参考音频、编辑和预算选模型 | 质量档与付费授权明确分离 |
 | **05 证据验收** | 下载真实素材，抽帧、听音、慢放检查物理和连续性 | 父段验收后才解锁依赖段 |
@@ -120,7 +120,10 @@ Dramake 不是新的视频模型，也不是绑定某个网站的生成平台。
 | 一句话说完后站着不动 | 台词、并行动作、听者反应、微表演与退出动作共同编排 |
 | 多段像随机素材硬拼 | 验收尾部状态、轴线、动作阶段、声音边界和有动机的转场 |
 | 人脸、毛色、服装和道具漂移 | 长期母版 + 短期验收状态 + 参考权威矩阵 |
+| 印章、秤、头盔或文字跨幕变形 | 中性光多视角道具圣经 + `prop/state/text_plate` ID + 精确文字后期合成 |
 | 穿模、额外肢体、手机翻面 | `接近 → 接触 → 施力 → 响应 → 稳定结果` 物理门禁 |
+| 倒车变前进、转向/脱落没发生 | 世界/屏幕运动向量 + 可见阶段 + 稳定终态，逐帧按实际画面验收 |
+| 碰撞镜头像远处平看 | 预备、逼近、近镜头遮挡/尺度骤增、冲击落点、机位反应和可见后果 |
 | 每段声线、底噪和音乐都不同 | Voice ID、参考音频、人工 A/B、连续环境和统一终混 |
 | 选了 Premium 就失控花钱 | 模型、执行入口、质量档、付费授权与重试上限分别记录 |
 
@@ -161,8 +164,8 @@ Dramake 可按场景选择原生对白、参考音频、外部配音/TTS、画�
 
 | 验证项 | 当前状态 |
 |---|---:|
-| 自动化仓库测试 | **16 项通过** |
-| 中英文文档对应 | **29 组通过** |
+| 自动化仓库测试 | **17 项通过** |
+| 中英文文档对应 | **30 组通过** |
 | Skill 官方格式校验 | **通过** |
 | 完整合法生产计划 | **可通过** |
 | 错误父子依赖、稀疏长段、越界镜头、未知声线 | **会被拒绝** |
@@ -177,7 +180,7 @@ Dramake 可按场景选择原生对白、参考音频、外部配音/TTS、画�
 |---|---|
 | [主 Skill](skills/dramake/SKILL.md) · [English Skill](skills/dramake/SKILL.en.md) | 完整工作流与触发说明 |
 | [导演、镜头与节奏](skills/dramake/references/directing-camera-and-pacing.md) | 导演意图、运镜合同、内部切镜和节奏曲线 |
-| [角色、声线与参考锁](skills/dramake/references/identity-voice-and-reference-locks.md) | 人物、服装、材质、声音与参考权威 |
+| [角色、声线与参考锁](skills/dramake/references/identity-voice-and-reference-locks.md) · [重复道具圣经](skills/dramake/assets/templates/prop-bible.md) | 人物、服装、重复/文字道具、材质、声音与参考权威 |
 | [连续性与转场](skills/dramake/references/continuity-and-transitions.md) | 父子状态、尾帧、重新锚定与场景边界 |
 | [对白、配音与混音](skills/dramake/references/audio-and-dubbing.md) | 原生对白、参考音频、外部配音和声音连续性 |
 | [模型路由](skills/dramake/references/model-router.md) · [费用授权](skills/dramake/references/authorization-and-batch.md) | 可替换模型、预算、批量和停止条件 |

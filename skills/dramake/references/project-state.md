@@ -7,6 +7,7 @@
 - `production-brief.md`：输入文字、渠道、画幅、时长、受众、预算、权利；
 - `story-contract.md`：观众承诺、目标、阻碍、选择、结果、铺垫/回报；
 - `character-world-bible.md`：角色、声线、场景、道具与风格母版；
+- `prop-bible.md`：重复/跨场景/文字道具的几何、材质、图层和状态机；
 - `block-manifest.csv`：场景、生成段、剪辑节拍、模型与声音路线；
 - `continuity-ledger.csv`：已验收视觉/声音/物理状态；
 - `cost-plan.csv` 与 `spend-ledger.csv`：动态价格、授权、实际费用；

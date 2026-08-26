@@ -16,6 +16,21 @@ For every object-moving action record:
 
 The visible order is `approach → contact → force → response → outcome`.
 
+## Visible physical-event contract
+
+“Reverse,” “veer left,” “the helmet falls,” and “collide” are intentions, not filmable directions. For every key physical event define:
+
+- `physical_start_state`: starting position/pose of subject, prop, vehicle, and attachment;
+- `control_input`: actor/body part, steering wheel, pedal, rope, button, or external force that starts it;
+- `world_motion_vector`: direction relative to road, gravity, and set;
+- `screen_motion_vector`: left/right/toward/away relative to frame—never only “left”;
+- `phase_sequence`: prepare → initiate → redirect/detach → peak → visible response;
+- `physical_end_state`: final position, orientation, attached/detached state, damage, and owner.
+
+A reversing vehicle must visibly leave rest, displace backward relative to the background, and finish farther behind in set space; a turn defines both world and screen direction. A falling helmet must loosen, separate from the head, follow gravity or a plausible arc, strike a surface, and remain in the new location. It cannot disappear or reset in the next shot.
+
+Give one generation block only one high-risk precision physics event. If a passage combines reversing, steering, collision, helmet detachment, and character reaction, split it into causally joined setup, peak, and consequence/reaction shots. Use a shorter hero block, motion reference, or local post repair where appropriate. If the prompt says reverse but the pixels move forward, reject it; described intent is not observed evidence.
+
 ## Human, creature, and object anatomy
 
 For humans, track handedness, joint limits, grip, gaze, balance, foot placement, body support, and object hand-offs. Avoid extra fingers, merged hands, reversed phones, and impossible body/object intersections.
@@ -45,3 +60,5 @@ If an animal must do precise work, redesign the mechanism: species-appropriate c
 ## Complexity budget
 
 Allow one precision contact challenge per block. Split multi-object manipulation into separate beats or shots. Use inserts and reaction shots to preserve clarity.
+
+Frame-step start, 25%, peak, 75%, and end. Compare observed world/screen motion vectors, attachment state, contact order, and stable outcome against the contract.
