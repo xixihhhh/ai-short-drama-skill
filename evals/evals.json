@@ -102,6 +102,24 @@
       "prompt": "Improve my next AI short after these failures: a recurring clock-in stamp and a weighing device change shape between scenes; their printed words mutate; a vehicle prompted to reverse and veer left keeps moving forward; a cat's helmet never visibly falls; and the collision is filmed as a flat distant observer shot. Do not regenerate the old video—turn this into a reusable production workflow.",
       "expected_output": "Inventory recurring, cross-scene, plot-critical, and text-bearing props before storyboarding; create neutral-light multi-view canonical prop masters with stable prop/state/text-plate IDs through a user-selected high-fidelity image route; separate geometry from exact post-composited text; propagate accepted prop states across scenes; compile reverse/turn/detach/collision into visible start, control input, world and screen vectors, phase sequence, and end state; split overloaded physics; reject observed motion that contradicts the prompt; design a motivated impact shot with setup, approach, near-lens scale/occlusion, synchronized endpoint, camera response, and visible consequence; add frame-step prop, text, vector, attachment, and impact QA.",
       "files": []
+    },
+    {
+      "id": 18,
+      "prompt": "Rewrite a 90-second two-cat buffet comedy. The old version is a chain of random food accidents, the restaurant is empty, and the promotion's final misunderstanding arrives without setup.",
+      "expected_output": "Build one macro causal spine from a naturally encountered promotion through misconception, objective, escalating choices, planted major reversal, consequence, and callback; make every local gag alter macro state; add staff, diners, and fixed reaction characters whose reactions follow visible causes; reject exposition dumps and a late invented rule.",
+      "files": []
+    },
+    {
+      "id": 19,
+      "prompt": "A salmon piece lands on the orange cat's head, but the cat watches it fly up and then asks where it went. Make the gag actually readable and funny without subtitles.",
+      "expected_output": "Create a gag-legibility contract with established prop count, a visible cause and trajectory in the cat's blind spot, locked eyeline/occlusion, audience information advantage, the cat searching while a partner suppresses laughter, a 0.6–1.0 second reaction/reveal hold, and a consequence that advances the main story; reject any take where the cat already saw the cause.",
+      "files": []
+    },
+    {
+      "id": 20,
+      "prompt": "Use a photoreal restaurant and real cat fur, but make the cats perform like expressive animated actors. A staff member explains the offer; in the failed clip the cat mouths the staff line, plates flip, food changes species, and the characters stand still.",
+      "expected_output": "Lock animated-actor hybrid performance with anthropomorphic poses, expression masters, anticipation, overshoot, settle, controlled squash/stretch, and at least three performance states while preserving photographic materials; keep plate side/count/content and food identity under prop physics; bind the staff line to one visible staff mouth or explicit PA source, keep non-speakers closed-mouth, and treat wrong speaker, teleportation, penetration, or count drift as P0.",
+      "files": []
     }
   ]
 }

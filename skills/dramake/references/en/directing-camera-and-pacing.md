@@ -79,6 +79,10 @@ A roughly 30-second continuously voiced scene cannot contain one line followed b
 
 Give speech a concurrent action, a listener reaction, and an exit. Maintain breathing, blinking, eye shifts, hand/paw contact, weight shifts, and restrained background life without stealing focus.
 
+In a 15–30 second comedy or anthropomorphic-pet block, require at least three distinguishable performance states, such as `confident anticipation → action out of control → feigned composure`, instead of stand-and-talk staging. Direct the character as an animated actor: anticipation before the action, overshoot and settle after it, with ears, tail, eyes, paws, center of gravity, and partner reactions carrying emotion. A photoreal world and real fur do not require ordinary cat locomotion.
+
+Give public spaces restrained but functional life. A restaurant should include staff, other diners, and 1–3 fixed reaction characters. They observe the cause first, then glance, suppress laughter, step back, offer a napkin, or exchange a look. Their reactions clarify and amplify the protagonist's predicament; they must not occur before the cause, become random laughter, or replace the protagonist's action.
+
 ## Scene boundary
 
 Continue from accepted parent state inside one scene. A new location, time, or core spatial relationship is a scene boundary: use a motivated transition and re-anchor from character and world canon rather than treating it as seamless extension.

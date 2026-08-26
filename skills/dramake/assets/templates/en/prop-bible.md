@@ -16,6 +16,8 @@ Create this file and canonical masters before storyboarding or video generation 
 - Front / back / left / right / top / three-quarter masters:
 - Scale reference and key dimensions:
 - Silhouette, proportions, thickness, and part count:
+- Exact count and contents (plate count, food identity/count, inside/outside container):
+- Front/back/top orientation marks and pickup side:
 - Material, color, reflection, wear, and seams:
 - Moving parts, hinges, buttons, lids, straps, and attachment method:
 - Forbidden changes:
@@ -35,9 +37,9 @@ Store geometry canon separately from the text layer. Let the video model handle 
 
 ## State machine
 
-| state_id | owner/location | orientation | open/attached | intact/damaged | wet/dirty | text plate | allowed next states |
-|---|---|---|---|---|---|---|---|
-| P0 |  |  |  |  |  |  |  |
+| state_id | owner/location | exact count/contents | orientation/pickup side | open/attached | intact/damaged | wet/dirty | text plate | one allowed change | allowed next states |
+|---|---|---|---|---|---|---|---|---|---|
+| P0 |  |  |  |  |  |  |  |  |  |
 
 ## Contact and physics
 
@@ -50,6 +52,7 @@ Store geometry canon separately from the text layer. Let the video model handle 
 ## Before each use
 
 - `prop_id` / `state_id` / `text_plate_id` referenced by this shot:
+- Exact count, contents, and pickup side at start / peak / end:
 - The one allowed change from the last accepted state:
 - Scene style or malformed text that must not transfer:
 - Canon views to compare at start, action peak, and end:

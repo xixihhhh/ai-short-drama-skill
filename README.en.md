@@ -10,8 +10,8 @@ A director-level Agent Skill for everyday creators. Start from an idea, copy, fi
 
 <p>
   <a href="https://github.com/xixihhhh/ai-short-drama-skill/releases/latest"><img src="https://img.shields.io/github/v/release/xixihhhh/ai-short-drama-skill?style=flat-square&amp;color=7c3aed" alt="Release"></a>
-  <a href="skills/dramake/SKILL.en.md"><img src="https://img.shields.io/badge/Skill-v0.3.3-2563eb?style=flat-square" alt="Skill v0.3.3"></a>
-  <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-17%20passed-16a34a?style=flat-square" alt="17 tests passed"></a>
+  <a href="skills/dramake/SKILL.en.md"><img src="https://img.shields.io/badge/Skill-v0.4.0-2563eb?style=flat-square" alt="Skill v0.4.0"></a>
+  <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-18%20passed-16a34a?style=flat-square" alt="18 tests passed"></a>
   <a href="README.md"><img src="https://img.shields.io/badge/docs-中文%20%7C%20English-0891b2?style=flat-square" alt="Chinese and English"></a>
   <a href="#agent-compatibility"><img src="https://img.shields.io/badge/agents-Codex%20%7C%20Claude_Code%20%7C%20WorkBuddy-f97316?style=flat-square" alt="Codex, Claude Code, and WorkBuddy"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111827?style=flat-square" alt="MIT License"></a>
@@ -125,6 +125,8 @@ Long generation does not mean a static long take. A 20–30s block usually needs
 | Penetration, extra limbs, or a flipped phone | `approach → contact → force → response → stable outcome` physics gate |
 | Reverse moves forward, steering/detachment never occurs | World/screen motion vectors + visible phases + stable end state, accepted from frame evidence |
 | A collision stays in a flat distant observer shot | Setup, approach, near-lens occlusion/scale growth, impact endpoint, camera response, and consequence |
+| A gag needs dialogue and the cats only stand and talk | Macro reversal, gag-legibility contract, sightline information gap, animated-actor performance, and reaction hold |
+| A cat mouths the staff member's line | One speaker, visible mouth owner, closed-mouth non-speakers, and an explicit PA source per line |
 | Voice, room tone, and music change every clip | Voice ID, reference audio, human A/B, continuous ambience, and unified mix |
 | “Premium” silently turns into unlimited spend | Separate model, execution surface, quality, authorization, and retry cap |
 
@@ -165,8 +167,8 @@ Random generated music is never concatenated directly into the final mix. Same-s
 
 | Verification | Current status |
 |---|---:|
-| Automated repository tests | **17 passed** |
-| Chinese/English document pairs | **30 passed** |
+| Automated repository tests | **18 passed** |
+| Chinese/English document pairs | **31 passed** |
 | Official Skill-format validation | **Passed** |
 | Complete valid production plan | **Accepted** |
 | Bad parent dependency, sparse long block, overlong shot, unknown voice | **Rejected** |
@@ -181,6 +183,7 @@ These checks validate workflow, file structure, and planning constraints—not u
 |---|---|
 | [Chinese Skill](skills/dramake/SKILL.md) · [English Skill](skills/dramake/SKILL.en.md) | Full workflow and trigger guidance |
 | [Directing, camera, and pacing](skills/dramake/references/en/directing-camera-and-pacing.md) | Intention, camera contract, internal cuts, and pacing curve |
+| [Comedy legibility and animated performance](skills/dramake/references/en/comedy-and-animated-performance.md) | Macro reversal, information-gap gags, reaction holds, anthropomorphic acting, and physics boundaries |
 | [Identity, voice, and reference locks](skills/dramake/references/en/identity-voice-and-reference-locks.md) · [Recurring prop bible](skills/dramake/assets/templates/en/prop-bible.md) | Character, wardrobe, recurring/text props, material, voice, and reference authority |
 | [Continuity and transitions](skills/dramake/references/en/continuity-and-transitions.md) | Parent state, tail frames, re-anchoring, and scene boundaries |
 | [Dialogue, dubbing, and mix](skills/dramake/references/en/audio-and-dubbing.md) | Native speech, reference audio, external dubbing, and sound continuity |

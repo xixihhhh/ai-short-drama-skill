@@ -18,6 +18,13 @@
 3. **Physics/continuity:** contact, force, response, axis, direction, props, state, and joins are credible.
 4. **Audio:** line, speaker, voice, lip sync, loudness, ambience, music, and bridges remain coherent.
 
+Comedy, cute-animal, and animated-performance work adds two gates:
+
+5. **Gag legibility:** muted viewing still exposes the normal state, visible cause, audience advantage, character misread, reaction hold, reveal, and macro consequence.
+6. **Performance:** a 15–30 second block has at least three distinguishable states; action includes anticipation, peak, reaction, and settle; background reaction follows the cause.
+
+Treat a gag that works only because dialogue says “where is my food,” because a crowd suddenly laughs, or because the viewer must guess the object path/occlusion as a P0 story/performance failure. Staff dialogue mouthed by a cat, simultaneous speaker mouths, or an announcement without a source is also P0.
+
 - **P0:** story incomprehensible, wrong identity, severe anatomy/penetration, missing required action/dialogue, privacy/safety problem. Reject or regenerate.
 - **P1:** visible continuity/style/audio failure that harms viewing. Repair or bridge before final.
 - **P2:** polish issue. Fix in edit when possible.
@@ -63,3 +70,5 @@ Change one causal variable per retry whenever possible. Define the maximum candi
 5. Mobile speaker: are first words and quiet reactions audible?
 
 Technical approval never overrides cold-viewer failure.
+
+For comedy also ask: what visible action caused the event, what does the audience know that the character does not, on which frame does the reveal land, and how does the gag advance the major reversal? If these cannot be answered, rewrite the gag contract before rerolling.

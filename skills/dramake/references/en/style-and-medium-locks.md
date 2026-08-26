@@ -12,7 +12,13 @@ Choose the medium before prompting motion. A style lock defines what the image i
 
 ## Live-action creature or pet hybrid
 
-The desired medium is photographed reality with slightly amplified animal performance—not animated rendering composited into reality.
+Lock one performance mode and do not switch between blocks:
+
+- `natural_photographic`: a photographed real animal with ordinary species capability; cuteness comes from timing and behavior;
+- `heightened_realism`: real animal anatomy and fur with clearer anthropomorphic eyelines, timing, and simple poses;
+- `animated_actor_hybrid`: photoreal environment, fur, wardrobe, and props, while the animal performs like an animated actor through anthropomorphic stance, paw gestures, expressions, anticipation, overshoot, settle, and controlled 5–12% squash/stretch.
+
+The hybrid is not anime rendering or plastic CGI. Silhouette may exaggerate briefly for comedy, but fur strands, seams, lighting, ground contact, prop weight, and world scale remain photographic. Animation changes performance amplitude; it never permits teleportation, penetration, count drift, spontaneous substitution, or impossible force response.
 
 ## Positive anchors
 
@@ -26,7 +32,7 @@ The desired medium is photographed reality with slightly amplified animal perfor
 
 ### Negative medium constraints
 
-Avoid: illustration, anime, manga, storybook art, children's animation, Pixar-like, Disney-like, 3D game, game cinematic, CGI cat character, plastic fur, toy, doll, plush, clay, chibi, miniature set, outlines, cel shading, oversaturation.
+Avoid: fully illustrated or anime-rendered worlds, manga, storybook art, children's-animation backgrounds, 3D games, game cinematics, plastic fur, toys, dolls, plush, clay, chibi proportion drift, miniature sets, outlines, cel shading, and oversaturation. When `animated_actor_hybrid` is selected, do not place animated performance itself in the negative prompt.
 
 Use trademarks only as negative shorthand when allowed by the provider; descriptive terms are safer.
 

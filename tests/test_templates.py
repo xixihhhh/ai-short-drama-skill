@@ -63,6 +63,14 @@ class RepositoryTests(unittest.TestCase):
         for marker in ("Impact shots and sensory peaks", "near-lens occlusion", "camera jolt", "consequence/recovery", "Hero Insert"):
             self.assertIn(marker, camera_en)
 
+    def test_comedy_legibility_and_animated_performance_workflow(self):
+        chinese = (ROOT / "skills/dramake/references/comedy-and-animated-performance.md").read_text(encoding="utf-8")
+        english = (ROOT / "skills/dramake/references/en/comedy-and-animated-performance.md").read_text(encoding="utf-8")
+        for marker in ("宏观因果链", "观众信息优势", "0.6–1.0 秒", "反应角色", "动画演员混合", "5%–12%", "说话人错配"):
+            self.assertIn(marker, chinese)
+        for marker in ("macro causal chain", "audience_advantage", "0.6–1.0 seconds", "reaction characters", "animated-actor hybrid", "5–12%", "speaker misbinding"):
+            self.assertIn(marker, english)
+
     def test_template_columns(self):
         path = ROOT / "skills/dramake/assets/templates/continuity-ledger.csv"
         with path.open(newline="", encoding="utf-8") as handle:
@@ -77,13 +85,18 @@ class RepositoryTests(unittest.TestCase):
                 "scene_id", "parent_block_id", "aspect_ratio", "directorial_intention",
                 "internal_shots", "camera_motivation", "reference_authority", "voice_ids",
                 "canonical_prop_ids", "text_plate_ids", "physical_event_contract", "impact_role",
+                "macro_goal_id", "macro_causal_contribution", "event_load_budget",
+                "comedy_contract_ids", "performance_states",
             ),
             "shot-plan.csv": (
                 "shot_id", "value_before", "value_after", "camera_start", "camera_end",
                 "subject_endpoint", "audio_in", "audio_out", "canonical_prop_ids",
                 "prop_state_ids", "text_plate_ids", "physical_start_state", "control_input",
                 "world_motion_vector", "screen_motion_vector", "physical_phase_sequence",
-                "physical_end_state", "impact_role", "impact_pattern",
+                "physical_end_state", "impact_role", "impact_pattern", "gag_setup",
+                "visible_cause", "audience_advantage", "reaction_hold", "payoff",
+                "story_consequence", "speaker_binding", "non_speaker_mouth_state",
+                "performance_exaggeration", "prop_count_state",
             ),
             "voice-bible.csv": (
                 "voice_id", "character_id", "pitch_center_range", "speaking_rate",
@@ -91,7 +104,8 @@ class RepositoryTests(unittest.TestCase):
             ),
             "audio-continuity.csv": (
                 "voice_id", "ambience_in", "ambience_out", "bgm_phrase_in",
-                "bgm_phrase_out", "reverb_tail", "loudness_target",
+                "bgm_phrase_out", "reverb_tail", "loudness_target", "source_type",
+                "visible_mouth_owner", "non_speaker_mouth_state", "turn_order",
             ),
         }
         for filename, required in required_by_file.items():
@@ -230,7 +244,8 @@ class RepositoryTests(unittest.TestCase):
                 "ambience_in": "room tone", "ambience_out": "room tone", "bgm_phrase_in": "cue-a",
                 "bgm_phrase_out": "cue-a", "sfx_sync_cue": "door latch", "reverb_tail": "small room",
                 "loudness_target": "-16 LUFS", "reference_audio_owner": "V1", "post_action": "mix",
-                "qa_status": "planned",
+                "qa_status": "planned", "source_type": "visible", "visible_mouth_owner": "HERO",
+                "non_speaker_mouth_state": "closed", "turn_order": "1",
             }
             self.write_template_rows(paths["audio-continuity.csv"], templates / "audio-continuity.csv", [
                 {**audio_base, "block_id": "B01"}, {**audio_base, "block_id": "B02"},

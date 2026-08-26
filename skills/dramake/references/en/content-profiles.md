@@ -15,7 +15,8 @@ Use for family, romance, workplace, suspense, comedy, social-topic, and emotiona
 
 - The animal must causally affect the outcome.
 - Use species-appropriate anatomy, senses, instincts, scale, contact, and locomotion.
-- For realistic/cute hybrids, keep materials photographic and put cuteness into timing and behavior.
+- Lock one of `natural_photographic`, `heightened_realism`, or `animated_actor_hybrid`, then define permitted stance, paw gestures, expression range, action amplitude, and deformation bounds.
+- In realistic/cute hybrids, keep the environment, fur, wardrobe, and props photographic. Animated-actor performance may exaggerate emotion and action but cannot break object count, contact, weight, or state continuity.
 - Track coat maps, eye color, body proportions, collar/wardrobe construction, animal count, and human-animal bond before intervention.
 
 ## Anthropomorphic creature or fantasy

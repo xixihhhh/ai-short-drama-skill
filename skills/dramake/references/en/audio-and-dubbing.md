@@ -29,6 +29,12 @@ Every line prompt should include:
 4. listener reaction;
 5. next state after the line.
 
+## Speaker and mouth binding
+
+For every line in a multi-character scene, record `speaker_id`, `source_type` (`visible`, `offscreen`, or `PA`), `visible_mouth_owner`, `non_speaker_mouth_state`, and `turn_order`. Visible dialogue has exactly one mouth owner. Other characters stay closed-mouth, in profile, back-facing, occluded, or out of focus while giving listener reactions. When staff explain a promotion, show that staff member speaking or bind the voice to an explicit visible PA/off-screen source; never let a cat mouth the staff line.
+
+Stage turns as `speaker action → line → closed-mouth listener reaction → next turn`, avoiding simultaneous mouth motion. Wrong-mouth speech, cross-bound voices, an unsourced announcement, or synchronized non-speaker mouths is P0. Regenerate or use a verifiable off-screen/reaction design; captions cannot repair it.
+
 ## Model-native speech
 
 Best when native performance and lip sync are reliable. Validate with listening and ASR:

@@ -21,6 +21,12 @@ Record identity ID and master media; face/eyes/hair/coat map/proportions/scale; 
 
 Every block uses canon plus current accepted state. A tail frame alone propagates drift.
 
+## Performance canon
+
+For cute-animal, comedy, and animated-performance characters, also lock `performance_mode`, degree of anthropomorphism, signature stance, eyeline rules, ear/tail/eye/paw expression library, anticipation, overshoot/settle, permitted squash/stretch range, and forbidden human anatomy or prop capability. Create at least five pose/expression masters: `neutral → expectant/confident → surprised/out of control → embarrassed/covering → triumphant/callback`. Downstream shots may amplify performance but cannot randomly fall back to ordinary pet behavior or switch to fully animated materials.
+
+For every featured gag, record what the protagonist can see, what occludes it, when the partner sees it, and who reacts first. Eyeline and information advantage are transient character state and must transfer across shots like wardrobe and props.
+
 ## Recurring props and text masters
 
 Before storyboarding, inventory every prop that appears more than once, crosses scenes, drives a key action, or carries text/logo. Create a [prop-bible.md](../../assets/templates/en/prop-bible.md) and unique `prop_id`. Use a user-selected, validated high-fidelity image model—such as a GPT Image-class generation/editing route—to make neutral-light, low-distortion front/back/side/top/three-quarter masters. Lock scale, geometry, part count, material, color, attachments, and allowed states. A scale, stamp, phone, package, helmet, tool, or key must not be redesigned in each scene.

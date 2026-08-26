@@ -31,6 +31,8 @@ Use 15–30 seconds when location, cast, style, and action can remain inside one
 
 Risks: late identity/style drift, anatomy accumulation, uncontrolled internal cuts, repeated dialogue, and a weak tail. Inspect the whole block, not only start/end.
 
+Enforce an event-load budget in long blocks: prefer one primary prop system, one high-risk physical chain, and one main comic/emotional payoff. A block may contain 4–6 internal beats, but should not combine several changing food identities, many speaker turns, precision tong work, a fall, a location change, and multiple prop-state mutations. When over budget, split setup, peak, and consequence blocks, using each accepted end state as the next entry state.
+
 ## When to shorten
 
 Use 4–15 seconds for:
@@ -47,3 +49,5 @@ Use 4–15 seconds for:
 The requested duration is not automatically the timeline duration. A 30-second output may contribute several accepted subranges; a 10-second generation may be cut to 4 seconds. Record `generated_duration`, `accepted_ranges`, and `edit_duration` separately.
 
 Never fill extra model duration with frozen actors. Add purposeful micro-actions and reactions, or generate a shorter block.
+
+For comedy, also record `macro_goal_id`, `macro_causal_contribution`, `event_load_budget`, `comedy_contract_ids`, and `performance_states`. Time-code the normal state, visible cause, protagonist eyeline, audience-visible information, partner/background reaction, reveal, and result hold. Do not rely on labels such as “funny” or “food flies onto the head.”

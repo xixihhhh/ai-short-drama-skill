@@ -8,6 +8,14 @@ Record characters and relationships, what each person knows, location/timeline, 
 
 Define one audience promise, a 0–3s hook, protagonist-specific motive, visible goal and obstacle, escalating attempts, a choice that changes state, a planted payoff/reversal, and a final emotional/comic/suspense/character button.
 
+## Macro spine before local gags
+
+For 60–120 second comedy, first state `inciting incident → misconception/desire → objective → active choice → escalating cost → major reversal → consequence/callback` in one line. Every local gag must change the protagonist's resources, information, relationship, risk, or distance from the goal. If removing a gag leaves macro state unchanged, it is a cute insert rather than story.
+
+Prefer an inciting incident the character experiences in motion: overhearing a restaurant announcement while passing, seeing the promotion, or stopping at a smell. Avoid opening with characters standing still through a full staff explanation. The major reversal must pay off an earlier visible or audible rule, not introduce a new promotion at the end.
+
+Write every featured gag as an acceptance contract: `normal state → visible cause → audience advantage → character misread → 0.6–1.0s reaction hold → reveal → macro consequence`. If food lands on a character's head from a blind spot, show the empty plate, the search, a partner suppressing laughter, then the reveal. If the food crossed the character's forward eyeline, a later search is illogical.
+
 ## Protagonist-specific premise filter
 
 A premise passes only if at least two are true:
@@ -81,3 +89,5 @@ Show the silent rough cut to someone who has not read the script. Ask:
 Any wrong answer is a P0 story problem, even if every frame looks good.
 
 Reject before generation when removing the protagonist does not change the result, motivation exists only in dialogue, a pet/product only decorates the scene, the conflict is contrived, a complex rule arrives late, simple conflict is padded by repeated dialogue, or the cold viewer cannot retell goal, obstacle, action, and outcome.
+
+Also reject a collection of unrelated micro-gags without one macro objective and reversal, a joke that depends on a character verbally explaining what disappeared or on crowd laughter, and any gag whose eyeline or occlusion shows the character already saw its cause.

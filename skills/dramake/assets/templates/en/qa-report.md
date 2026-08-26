@@ -10,11 +10,22 @@
 
 ## Narrative and directing
 
+- Macro spine: incident / misconception-desire / objective / choice / escalation / major reversal / consequence-callback:
+- This block's one contribution to `macro_goal_id`:
 - Entry, goal, obstacle, change, exit are visible:
 - Value change (before → after):
 - Directorial intention achieved:
 - Shot size / camera / light / performance / sound serve one intention:
 - Cold viewer result:
+
+## Gag and animated performance
+
+- Gag contract: normal state / visible cause / audience advantage / character misread / reaction hold / reveal / macro consequence:
+- Why protagonist eyeline and occlusion make the misread plausible:
+- When reaction characters observe and react:
+- Clear 0.6–1.0 second result hold:
+- `performance_mode` and three or more performance states:
+- Anticipation / peak / overshoot / settle complete:
 
 ## Identity and style
 
@@ -43,6 +54,8 @@
 ## Audio
 
 - Exact dialogue and speaker:
+- Per-line `source_type / visible_mouth_owner / non_speaker_mouth_state / turn_order`:
+- Staff / PA source is visible and no wrong-mouth speech:
 - Voice consistency:
 - Voice ID / human A-B:
 - Pace / pitch / intensity / pronunciation:

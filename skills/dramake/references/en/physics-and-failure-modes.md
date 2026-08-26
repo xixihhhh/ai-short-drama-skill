@@ -37,9 +37,15 @@ For humans, track handedness, joint limits, grip, gaze, balance, foot placement,
 
 For animals, use species-appropriate locomotion and manipulation. For machines/vehicles, show control input, traction, inertia, collision response, and mechanical constraints. For cloth, liquid, smoke, hair, and VFX, maintain source, flow direction, occlusion, and environmental response.
 
+## Animated exaggeration is not a physics error
+
+When `animated_actor_hybrid` is selected, permit brief anthropomorphic stance, exaggerated facial/ear/tail reaction, anticipation, overshoot, settle, and squash/stretch within the locked range. Exaggeration needs preparation and recovery while the character silhouette remains identifiable.
+
+The prop world still passes real-physics QA. Food cannot change identity or spring from a closed container, a plate cannot flip without a handoff, tongs cannot move an item before contact, counts cannot multiply, and a tail cannot grow a dispenser opening. Exaggerate how the character reacts, not how objects exist or move.
+
 ### Cat-specific overlay
 
-Use walk, run, crouch, stalk, jump, land, paw, bat, hook briefly with claws, bite, head-push, body-push, knead, squeeze through a truly open gap, and tail balance. Avoid prolonged bipedal stance, human wrists/fingers, precise tool grip, adult-style carrying, or unsupported heavy lifting.
+Use walk, run, crouch, stalk, jump, land, paw, bat, hook briefly with claws, bite, head-push, body-push, knead, squeeze through a truly open gap, and tail balance. In naturalistic modes avoid prolonged bipedal stance, human wrists/fingers, precise tool grip, adult-style carrying, or unsupported heavy lifting. In an explicitly locked animated-actor hybrid, brief bipedal performance is allowed only with visible support, weight, balance, and a designed entry/exit pose; it does not grant human fingers or unlimited strength.
 
 If an animal must do precise work, redesign the mechanism: species-appropriate control, bite-pull loop, weight-triggered pedal, magnet, pulley, rolling object, cooperative human, or explicit magic that moves the object while the animal triggers it.
 

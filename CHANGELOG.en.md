@@ -2,6 +2,14 @@
 
 [简体中文](CHANGELOG.md)
 
+## 0.4.0 - 2026-08-26
+
+- Added comedy-legibility and animated-performance guidance: 60–120 second work now establishes a macro causal spine and planted major reversal before local gags, and each gag must change macro state.
+- Required every featured gag to record normal state, visible cause, audience advantage, character misread, reaction hold, reveal, and consequence; invalid eyeline or occlusion fails acceptance.
+- Added a photoreal-world/real-fur plus animated-actor performance mode with pose/expression masters, anticipation, overshoot, settle, and controlled deformation while still rejecting penetration, teleportation, count drift, and content mutation.
+- Added background reaction characters, event-load budgets, and per-line speaker/mouth binding; a cat mouthing a staff line is now P0.
+- Expanded character, prop, block, shot, audio, and QA templates, with validator checks for comedy contracts and active-speaker fields.
+
 ## 0.3.3 - 2026-08-26
 
 - Added a recurring/cross-scene/text prop bible: lock multi-view geometry, scale, material, and state with a validated high-fidelity image route, then carry `prop_id/state_id/text_plate_id` through storyboard, generation, and acceptance.

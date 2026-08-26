@@ -10,8 +10,8 @@
 
 <p>
   <a href="https://github.com/xixihhhh/ai-short-drama-skill/releases/latest"><img src="https://img.shields.io/github/v/release/xixihhhh/ai-short-drama-skill?style=flat-square&amp;color=7c3aed" alt="Release"></a>
-  <a href="skills/dramake/SKILL.md"><img src="https://img.shields.io/badge/Skill-v0.3.3-2563eb?style=flat-square" alt="Skill v0.3.3"></a>
-  <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-17%20passed-16a34a?style=flat-square" alt="17 tests passed"></a>
+  <a href="skills/dramake/SKILL.md"><img src="https://img.shields.io/badge/Skill-v0.4.0-2563eb?style=flat-square" alt="Skill v0.4.0"></a>
+  <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-18%20passed-16a34a?style=flat-square" alt="18 tests passed"></a>
   <a href="README.en.md"><img src="https://img.shields.io/badge/docs-中文%20%7C%20English-0891b2?style=flat-square" alt="Chinese and English"></a>
   <a href="#agent-compatibility"><img src="https://img.shields.io/badge/agents-Codex%20%7C%20Claude_Code%20%7C%20WorkBuddy-f97316?style=flat-square" alt="Codex, Claude Code, and WorkBuddy"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111827?style=flat-square" alt="MIT License"></a>
@@ -124,6 +124,8 @@ Dramake 不是新的视频模型，也不是绑定某个网站的生成平台。
 | 穿模、额外肢体、手机翻面 | `接近 → 接触 → 施力 → 响应 → 稳定结果` 物理门禁 |
 | 倒车变前进、转向/脱落没发生 | 世界/屏幕运动向量 + 可见阶段 + 稳定终态，逐帧按实际画面验收 |
 | 碰撞镜头像远处平看 | 预备、逼近、近镜头遮挡/尺度骤增、冲击落点、机位反应和可见后果 |
+| 笑点靠台词解释、猫咪只会站桩 | 主线反转、笑点可读性合同、视线信息差、动画演员式表演和反应停顿 |
+| 工作人员的台词却由猫咪开口 | 每句唯一说话者、可见嘴型主体、非说话者闭嘴状态与明确广播来源 |
 | 每段声线、底噪和音乐都不同 | Voice ID、参考音频、人工 A/B、连续环境和统一终混 |
 | 选了 Premium 就失控花钱 | 模型、执行入口、质量档、付费授权与重试上限分别记录 |
 
@@ -164,8 +166,8 @@ Dramake 可按场景选择原生对白、参考音频、外部配音/TTS、画�
 
 | 验证项 | 当前状态 |
 |---|---:|
-| 自动化仓库测试 | **17 项通过** |
-| 中英文文档对应 | **30 组通过** |
+| 自动化仓库测试 | **18 项通过** |
+| 中英文文档对应 | **31 组通过** |
 | Skill 官方格式校验 | **通过** |
 | 完整合法生产计划 | **可通过** |
 | 错误父子依赖、稀疏长段、越界镜头、未知声线 | **会被拒绝** |
@@ -180,6 +182,7 @@ Dramake 可按场景选择原生对白、参考音频、外部配音/TTS、画�
 |---|---|
 | [主 Skill](skills/dramake/SKILL.md) · [English Skill](skills/dramake/SKILL.en.md) | 完整工作流与触发说明 |
 | [导演、镜头与节奏](skills/dramake/references/directing-camera-and-pacing.md) | 导演意图、运镜合同、内部切镜和节奏曲线 |
+| [喜剧可读性与动画化表演](skills/dramake/references/comedy-and-animated-performance.md) | 宏观反转、笑点信息差、反应停顿、拟人表演与物理边界 |
 | [角色、声线与参考锁](skills/dramake/references/identity-voice-and-reference-locks.md) · [重复道具圣经](skills/dramake/assets/templates/prop-bible.md) | 人物、服装、重复/文字道具、材质、声音与参考权威 |
 | [连续性与转场](skills/dramake/references/continuity-and-transitions.md) | 父子状态、尾帧、重新锚定与场景边界 |
 | [对白、配音与混音](skills/dramake/references/audio-and-dubbing.md) | 原生对白、参考音频、外部配音和声音连续性 |

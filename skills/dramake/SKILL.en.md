@@ -4,7 +4,7 @@ description: For Codex, Claude Code, WorkBuddy, and other Agent Skills clients, 
 license: MIT
 metadata:
   author: Dramake contributors
-  version: 0.3.3
+  version: 0.4.0
   category: video-production
   tags: ai-video, text-to-video, short-drama, codex, claude-code, workbuddy, douyin, hongguo-drama, wan-3, seedance, minimax-h3
 ---
@@ -20,14 +20,14 @@ Use [project-state.md](references/en/project-state.md) as the single production 
 ## Non-negotiable rules
 
 1. Give every protagonist a causal role. A human, animal, creature, product, or object protagonist must change the outcome, not decorate coverage.
-2. Make cause and effect understandable with the sound muted.
-3. Prefer fewer, longer story blocks when the model supports them, but choreograph internal beats and cuts.
+2. Make primary causality and featured gags understandable with the sound muted; dialogue, captions, and crowd laughter cannot replace visible setup, cause, reaction, and reveal.
+3. Prefer fewer, longer story blocks when the model supports them, but enforce an event-load budget: a block may contain multiple beats, not multiple unrelated high-risk physical chains, prop mutations, and tasks.
 4. Never generate a downstream continuity block from an unreviewed parent clip.
 5. Lock identity, material, wardrobe structure, screen direction, props, weather, wetness, light, and audio state.
 6. Use real contact, force, weight, support, inertia, friction, and consequences. Reject penetration and impossible anatomy.
 7. Keep rendered text, phone UI, letters, prices, and countdowns out of generated footage. Add them in post.
-8. Native dialogue may solve lip sync; native music does not solve the final mix. Build a continuous, centrally managed post-production sound system with scene ambience, intentional cues/score, and motivated bridges.
-9. A technically clean clip is not a publishable story. Require a cold-viewer comprehension pass.
+8. Native dialogue may solve lip sync, but every line needs one locked speaker, visible mouth assignment, and a closed-mouth state for non-speakers; native music does not solve the final mix.
+9. A technically clean clip is not a publishable story. A 60–120 second narrative needs one macro causal spine and a planted major reversal, plus a cold-viewer comprehension pass.
 10. Do not claim to have watched, heard, or approved media without actual inspection evidence.
 
 ## Start from what the user already has
@@ -96,7 +96,7 @@ Separately choose a spend-authorization mode from [authorization-and-batch.md](r
 
 ## Build the story before prompts
 
-Read [story-and-pacing.md](references/en/story-and-pacing.md) and [directing-camera-and-pacing.md](references/en/directing-camera-and-pacing.md). Deliver:
+Read [story-and-pacing.md](references/en/story-and-pacing.md) and [directing-camera-and-pacing.md](references/en/directing-camera-and-pacing.md). For comedy, cute-animal, anthropomorphic, or animated-performance work, also read [comedy-and-animated-performance.md](references/en/comedy-and-animated-performance.md). Deliver:
 
 1. one-sentence promise;
 2. 0–3s visual hook;
@@ -106,6 +106,8 @@ Read [story-and-pacing.md](references/en/story-and-pacing.md) and [directing-cam
 6. relationship/state change;
 7. payoff or reversal;
 8. a final emotional, comic, suspense, visual, or character-specific button.
+
+For 60–120 second comedy, write `inciting incident → misconception/desire → objective → active choices → escalating cost → major reversal → consequence/callback` before adding local gags. Prefer a trigger the character experiences in the flow of life over a static opening lecture. Every gag must change macro state and pass `setup → visible cause → audience advantage → reaction hold → payoff → consequence`.
 
 For every scene, define one `directorial_intention`, a visible `value_before → value_after` turn, POV, power shift, subtext, and a filmable carrier. Camera, light, blocking, performance, sound, and cut must serve that same intention. “Cinematic” is not an intention.
 
@@ -132,7 +134,7 @@ Before storyboarding, inventory every recurring, cross-scene, plot-critical, or 
 
 For live-action work, anchor photography, real materials, practical wardrobe, real-scale environments, motivated lighting, and physically integrated VFX. For animation, explicitly lock the chosen design grammar, line/shading system, proportions, and motion language instead of applying live-action negatives.
 
-For live-action/cute animal hybrids, put cuteness into performance and species behavior—not animated-render vocabulary. Read [style-and-medium-locks.md](references/en/style-and-medium-locks.md).
+For live-action/cute animal hybrids, choose naturalistic, heightened-realism, or animated-actor hybrid performance. The hybrid keeps the world and materials photoreal while locking anthropomorphic poses, expressions, anticipation, overshoot, settle, and controlled squash/stretch. Props and contact still obey real continuity; animation never excuses penetration, teleportation, or prop drift. Read [style-and-medium-locks.md](references/en/style-and-medium-locks.md) and [comedy-and-animated-performance.md](references/en/comedy-and-animated-performance.md).
 
 Maintain [continuity-ledger.csv](assets/templates/continuity-ledger.csv) as the source of truth. Every accepted block updates it.
 
@@ -150,6 +152,8 @@ Each long block needs:
 - stable location/time/axis within the block;
 - recurring-prop `prop_id/state_id/text_plate_id` plus the one allowed change;
 - precise physical-event start, control input, world/screen vectors, phase sequence, and end state;
+- a `macro_goal_id`, the block's one causal contribution to that goal, and an event-load budget;
+- for comedy, the gag contract, sightline/occlusion logic, reaction characters, and a 0.6–1.0 second result hold;
 - one `impact_role` and visible consequence when a hook/collision/reveal/climax needs a sensory peak;
 - an active 0.5–0.8s edit handle at the end;
 - a clear exit action that the next block can catch.
@@ -166,6 +170,8 @@ For every external join:
 - do not change location, action, scale, and direction simultaneously.
 
 Read [continuity-and-transitions.md](references/en/continuity-and-transitions.md).
+
+A long block does not mean “put more unrelated things into one request.” Prefer one primary prop system, one high-risk physical chain, and one main comic/emotional payoff per block. Split or use setup/peak/consequence coverage when a block requires multiple locations, food identities, precision handoffs, speaker turns, or prop-state changes.
 
 Treat a new location, time, or core spatial relationship as a scene boundary. Re-anchor from character/world canon rather than calling it seamless continuation. Default output-sourced chain depth to 2 and relax only after repeated active-route validation.
 
@@ -209,6 +215,8 @@ Keep model-native lip-synced hero lines; replace narration, phone voices, off-sc
 
 Across all modes, place each clip on separate tracks. Normalize speech, carry room tone/rain across same-scene cuts, use J/L cuts, duck BGM, and avoid hard audio restarts at every visual join.
 
+For multi-character native dialogue, record each line's `speaker_id`, visible or off-screen source, on-camera mouth owner, non-speaker mouth state, and turn order. A staff rule line must come from the visible staff member or an explicitly sourced PA/off-screen voice while every other character stays closed-mouth and only reacts. Wrong-mouth speech, cross-bound voices, or synchronized non-speaker mouth motion is P0 and cannot be explained with captions.
+
 ## Generate in gated order
 
 1. Approve story and block plan.
@@ -248,6 +256,8 @@ Run four separate gates:
 2. **Identity/style:** characters, creatures, products, clothing, materials, and medium remain canonical.
 3. **Physics/continuity:** contacts, direction, state, and joins are plausible.
 4. **Audio:** dialogue, loudness, ambience, BGM, and bridges are continuous.
+
+For comedy or animated performance, add a muted acceptance pass: a viewer can identify the normal state, visible cause, information gap, reaction frame, payoff, and macro-story consequence of each featured gag; a 15–30 second block contains at least three distinguishable performance states. If dialogue must explain where an object went or why the moment is funny, treat it as a story/performance failure.
 
 Repair the smallest failing unit. Use edit/extend when capable, bridge shots when the join is the problem, and regeneration when identity, anatomy, or story causality is broken. Do not hide a narrative failure with music.
 
