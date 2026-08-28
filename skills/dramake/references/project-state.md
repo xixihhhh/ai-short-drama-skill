@@ -20,6 +20,12 @@
 
 `generated` 不等于 `accepted`。只有 `accepted` 或明确 `accepted_with_deviation` 的素材可成为父段。
 
+`ready` 只表示创意与素材条件齐备，不代表已授权付费。正式请求另记录 `previewed → confirmed → submitted → recovered/completed`：prompt、参数、参考、模型 schema 的任一实质变化都会让 `confirmed` 回退为 `previewed`。提交超时先用请求 ID 或任务历史找回，不能把未知状态当失败后直接重提。
+
+## 依赖图与并行
+
+把生成段视为 DAG。母版、音乐探索、声线、无剧情依赖的插镜和覆盖方案可以并行；需要父段真实退出状态的子段保持串行。并行不是按段号平均分配，而是只并发没有状态边的工作。每个节点记录依赖、解锁条件、费用上限和失败停止条件。
+
 ## 父子依赖
 
 依赖段记录 `scene_id`、`parent_block_id`、父段 `observed_exit_state`、自身 `entry_state`、未完成运动和转场方式。已完成节拍不得重演，未来节拍不得提前泄漏。

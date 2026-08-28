@@ -4,7 +4,7 @@ description: For Codex, Claude Code, WorkBuddy, and other Agent Skills clients, 
 license: MIT
 metadata:
   author: Dramake contributors
-  version: 0.4.0
+  version: 0.5.0
   category: video-production
   tags: ai-video, text-to-video, short-drama, codex, claude-code, workbuddy, douyin, hongguo-drama, wan-3, seedance, minimax-h3
 ---
@@ -138,6 +138,8 @@ For live-action/cute animal hybrids, choose naturalistic, heightened-realism, or
 
 Maintain [continuity-ledger.csv](assets/templates/continuity-ledger.csv) as the source of truth. Every accepted block updates it.
 
+For risky or continuity-heavy work, read [previsualization-and-coverage.md](references/en/previsualization-and-coverage.md) before video generation. Build long-term cast/location/prop masters, audition a few coverage alternatives for critical moments, and freeze only the first, last, or state frames that directly constrain requests. Simple reactions do not require a full storyboard; multi-character blocking, giant scale, mirror rules, real landmarks, precise paths, and critical contact do.
+
 ## Design blocks and motivated joins
 
 Use 15–30s blocks when the selected model reliably supports them; use shorter blocks for complex dialogue, precision contact, or fragile identity. Never choose duration by habit.
@@ -173,6 +175,8 @@ Read [continuity-and-transitions.md](references/en/continuity-and-transitions.md
 
 A long block does not mean “put more unrelated things into one request.” Prefer one primary prop system, one high-risk physical chain, and one main comic/emotional payoff per block. Split or use setup/peak/consequence coverage when a block requires multiple locations, food identities, precision handoffs, speaker turns, or prop-state changes.
 
+Compile formal prompts from approved state using [prompt-compiler.md](references/en/prompt-compiler.md). Keep the stable order `scene context → reference duties → spatial/first state → camera → timed action → acting/physics → light/audio → MUST-HIT/exit → high-loss negatives`, then adapt it for T2V, first frame, first/last frame, R2V, extension, editing, or multi-shot mode. Show the complete request before payment; any image- or cost-affecting change to prompt, parameters, references, or schema invalidates prior confirmation.
+
 Treat a new location, time, or core spatial relationship as a scene boundary. Re-anchor from character/world canon rather than calling it seamless continuation. Default output-sourced chain depth to 2 and relax only after repeated active-route validation.
 
 ## Route by capability, not brand loyalty
@@ -186,6 +190,8 @@ General routing:
 - **Seedance 2.0:** balanced 4–15s multimodal/dialogue/transition shots.
 - **Seedance 2.0 Fast:** previews, coverage, alternate takes, and budget drafts; final use only after strict QA.
 - **MiniMax H3-class generation:** short high-motion hero inserts, strong first/last-frame control, high-resolution selective shots.
+- **Kling 3 Omni-class generation:** element binding, internally choreographed multi-shot clips, and first/last keyframe bridges; validate sub-shot load and internal cuts.
+- **High-fidelity image generation/editing:** cast/location/prop masters, coverage auditions, and frozen keyframes before motion generation.
 
 These are default hypotheses, not permanent model rankings. If a provider exposes different capabilities, route from the actual schema.
 
@@ -261,25 +267,17 @@ For comedy or animated performance, add a muted acceptance pass: a viewer can id
 
 Repair the smallest failing unit. Use edit/extend when capable, bridge shots when the join is the problem, and regeneration when identity, anatomy, or story causality is broken. Do not hide a narrative failure with music.
 
-## Required deliverables
+## Deliver by task scope
 
-Return or save:
+Do not impose a full production package on a local request. Create only artifacts that a real next step will read or validate:
 
-- production brief and selected format;
-- character/style/world bibles;
-- recurring prop bibles, exact-text plates, and prop state machines;
-- beat sheet and block manifest;
-- provider-neutral model and audio route;
-- budget/candidate plan;
-- prompts with time-coded beats and negative constraints;
-- continuity ledger;
-- per-candidate evidence and QA status;
-- accepted-takes list and tail frames;
-- audio mix map;
-- final cold-viewer report;
-- publication metadata and cover plan, with text added in post unless a reliable image model is explicitly used.
+- **diagnosis/advice:** evidence, priority, and smallest repair; no empty CSVs or production tree;
+- **story/script:** brief, story contract, and script/beats; add bibles only when identity, props, or season state need continuity;
+- **storyboard/production package:** add coverage/frozen frames, blocks, edit beats, reference authority, live capability cards, cost, and audio route;
+- **execution:** add request preview and fingerprints, upload/request IDs, spend ledger, real output, QA evidence, accepted tail frames, and continuity state;
+- **final/publication:** add final timeline, mix, captions/art text, cover, encoding, and cold-viewer report.
 
-Name outputs consistently: `BLOCK_ID_vN.mp4`, `_tail.png`, `_contact_12.jpg`, `_audio.wav`, and `_QA.md`.
+Reuse sufficient upstream assets instead of recreating them for procedural completeness. Name outputs consistently: `BLOCK_ID_vN.mp4`, `_tail.png`, `_contact_12.jpg`, `_audio.wav`, and `_QA.md`.
 
 ## Evidence boundaries
 

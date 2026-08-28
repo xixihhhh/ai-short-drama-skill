@@ -32,6 +32,40 @@ class RepositoryTests(unittest.TestCase):
         lines = (ROOT / "skills/dramake/SKILL.md").read_text(encoding="utf-8").splitlines()
         self.assertLessEqual(len(lines), 500)
 
+    def test_previsualization_and_prompt_compiler_are_routed(self):
+        skill = (ROOT / "skills/dramake/SKILL.md").read_text(encoding="utf-8")
+        previz = (ROOT / "skills/dramake/references/previsualization-and-coverage.md").read_text(encoding="utf-8")
+        compiler = (ROOT / "skills/dramake/references/prompt-compiler.md").read_text(encoding="utf-8")
+        self.assertIn("previsualization-and-coverage.md", skill)
+        self.assertIn("prompt-compiler.md", skill)
+        for marker in ("长期母版", "覆盖方案", "冻结关键帧", "must_not_transfer"):
+            self.assertIn(marker, previz)
+        for marker in ("ACTIVE REFERENCES", "ACTION TIMING", "MUST-HIT", "请求预览", "确认失效"):
+            self.assertIn(marker, compiler)
+
+    def test_runtime_model_resolution_and_request_recovery(self):
+        router = (ROOT / "skills/dramake/references/model-router.md").read_text(encoding="utf-8")
+        state = (ROOT / "skills/dramake/references/project-state.md").read_text(encoding="utf-8")
+        card = (ROOT / "skills/dramake/assets/templates/model-card.yaml").read_text(encoding="utf-8")
+        for marker in ("运行时能力解析器", "精确 model ID", "Kling 3 Omni", "dry_run"):
+            self.assertIn(marker, router)
+        for marker in ("previewed", "confirmed", "任务历史", "DAG"):
+            self.assertIn(marker, state)
+        for marker in ("exact_model_id", "schema_source", "fresh_until", "task_recovery_method"):
+            self.assertIn(marker, card)
+
+    def test_coverage_and_spend_templates_validate(self):
+        templates = ROOT / "skills/dramake/assets/templates"
+        result = subprocess.run(
+            [
+                "python3", str(ROOT / "scripts/validate_plan.py"),
+                "--coverage", str(templates / "coverage-plan.csv"),
+                "--spend", str(templates / "spend-ledger.csv"),
+            ],
+            capture_output=True, text=True, check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
     def test_high_density_douyin_pacing_preset(self):
         chinese = (ROOT / "skills/dramake/references/story-and-pacing.md").read_text(encoding="utf-8")
         english = (ROOT / "skills/dramake/references/en/story-and-pacing.md").read_text(encoding="utf-8")

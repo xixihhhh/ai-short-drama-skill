@@ -1,15 +1,24 @@
 model_family: replace-me
+exact_model_id: replace-at-runtime
 provider: user-selected
 surface: api-or-web-or-local
 checked_at: YYYY-MM-DD
+fresh_until: YYYY-MM-DD
+availability_state: unknown
+schema_source: null
+official_product_source: null
 documented_capabilities:
   modes: []
+  prompt_limit_characters: null
   duration_seconds: {min: null, max: null}
+  frame_rate: null
   resolutions: []
   aspect_ratios: []
   reference_images: null
   reference_videos: null
   reference_audio: null
+  reference_video_total_seconds: null
+  reference_audio_total_seconds: null
   first_frame: false
   last_frame: false
   native_dialogue_or_audio: unknown
@@ -32,6 +41,9 @@ pricing:
   amount: null
   source: null
 observations:
+  tested_at: null
+  dry_run_supported: unknown
+  task_recovery_method: unknown
   queue_time: unknown
   strongest_uses: []
   known_failures: []

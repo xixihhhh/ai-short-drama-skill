@@ -10,7 +10,7 @@
 
 <p>
   <a href="https://github.com/xixihhhh/ai-short-drama-skill/releases/latest"><img src="https://img.shields.io/github/v/release/xixihhhh/ai-short-drama-skill?style=flat-square&amp;color=7c3aed" alt="Release"></a>
-  <a href="skills/dramake/SKILL.md"><img src="https://img.shields.io/badge/Skill-v0.4.0-2563eb?style=flat-square" alt="Skill v0.4.0"></a>
+  <a href="skills/dramake/SKILL.md"><img src="https://img.shields.io/badge/Skill-v0.5.0-2563eb?style=flat-square" alt="Skill v0.5.0"></a>
   <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-18%20passed-16a34a?style=flat-square" alt="18 tests passed"></a>
   <a href="README.en.md"><img src="https://img.shields.io/badge/docs-中文%20%7C%20English-0891b2?style=flat-square" alt="Chinese and English"></a>
   <a href="#agent-compatibility"><img src="https://img.shields.io/badge/agents-Codex%20%7C%20Claude_Code%20%7C%20WorkBuddy-f97316?style=flat-square" alt="Codex, Claude Code, and WorkBuddy"></a>

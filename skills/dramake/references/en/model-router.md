@@ -1,6 +1,19 @@
 # Model Router
 
-Route from required capability first, then compare providers, price, queue time, and user preference. Names below describe tested model families; always inspect the current endpoint schema.
+Route from required capability first, then compare providers, price, queue time, and user preference. Names below describe tested model families; always inspect the current endpoint schema. A launch page describes the family; the live schema controls this exact request.
+
+## Runtime capability resolver
+
+For every new project, or when a model card is more than 14 days old:
+
+1. list models on the user's actual surface and resolve the exact model ID;
+2. fetch its schema, required fields, enums, incompatibilities, and prompt limit;
+3. verify duration, resolution, ratio, frame rate, audio, reference counts and total durations, and whether input video consumes output duration;
+4. verify billing unit, queue, polling/recovery, upload visibility, and retention;
+5. use a dry run when available, then one representative low-cost request;
+6. record documented capability and observed behavior separately with dates and sources.
+
+Never copy exact parameters from another aggregator, an old screenshot, or an older family member. A capability absent from the active surface is unavailable for this run.
 
 | Need | First route to test | Why | Watch for |
 |---|---|---|---|
@@ -10,8 +23,12 @@ Route from required capability first, then compare providers, price, queue time,
 | 4–15s balanced dialogue or transition | Seedance 2.0-class | Shorter controlled multimodal shots | More external joins in long films |
 | Cheap tests and alternates | Seedance 2.0 Fast-class | Lower-cost iteration | Do not waive final QA |
 | 4–15s hero action or first/last lock | MiniMax H3-class I2V/R2V | Selective high-motion/high-resolution insert | Not economical for every ordinary shot |
+| 5–15s multi-shot or element binding | Kling 3 Omni-class | Multi-shot, element binding, and keyframe bridges can reduce external calls | Sub-shot overload, surface differences, uncontrolled internal cuts |
+| Static masters or keyframes | High-fidelity image generation/editing | Lock identity, geometry, place, and clean text plates before motion | Contact-sheet duplication and bad masters propagating into video |
 
-As of the 2026-08 documented capability snapshot: Wan 3 supports native 30-second generation plus multimodal/editing routes; Seedance 2.5 supports up to 30 seconds per pass, extension, multimodal references, and timestamp editing; Seedance 2.0 supports 4–15 second native audiovisual generation and a Fast variant; MiniMax H3 supports up to 15 seconds, native stereo sound, and up to 2K. An execution surface may expose only part of the family capability, so the runtime schema remains authoritative.
+As of the 2026-08 documented snapshot: Wan 3 supports up to 30 seconds, multimodal reference, and native audio; Seedance 2.5 supports up to 30 seconds, extension, flexible reference, and editing; the Seedance 2.0 paper documents 4–15 second native audiovisual generation; MiniMax H3's launch describes up to 15 seconds, native stereo, and up to 2K; Kling 3.0 public material emphasizes multi-shot and element binding. A surface may expose only part of the family capability, so its live schema remains authoritative.
+
+Sources: [Wan 3 API](https://help.aliyun.com/en/model-studio/wan3-video-generation-api-reference), [official Seedance 2.5 introduction](https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5), [Seedance 2.0 paper](https://arxiv.org/abs/2604.14148), [MiniMax H3 launch](https://www.minimax.io/blog/minimax-h3), and [Kling 3.0 launch](https://ir.kuaishou.com/node/11216/pdf).
 
 ## Wan 3 reference-driven long dialogue blocks
 
@@ -37,6 +54,8 @@ As of 2026-08-25, the official Wan 3 API documentation exposes mixed reference i
 6. Can it return a last frame, edit, extend, or lip-sync?
 7. Which resolutions are native versus upscaled?
 8. What are current price, queue time, retry policy, and storage terms?
+
+Also verify that the exact model ID still exists, how asynchronous jobs are recovered, and whether any prompt/parameter/reference/schema change invalidates confirmation.
 
 Create one editable [model-card.yaml](../../assets/templates/model-card.yaml) for every available route. Treat the active API/UI as the parameter truth. If duration, resolution, reference limits, pricing, or prompt dialect are unknown, use a conservative profile and do not guess.
 
@@ -68,3 +87,12 @@ Then select a currently available endpoint that satisfies it. Never require one 
 For native audiovisual models such as current MiniMax H3 routes, explicitly compile visual timeline, synchronized dialogue/diegetic sound, overall soundscape, and non-diegetic music policy. A reference asset must have one primary controller role such as identity, action, camera, environment, timing, or audio.
 
 Record new evidence in a dated benchmark entry and update routing only after repeated results.
+
+## Reusable patterns from public projects
+
+- Lock character masters and a still storyboard before asking video to create motion, without forcing one still per beat onto a subjective one-take.
+- Treat single-shot, internal multi-prompt cuts, and first/last keyframe bridges as different production modes.
+- Save prompt, model version, references, parameters, timing, cost, and outputs for every request as a recoverable audit trail.
+- Preview the exact request before submission; reconfirm after a request-body change; recover timed-out jobs before resubmitting.
+
+These are reproducible engineering structures, not independent validation of project quality claims. See [ai-video-pipeline](https://github.com/0xadvait/ai-video-pipeline), [StoryMind](https://github.com/LinHao-city/StoryMind), [ai-cinematic-pipeline](https://github.com/billpar/ai-cinematic-pipeline), [drama-skills](https://github.com/zenstory-ai/drama-skills), and [DramaDirector](https://github.com/iLearn-Lab/DramaDirector).

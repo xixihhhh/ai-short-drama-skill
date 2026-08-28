@@ -23,6 +23,12 @@ Optional machine-readable ledgers mirror these files for validation. They may no
 - `generated` never means approved.
 - Only `accepted` or explicit `accepted_with_deviation` media may parent future work.
 
+`ready` means creative and asset prerequisites are satisfied; it is not payment authorization. Track the request separately as `previewed → confirmed → submitted → recovered/completed`. Any material prompt, parameter, reference, or schema change returns `confirmed` to `previewed`. After a submission timeout, recover by request ID or task history before retrying.
+
+## Dependency graph and concurrency
+
+Treat blocks as a DAG. Masters, music exploration, voice anchors, continuity-independent inserts, and coverage auditions may run in parallel; a child that needs its parent's observed exit state stays serial. Parallelism follows absence of state edges, not block numbering. Each node records dependencies, unlock condition, spend cap, and failure stop condition.
+
 ## Parent-child dependency
 
 A dependent block records `scene_id`, `parent_block_id`, parent `observed_exit_state`, its own `entry_state`, unfinished motion, and transition. Do not replay completed beats or leak future beats.

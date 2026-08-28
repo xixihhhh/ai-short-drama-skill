@@ -1,6 +1,19 @@
 # 模型路由
 
-先按所需能力选模型，再比较执行入口、价格、队列和用户偏好。模型系列只是实测起点；当前参数页/API/UI 才是参数真相。
+先按所需能力选模型，再比较执行入口、价格、队列和用户偏好。模型系列只是实测起点；当前参数页/API/UI 才是参数真相。产品发布页说明“模型家族能做什么”，具体入口 schema 决定“这次调用能传什么”，两者不得混用。
+
+## 运行时能力解析器
+
+每个新项目，或模型卡超过 14 天未核验时：
+
+1. 从用户实际入口列出模型，解析精确 model ID；
+2. 获取输入 schema、必填字段、枚举、互斥模式和 prompt 上限；
+3. 核对时长、分辨率、画幅、帧率、音频、各类参考数量/总时长，以及输入视频是否挤占输出时长；
+4. 核对计费单位、队列、异步轮询/任务找回、上传可见性与保存期限；
+5. 入口支持时先 `dry_run`，再做一个代表性低成本请求；
+6. 把文档能力与实测观察分开记录，并附日期和来源。
+
+不得从另一聚合平台、旧截图或同系列旧版本迁移精确参数。入口未暴露的能力，本次视为不可用。
 
 | 需求 | 首个测试路线 | 原因 | 重点检查 |
 |---|---|---|---|
@@ -10,8 +23,12 @@
 | 4–15 秒对白/过渡 | Seedance 2.0 类 | 短段多模态较可控 | 长片外部接缝更多 |
 | 低成本测试与备选 | Seedance 2.0 Fast 类 | 迭代快、成本低 | 不能免除终片质检 |
 | 4–15 秒高运动/首尾帧 | MiniMax H3 类 I2V/R2V | 适合选择性重点镜头 | 普通镜头全部使用不经济 |
+| 5–15 秒多镜头/元素绑定 | Kling 3 Omni 类 | 多镜头、元素绑定与关键帧桥接可减少外部调用 | 子镜头过载、入口差异、内部切镜不可控 |
+| 静态母版/关键帧 | 高保真图像生成或编辑模型 | 先锁身份、几何、地点和文字底板 | 拼版复制、错误母版传播到视频 |
 
-截至 2026-08 的正式能力资料显示：Wan 3 支持原生 30 秒和多模态/编辑路线；Seedance 2.5 支持单次最长 30 秒、扩展、多模态参考与时间点编辑；Seedance 2.0 支持 4–15 秒原生音画并提供 Fast 版本；MiniMax H3 支持最长 15 秒、原生立体声和最高 2K。实际执行入口可能只开放其中一部分，因此仍以运行时参数为准。
+截至 2026-08 的正式能力资料显示：Wan 3 支持最长 30 秒、多模态参考与原生音频；Seedance 2.5 支持单次最长 30 秒、扩展、灵活参考与编辑；Seedance 2.0 论文披露 4–15 秒原生音画；MiniMax H3 发布资料披露最长 15 秒、原生立体声和最高 2K；Kling 3.0 系列公开强调多镜头与元素绑定。实际入口可能只开放其中一部分，因此仍以运行时参数为准。
+
+来源：[Wan 3 API](https://help.aliyun.com/en/model-studio/wan3-video-generation-api-reference)、[Seedance 2.5 官方介绍](https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5)、[Seedance 2.0 论文](https://arxiv.org/abs/2604.14148)、[MiniMax H3 发布说明](https://www.minimax.io/blog/minimax-h3)、[Kling 3.0 发布说明](https://ir.kuaishou.com/node/11216/pdf)。
 
 ## Wan 3 参考驱动对白长段
 
@@ -37,6 +54,8 @@
 6. 是否支持尾帧、编辑、续写或口型？
 7. 哪些分辨率是原生，哪些是放大？
 8. 当前价格、队列、重试与素材保存规则是什么？
+
+另查：精确 model ID 是否仍可用；异步任务如何找回；prompt/params/refs/schema 任一变化是否会使确认失效。
 
 为每个可用路线建立可编辑 [model-card.yaml](../assets/templates/model-card.yaml)。未知参数使用保守配置，不猜。
 
@@ -66,3 +85,12 @@ needs:
 - Seedance 2.0 系列短段的原生音频仍需要终片声音连续性后期。
 
 记录模型、入口、日期、设置和证据，重复结果后再调整路由。
+
+## 可复用的公开工程模式
+
+- 先完成角色母版和静态故事板，再让视频负责运动；主观长镜头不机械套用“每节拍一张图”。
+- 把单镜头、多提示内部切镜和首尾关键帧桥接视为不同生产模式。
+- 每次调用保存 prompt、模型版本、参考、参数、耗时、费用和输出清单，形成可恢复审计链。
+- 提交前预览精确请求；请求体变化重新确认；超时先查历史再重提。
+
+这些是公开仓库的工程结构，不代表其质量宣传已独立验证。参考：[ai-video-pipeline](https://github.com/0xadvait/ai-video-pipeline)、[StoryMind](https://github.com/LinHao-city/StoryMind)、[ai-cinematic-pipeline](https://github.com/billpar/ai-cinematic-pipeline)、[drama-skills](https://github.com/zenstory-ai/drama-skills)、[DramaDirector](https://github.com/iLearn-Lab/DramaDirector)。

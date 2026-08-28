@@ -4,7 +4,7 @@ description: 面向 Codex、Claude Code、WorkBuddy 和其他 Agent Skills 客�
 license: MIT
 metadata:
   author: Dramake contributors
-  version: 0.4.0
+  version: 0.5.0
   category: video-production
   tags: ai-video, text-to-video, short-drama, codex, claude-code, workbuddy, douyin, hongguo-drama, wan-3, seedance, minimax-h3
 ---
@@ -119,6 +119,8 @@ metadata:
 
 使用 [continuity-ledger.csv](assets/templates/continuity-ledger.csv) 维护正式状态，每个验收段都要更新。
 
+在高风险或强连续项目中，视频生成前阅读 [previsualization-and-coverage.md](references/previsualization-and-coverage.md)：先做角色/地点/道具长期母版，再为关键剧情时刻试拍少量覆盖方案，最后只冻结真正会约束请求的首帧、尾帧或状态帧。简单反应镜头不强制做完整故事板；多角色、巨物尺度、镜面规则、真实地标、精确走位和关键接触不得跳过预演。
+
 ## 设计生成段与剪辑节拍
 
 阅读 [generation-blocks-and-edit-beats.md](references/generation-blocks-and-edit-beats.md) 与 [directing-camera-and-pacing.md](references/directing-camera-and-pacing.md)。模型稳定支持时使用 15–30 秒段；精确对白、复杂接触、高运动、变形或易漂移任务使用更短段。
@@ -149,6 +151,8 @@ metadata:
 
 长段不是“把更多事情塞进一次请求”。每段优先一个主道具系统、一个高风险物理链和一个主要喜剧/情绪回报；若需要多个地点、食物种类、精确交接、多人轮流说话或多次道具状态变化，拆段或改用内部建立/峰值/后果镜头。
 
+正式提示词必须从已批准状态编译，阅读 [prompt-compiler.md](references/prompt-compiler.md)。使用稳定的 `场景上下文 → 参考职责 → 空间与首状态 → 镜头 → 时间节拍 → 表演/物理 → 灯光/声音 → MUST-HIT/终态 → 高损失负面约束` 骨架，再按 T2V、首帧、首尾帧、R2V、续写、编辑或多镜头模式裁剪。付费前展示完整请求预览；任何影响画面或费用的 prompt、参数、参考或 schema 变化都会使旧确认失效。
+
 ## 按能力选模型
 
 阅读 [model-router.md](references/model-router.md)，提交前核实当前入口。
@@ -158,6 +162,8 @@ metadata:
 - **Seedance 2.0：**4–15 秒对白、动作和过渡。
 - **Seedance 2.0 Fast：**预演、覆盖、备选与经济档；严格验收后才可进入终片。
 - **MiniMax H3 类：**短时高运动、首尾帧控制和重点音画镜头。
+- **Kling 3 Omni 类：**元素绑定、多镜头内部编排和首尾关键帧桥接；先验收子镜头负载与内部切镜。
+- **高保真图像模型：**角色/地点/道具母版、覆盖方案和冻结关键帧；静态图通过后再进入运动生成。
 
 这些只是起始假设，不是永久排名。实际接口暴露的能力高于品牌印象。
 
@@ -226,22 +232,17 @@ metadata:
 
 只修最小失败单元：局部缺陷用编辑，接缝问题用桥接/续写，身份/解剖/因果崩坏才重生，纯音频问题优先重混。不得用音乐掩盖剧情失败。
 
-## 必须交付
+## 按任务范围交付
 
-- 原始文字摘要、生产简报与选定形态；
-- 剧情合同、节拍表和剧本；
-- 角色/画风/世界/道具/声线母版；
-- 重复道具圣经、文字图层母版与状态机；
-- 横竖屏画幅与安全区方案；
-- 生成段与剪辑节拍清单；
-- 可替换的模型、声音与执行入口路线；
-- 费用、候选与授权计划；
-- 带时间节拍和负面约束的提示词；
-- 连续性账本、候选证据与 QA 状态；
-- 验收镜头、尾帧、画面剪辑和声音混音图；
-- 冷观众报告、发布元数据与封面方案。
+不要把完整制作包强加给局部请求。只创建下一步确实会读取或验证的文件：
 
-统一命名：`BLOCK_ID_vN.mp4`、`_tail.png`、`_contact_12.jpg`、`_audio.wav`、`_QA.md`。
+- **诊断/建议：**问题证据、优先级和最小修复；不生成空白 CSV 或生产目录。
+- **故事/剧本：**生产简报、剧情合同、剧本/节拍；只在身份、道具或季线确有连续性时建对应母版。
+- **分镜/生产包：**加入覆盖方案/冻结关键帧、生成段、剪辑节拍、参考权威、模型能力卡、费用与声音路线。
+- **执行：**加入请求预览与指纹、上传/请求 ID、费用账本、真实输出、QA 证据、验收尾帧和连续性状态。
+- **成片/发布：**加入正式时间线、混音、字幕/艺术字、封面、编码与冷观众报告。
+
+已有素材或上游状态已足够时复用，不为“流程完整”重复生成。统一命名：`BLOCK_ID_vN.mp4`、`_tail.png`、`_contact_12.jpg`、`_audio.wav`、`_QA.md`。
 
 ## 证据边界
 

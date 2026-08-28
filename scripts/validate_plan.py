@@ -52,11 +52,24 @@ AUDIO_REQUIRED = {
     "ambience_in", "ambience_out", "bgm_phrase_in", "bgm_phrase_out", "sfx_sync_cue",
     "reverb_tail", "loudness_target", "reference_audio_owner", "post_action", "qa_status",
     "source_type", "visible_mouth_owner", "non_speaker_mouth_state", "turn_order",
+    "music_cue_id", "music_arc_position", "music_energy", "bpm_key",
+    "planned_dropout", "dialogue_ducking",
 }
 COST_REQUIRED = {
     "route_id", "provider", "model", "quality_mode", "authorization_mode", "blocks",
     "candidates", "unit_price", "currency", "retry_factor", "cap_requests",
     "price_checked_at",
+}
+COVERAGE_REQUIRED = {
+    "coverage_id", "scene_id", "story_moment", "purpose", "subject_geometry",
+    "camera_height_lens", "composition", "blocking_path", "eyeline_occlusion",
+    "scale_anchors", "reference_assets", "controls", "must_not_transfer",
+    "approval_status", "dependent_blocks",
+}
+SPEND_REQUIRED = {
+    "request_id", "block_id", "provider", "model", "mode", "status",
+    "approval_scope_id", "prompt_fingerprint", "params_fingerprint",
+    "reference_digest", "schema_checked_at", "task_recovery_note",
 }
 
 ACCEPTED = {"accepted", "accepted_with_deviation"}
@@ -355,6 +368,30 @@ def validate_cost(path: Path) -> list[str]:
     return errors
 
 
+def validate_coverage(path: Path) -> list[str]:
+    rows, errors = read_csv(path, COVERAGE_REQUIRED)
+    errors += require_unique(rows, "coverage_id", path)
+    allowed = {"planned", "audition", "approved", "rejected", "superseded"}
+    for row in rows:
+        if row.get("approval_status") and row["approval_status"] not in allowed:
+            errors.append(f"{path}:{row['__line__']}: invalid approval_status {row['approval_status']!r}")
+        if row.get("approval_status") == "approved" and not row.get("controls"):
+            errors.append(f"{path}:{row['__line__']}: approved coverage requires controls")
+    return errors
+
+
+def validate_spend(path: Path) -> list[str]:
+    rows, errors = read_csv(path, SPEND_REQUIRED)
+    errors += require_unique(rows, "request_id", path)
+    execution_states = {"submitted", "processing", "completed", "failed", "timeout", "recovered"}
+    for row in rows:
+        if row.get("status") in execution_states:
+            for field in ("approval_scope_id", "prompt_fingerprint", "params_fingerprint", "reference_digest", "schema_checked_at"):
+                if not row.get(field):
+                    errors.append(f"{path}:{row['__line__']}: {row['status']} request requires {field}")
+    return errors
+
+
 def validate_cross_files(args: argparse.Namespace) -> list[str]:
     """Validate IDs, durations, state, voices, and audio across supplied manifests."""
     errors: list[str] = []
@@ -446,6 +483,8 @@ def main() -> None:
     parser.add_argument("--voice-bible", type=Path)
     parser.add_argument("--audio-continuity", type=Path)
     parser.add_argument("--cost", type=Path)
+    parser.add_argument("--coverage", type=Path)
+    parser.add_argument("--spend", type=Path)
     args = parser.parse_args()
     errors: list[str] = []
     if args.continuity:
@@ -460,6 +499,10 @@ def main() -> None:
         errors += validate_audio(args.audio_continuity)
     if args.cost:
         errors += validate_cost(args.cost)
+    if args.coverage:
+        errors += validate_coverage(args.coverage)
+    if args.spend:
+        errors += validate_spend(args.spend)
     if not any(vars(args).values()):
         parser.error("provide at least one manifest path")
     errors += validate_cross_files(args)

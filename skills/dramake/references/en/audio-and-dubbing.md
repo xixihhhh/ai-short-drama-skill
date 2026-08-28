@@ -81,6 +81,12 @@ Use when exact narration, localization, or speed matters more than visible lip s
 
 For every block record active speaker, unfinished phrase, room tone, ambience phase, BGM bar/phrase, reverb tail, and the sound or silence that motivates the next cut. Audio continuity is state transfer just like picture continuity.
 
+## Score arc, not per-clip music
+
+Write one film-level functional curve—`hook → build → pressure → turn → release/callback`—before choosing one theme, several stems, or intentional silence. A continuous story normally carries one post-production music bed across visual cuts; retain model-random music only when it is an accepted diegetic source.
+
+For every block record `music_cue_id`, incoming/outgoing bar, energy, density, BPM/key, planned dropouts, dialogue ducking, and J/L behavior. A climax needs contrast rather than maximum loudness throughout. A warm callback may reprise the opening motif with changed orchestration or harmony. A visual cut must not restart music, and background speech needs a locatable source.
+
 ## Voice consistency QA
 
 Use ASR first for wording, speaker, order, omissions, and duplicated tails. Then run a human adjacent-clip blind A/B comparison for pace, pitch center/range, timbre, breath, intensity, pronunciation, and emotion. Automated metrics are warnings, not a standalone identity verdict.

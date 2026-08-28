@@ -1,2 +1,2 @@
-request_id,block_id,provider,model,mode,duration_s,resolution,candidate_purpose,quoted_cost,actual_cost,currency,retry_parent,status,accepted_seconds,reason,submitted_at,completed_at
-REQ001,B01,user-selected,capability-route,long-block,30,720p,hook-test,0,0,USD,,planned,0,replace before execution,,
+request_id,block_id,provider,model,mode,duration_s,resolution,candidate_purpose,quoted_cost,actual_cost,currency,retry_parent,status,accepted_seconds,reason,submitted_at,completed_at,approval_scope_id,prompt_fingerprint,params_fingerprint,reference_digest,schema_checked_at,task_recovery_note
+REQ001,B01,user-selected,capability-route,long-block,30,720p,hook-test,0,0,USD,,planned,0,replace before execution,,,APPROVAL-001,replace,replace,replace,YYYY-MM-DD,

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0 - 2026-08-28
+
+- Added previsualization, coverage auditions, and frozen-keyframe gates so video generation does not make the first identity, spatial, and hero-composition decisions.
+- Added a mode-aware director prompt compiler, MUST-HIT priorities, event-load downgrade rules, and request fingerprints.
+- Reworked routing around exact runtime model IDs and schemas, with current official sources for Wan 3, Seedance 2.5, MiniMax H3, Kling 3 Omni, and static-image routes.
+- Made deliverables scope-adaptive instead of creating a full empty production package for local requests.
+- Added generation DAG rules, confirmation invalidation/job recovery, and film-level score-arc continuity fields.
+
 [简体中文](CHANGELOG.md)
 
 ## 0.4.0 - 2026-08-26
