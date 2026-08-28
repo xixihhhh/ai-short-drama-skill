@@ -28,8 +28,6 @@
 
 截至 2026-08 的正式能力资料显示：Wan 3 支持最长 30 秒、多模态参考与原生音频；Seedance 2.5 支持单次最长 30 秒、扩展、灵活参考与编辑；Seedance 2.0 论文披露 4–15 秒原生音画；MiniMax H3 发布资料披露最长 15 秒、原生立体声和最高 2K；Kling 3.0 系列公开强调多镜头与元素绑定。实际入口可能只开放其中一部分，因此仍以运行时参数为准。
 
-来源：[Wan 3 API](https://help.aliyun.com/en/model-studio/wan3-video-generation-api-reference)、[Seedance 2.5 官方介绍](https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5)、[Seedance 2.0 论文](https://arxiv.org/abs/2604.14148)、[MiniMax H3 发布说明](https://www.minimax.io/blog/minimax-h3)、[Kling 3.0 发布说明](https://ir.kuaishou.com/node/11216/pdf)。
-
 ## Wan 3 参考驱动对白长段
 
 当当前入口确实开放 Wan 3 类 `reference-to-video`、混合图/视频/音频参考和原生音频时，可把它作为 20–30 秒双人或多角色连续表演的首测路线：
@@ -42,7 +40,7 @@
 
 参考素材表达的是控制意图，不是保证。定妆图意图锁身份/服装，视频意图锁动作/材质/介质，音频意图锁声线/语气/节奏；必须用真实输出做身份、声线、口型、台词和动作 A/B 验收。
 
-截至 2026-08-25，Wan 3 官方接口资料明确支持参考图、参考视频和参考音频混合输入、最长 30 秒输出、原生音频开关、720P 与 16:9 等档位；但参考模式与 `first_frame`/`last_frame` 模式互斥。若输入参考视频，官方接口还要求“输入视频总时长 + 输出时长 ≤ 30 秒”，所以带视频参考时不能同时假设仍可输出满 30 秒。需要角色/声线/自然表演时优先测试 R2V；需要严格首尾构图时改用首帧/首尾帧路线，不能在同一请求里两者都要。其他执行入口必须重新核实相同约束。[官方 API 资料](https://help.aliyun.com/en/model-studio/wan3-video-generation-api-reference)
+截至 2026-08-25，Wan 3 官方接口资料明确支持参考图、参考视频和参考音频混合输入、最长 30 秒输出、原生音频开关、720P 与 16:9 等档位；但参考模式与 `first_frame`/`last_frame` 模式互斥。若输入参考视频，官方接口还要求“输入视频总时长 + 输出时长 ≤ 30 秒”，所以带视频参考时不能同时假设仍可输出满 30 秒。需要角色/声线/自然表演时优先测试 R2V；需要严格首尾构图时改用首帧/首尾帧路线，不能在同一请求里两者都要。其他执行入口必须重新核实相同约束。
 
 ## 提交前八问
 
@@ -93,4 +91,4 @@ needs:
 - 每次调用保存 prompt、模型版本、参考、参数、耗时、费用和输出清单，形成可恢复审计链。
 - 提交前预览精确请求；请求体变化重新确认；超时先查历史再重提。
 
-这些是公开仓库的工程结构，不代表其质量宣传已独立验证。参考：[ai-video-pipeline](https://github.com/0xadvait/ai-video-pipeline)、[StoryMind](https://github.com/LinHao-city/StoryMind)、[ai-cinematic-pipeline](https://github.com/billpar/ai-cinematic-pipeline)、[drama-skills](https://github.com/zenstory-ai/drama-skills)、[DramaDirector](https://github.com/iLearn-Lab/DramaDirector)。
+这些方法必须用项目真实输出验证，不能因写入流程就视为质量保证。

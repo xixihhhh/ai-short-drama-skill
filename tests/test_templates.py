@@ -43,6 +43,15 @@ class RepositoryTests(unittest.TestCase):
         for marker in ("ACTIVE REFERENCES", "ACTION TIMING", "MUST-HIT", "请求预览", "确认失效"):
             self.assertIn(marker, compiler)
 
+    def test_reference_graph_and_storyboard_image_method(self):
+        skill = (ROOT / "skills/dramake/SKILL.md").read_text(encoding="utf-8")
+        method = (ROOT / "skills/dramake/references/reference-graph-and-storyboard-images.md").read_text(encoding="utf-8")
+        self.assertIn("reference-graph-and-storyboard-images.md", skill)
+        for marker in ("参考资产图谱", "角色设定图", "场景与道具设定图", "分镜图生成", "EXACT CAST COUNT", "must_not_transfer", "引用编译检查"):
+            self.assertIn(marker, method)
+        for forbidden in ("Higgsfield", "Hell Grind", "LibTV", "StoryMind", "DramaDirector"):
+            self.assertNotIn(forbidden, method)
+
     def test_runtime_model_resolution_and_request_recovery(self):
         router = (ROOT / "skills/dramake/references/model-router.md").read_text(encoding="utf-8")
         state = (ROOT / "skills/dramake/references/project-state.md").read_text(encoding="utf-8")

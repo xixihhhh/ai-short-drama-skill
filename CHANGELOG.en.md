@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.1 - 2026-08-28
+
+- Added a reference-asset dependency graph and practical character, location, prop, and storyboard-image methods.
+- Scoped multi-pose sheets to identity, empty locations to space, and storyboard images to one frame state to prevent role conflicts and cast duplication.
+- Added the acceptance order from composition master to temporal video prompt plus a reference-compilation check.
+- Removed named case-study and open-source-project attribution while retaining executable general production rules.
+
 ## 0.5.0 - 2026-08-28
 
 - Added previsualization, coverage auditions, and frozen-keyframe gates so video generation does not make the first identity, spatial, and hero-composition decisions.

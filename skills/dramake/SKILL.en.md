@@ -4,7 +4,7 @@ description: For Codex, Claude Code, WorkBuddy, and other Agent Skills clients, 
 license: MIT
 metadata:
   author: Dramake contributors
-  version: 0.5.0
+  version: 0.5.1
   category: video-production
   tags: ai-video, text-to-video, short-drama, codex, claude-code, workbuddy, douyin, hongguo-drama, wan-3, seedance, minimax-h3
 ---
@@ -139,6 +139,8 @@ For live-action/cute animal hybrids, choose naturalistic, heightened-realism, or
 Maintain [continuity-ledger.csv](assets/templates/continuity-ledger.csv) as the source of truth. Every accepted block updates it.
 
 For risky or continuity-heavy work, read [previsualization-and-coverage.md](references/en/previsualization-and-coverage.md) before video generation. Build long-term cast/location/prop masters, audition a few coverage alternatives for critical moments, and freeze only the first, last, or state frames that directly constrain requests. Simple reactions do not require a full storyboard; multi-character blocking, giant scale, mirror rules, real landmarks, precise paths, and critical contact do.
+
+When generating character, location, prop, or storyboard images, also read [reference-graph-and-storyboard-images.md](references/en/reference-graph-and-storyboard-images.md). Organize assets as a duty-bearing dependency graph, approve one composition master before downstream panels, and record `controls` plus `must_not_transfer`; a multi-pose sheet must not create extra cast.
 
 ## Design blocks and motivated joins
 

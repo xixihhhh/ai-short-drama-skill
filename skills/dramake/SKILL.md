@@ -4,7 +4,7 @@ description: 面向 Codex、Claude Code、WorkBuddy 和其他 Agent Skills 客�
 license: MIT
 metadata:
   author: Dramake contributors
-  version: 0.5.0
+  version: 0.5.1
   category: video-production
   tags: ai-video, text-to-video, short-drama, codex, claude-code, workbuddy, douyin, hongguo-drama, wan-3, seedance, minimax-h3
 ---
@@ -120,6 +120,8 @@ metadata:
 使用 [continuity-ledger.csv](assets/templates/continuity-ledger.csv) 维护正式状态，每个验收段都要更新。
 
 在高风险或强连续项目中，视频生成前阅读 [previsualization-and-coverage.md](references/previsualization-and-coverage.md)：先做角色/地点/道具长期母版，再为关键剧情时刻试拍少量覆盖方案，最后只冻结真正会约束请求的首帧、尾帧或状态帧。简单反应镜头不强制做完整故事板；多角色、巨物尺度、镜面规则、真实地标、精确走位和关键接触不得跳过预演。
+
+需要生成角色设定图、场景图、道具图或分镜图时，同时阅读 [reference-graph-and-storyboard-images.md](references/reference-graph-and-storyboard-images.md)。把素材组织成有职责的依赖图，先验收一个构图母帧，再生成后续分镜；每个参考明确 `controls` 与 `must_not_transfer`，多姿势拼版不得复制成额外角色。
 
 ## 设计生成段与剪辑节拍
 

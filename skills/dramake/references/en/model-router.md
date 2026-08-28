@@ -28,8 +28,6 @@ Never copy exact parameters from another aggregator, an old screenshot, or an ol
 
 As of the 2026-08 documented snapshot: Wan 3 supports up to 30 seconds, multimodal reference, and native audio; Seedance 2.5 supports up to 30 seconds, extension, flexible reference, and editing; the Seedance 2.0 paper documents 4–15 second native audiovisual generation; MiniMax H3's launch describes up to 15 seconds, native stereo, and up to 2K; Kling 3.0 public material emphasizes multi-shot and element binding. A surface may expose only part of the family capability, so its live schema remains authoritative.
 
-Sources: [Wan 3 API](https://help.aliyun.com/en/model-studio/wan3-video-generation-api-reference), [official Seedance 2.5 introduction](https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5), [Seedance 2.0 paper](https://arxiv.org/abs/2604.14148), [MiniMax H3 launch](https://www.minimax.io/blog/minimax-h3), and [Kling 3.0 launch](https://ir.kuaishou.com/node/11216/pdf).
-
 ## Wan 3 reference-driven long dialogue blocks
 
 When the active surface actually exposes Wan 3-class `reference-to-video`, mixed image/video/audio references, and native audio, test it for 20–30-second two-person or multi-character continuous performances:
@@ -42,7 +40,7 @@ When the active surface actually exposes Wan 3-class `reference-to-video`, mixed
 
 References express control intent, not a guarantee. Images intend to lock identity/wardrobe; video intends to lock motion/material/medium; audio intends to lock voice, manner, and timing. Validate actual output with identity, voice, lip-sync, wording, and action A/B review.
 
-As of 2026-08-25, the official Wan 3 API documentation exposes mixed reference images, videos, and audio, output up to 30 seconds, a native-audio switch, and tiers including 720P and 16:9. It also states that reference mode is mutually exclusive with `first_frame`/`last_frame`. With reference-video input, total input-video duration plus output duration must be no more than 30 seconds, so a request with video reference cannot also assume a full 30-second output. Prefer R2V when identity, voice, and natural performance dominate; choose first/last-frame mode when exact boundary composition dominates. Re-check every other execution surface. [Official API reference](https://help.aliyun.com/en/model-studio/wan3-video-generation-api-reference)
+As of 2026-08-25, the official Wan 3 API documentation exposes mixed reference images, videos, and audio, output up to 30 seconds, a native-audio switch, and tiers including 720P and 16:9. It also states that reference mode is mutually exclusive with `first_frame`/`last_frame`. With reference-video input, total input-video duration plus output duration must be no more than 30 seconds, so a request with video reference cannot also assume a full 30-second output. Prefer R2V when identity, voice, and natural performance dominate; choose first/last-frame mode when exact boundary composition dominates. Re-check every other execution surface.
 
 ## Routing questions
 
@@ -95,4 +93,4 @@ Record new evidence in a dated benchmark entry and update routing only after rep
 - Save prompt, model version, references, parameters, timing, cost, and outputs for every request as a recoverable audit trail.
 - Preview the exact request before submission; reconfirm after a request-body change; recover timed-out jobs before resubmitting.
 
-These are reproducible engineering structures, not independent validation of project quality claims. See [ai-video-pipeline](https://github.com/0xadvait/ai-video-pipeline), [StoryMind](https://github.com/LinHao-city/StoryMind), [ai-cinematic-pipeline](https://github.com/billpar/ai-cinematic-pipeline), [drama-skills](https://github.com/zenstory-ai/drama-skills), and [DramaDirector](https://github.com/iLearn-Lab/DramaDirector).
+These methods still require validation against real project output; inclusion in the workflow is not a quality guarantee.
