@@ -372,6 +372,71 @@ class RepositoryTests(unittest.TestCase):
             self.assertIn("contact block requires physical_event_contract", result.stdout)
             self.assertIn("contact shot requires physical_start_state", result.stdout)
 
+    def test_operational_spatial_series_and_delivery_modules_are_routed(self):
+        skill = (ROOT / "skills/dramake/SKILL.md").read_text(encoding="utf-8")
+        files_and_markers = {
+            "production-operations-and-recovery.md": ("idempotency_key", "unknown", "候选谱系", "适配器边界"),
+            "spatial-blocking-and-world-state.md": ("空间锚点", "反射拓扑", "巨物", "空间反向检查"),
+            "series-memory-and-source-adaptation.md": ("人物知识", "valid_from/valid_to", "resume_cursor", "记忆门禁"),
+            "editing-delivery-and-release.md": ("source_in/source_out", "可编辑交付", "黑帧", "平台上传成功不代表内容通过"),
+        }
+        for filename, markers in files_and_markers.items():
+            self.assertIn(filename, skill)
+            text = (ROOT / "skills/dramake/references" / filename).read_text(encoding="utf-8")
+            for marker in markers:
+                self.assertIn(marker, text)
+            for forbidden in ("SeeReel", "StoryMind", "Jellyfish", "DramaClaw", "Higgsfield", "LibTV"):
+                self.assertNotIn(forbidden, text)
+
+    def test_new_empty_templates_pass_validator(self):
+        templates = ROOT / "skills/dramake/assets/templates"
+        result = subprocess.run(
+            [
+                "python3", str(ROOT / "scripts/validate_plan.py"),
+                "--jobs", str(templates / "generation-jobs.csv"),
+                "--spatial", str(templates / "spatial-plan.csv"),
+                "--story-memory", str(templates / "story-memory.csv"),
+                "--candidates", str(templates / "candidate-scorecard.csv"),
+                "--timeline", str(templates / "edit-timeline.csv"),
+            ],
+            capture_output=True, text=True, check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_generation_job_and_candidate_hard_gates_reject_bad_state(self):
+        templates = ROOT / "skills/dramake/assets/templates"
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            jobs = tmp_path / "jobs.csv"
+            candidates = tmp_path / "candidates.csv"
+            job_base = {
+                "block_id": "B01", "provider": "runtime", "exact_model_id": "model-v1",
+                "mode": "i2v", "request_fingerprint": "fp-1", "idempotency_key": "same-key",
+                "prompt_version": "p1", "params_version": "v1", "reference_digest": "ref-1",
+                "context_path": "blocks/B01", "authorization_scope_id": "AUTH-1",
+                "quoted_cost": "1", "currency": "USD", "status": "processing",
+                "retry_count": "0", "max_retries": "1",
+            }
+            self.write_template_rows(jobs, templates / "generation-jobs.csv", [
+                {**job_base, "job_id": "J01"},
+                {**job_base, "job_id": "J02"},
+            ])
+            self.write_template_rows(candidates, templates / "candidate-scorecard.csv", [{
+                "review_id": "R01", "block_id": "B01", "job_id": "J01",
+                "blind_candidate_id": "C-A", "must_hit_result": "fail", "narrative_job": "hook",
+                "identity_score": "4", "spatial_score": "4", "physics_score": "4",
+                "acting_score": "4", "audio_score": "4", "editability_score": "4",
+                "useful_surprise_score": "4", "accepted_ranges": "0-4", "p0_findings": "wrong action",
+                "reviewer_role": "critic", "decision": "accepted",
+            }])
+            result = subprocess.run(
+                ["python3", str(ROOT / "scripts/validate_plan.py"), "--jobs", str(jobs), "--candidates", str(candidates)],
+                capture_output=True, text=True, check=False,
+            )
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("duplicate active idempotency_key", result.stdout)
+            self.assertIn("accepted candidate requires passed MUST-HIT", result.stdout)
+
 
 if __name__ == "__main__":
     unittest.main()

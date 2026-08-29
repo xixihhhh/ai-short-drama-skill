@@ -1,0 +1,1 @@
+review_id,block_id,job_id,parent_job_id,blind_candidate_id,must_hit_result,narrative_job,identity_score,spatial_score,physics_score,acting_score,audio_score,editability_score,useful_surprise_score,p0_findings,p1_findings,accepted_ranges,rejection_reason,changed_variable,reviewer_role,decision

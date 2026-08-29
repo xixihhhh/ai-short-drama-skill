@@ -1,0 +1,1 @@
+fact_id,series_id,episode_id,entity_type,entity_id,relation,target,valid_from,valid_to,source_span,adaptation_status,audience_knows_from,character_knows_from,reveal_status,continuity_priority,conflict_status,resume_cursor,canonical_decision

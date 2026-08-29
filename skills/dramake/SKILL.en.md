@@ -4,7 +4,7 @@ description: For Codex, Claude Code, WorkBuddy, and other Agent Skills clients, 
 license: MIT
 metadata:
   author: Dramake contributors
-  version: 0.5.1
+  version: 0.6.0
   category: video-production
   tags: ai-video, text-to-video, short-drama, codex, claude-code, workbuddy, douyin, hongguo-drama, wan-3, seedance, minimax-h3
 ---
@@ -94,6 +94,8 @@ Report estimated request count, expected retries, resolution, duration, and cost
 
 Separately choose a spend-authorization mode from [authorization-and-batch.md](references/en/authorization-and-batch.md): `plan-only`, `single-test`, `approved-batch`, or `autopilot-with-cap`. A quality tier never implies permission to spend. If the user has pre-authorized a provider, upload policy, budget cap, and retry cap, do not ask for confirmation on every request; stop only at the defined boundary.
 
+For execution, also read [production-operations-and-recovery.md](references/en/production-operations-and-recovery.md) and use [generation-jobs.csv](assets/templates/generation-jobs.csv) for request fingerprints, idempotency keys, job state, dependencies, spend, recovery, and candidate lineage. A timeout becomes `unknown` and triggers recovery before resubmission. Human edits invalidate affected confirmations and downstream jobs.
+
 ## Build the story before prompts
 
 Read [story-and-pacing.md](references/en/story-and-pacing.md) and [directing-camera-and-pacing.md](references/en/directing-camera-and-pacing.md). For comedy, cute-animal, anthropomorphic, or animated-performance work, also read [comedy-and-animated-performance.md](references/en/comedy-and-animated-performance.md). Deliver:
@@ -137,6 +139,10 @@ For live-action work, anchor photography, real materials, practical wardrobe, re
 For live-action/cute animal hybrids, choose naturalistic, heightened-realism, or animated-actor hybrid performance. The hybrid keeps the world and materials photoreal while locking anthropomorphic poses, expressions, anticipation, overshoot, settle, and controlled squash/stretch. Props and contact still obey real continuity; animation never excuses penetration, teleportation, or prop drift. Read [style-and-medium-locks.md](references/en/style-and-medium-locks.md) and [comedy-and-animated-performance.md](references/en/comedy-and-animated-performance.md).
 
 Maintain [continuity-ledger.csv](assets/templates/continuity-ledger.csv) as the source of truth. Every accepted block updates it.
+
+For long manuscripts, serialized drama, or multi-episode IP, also read [series-memory-and-source-adaptation.md](references/en/series-memory-and-source-adaptation.md). Retrieve layered facts, character knowledge, timeline, and reveal state instead of resending the entire source or relying on chat memory.
+
+For multi-character staging, real locations, chases, mirrors, giants, machinery, complex entrances, or impossible spaces, also read [spatial-blocking-and-world-state.md](references/en/spatial-blocking-and-world-state.md). Lock location anchors and connectivity before writing character `start → path → end`, camera, eyeline, occlusion, scale, and reflection topology; prompts cannot invent positions at generation time.
 
 For risky or continuity-heavy work, read [previsualization-and-coverage.md](references/en/previsualization-and-coverage.md) before video generation. Build long-term cast/location/prop masters, audition a few coverage alternatives for critical moments, and freeze only the first, last, or state frames that directly constrain requests. Simple reactions do not require a full storyboard; multi-character blocking, giant scale, mirror rules, real landmarks, precise paths, and critical contact do.
 
@@ -269,6 +275,10 @@ For comedy or animated performance, add a muted acceptance pass: a viewer can id
 
 Repair the smallest failing unit. Use edit/extend when capable, bridge shots when the join is the problem, and regeneration when identity, anatomy, or story causality is broken. Do not hide a narrative failure with music.
 
+For multiple candidates, pass binary MUST-HIT gates before using [candidate-scorecard.csv](assets/templates/candidate-scorecard.csv) to compare narrative job, identity, space, physics, acting, audio, and editability. Blind hero reviews to model, seed, cost, and generation order when practical. A reviewer first detects and grades failures; the author or repair role then chooses the intervention, avoiding self-justification in the same pass.
+
+For final assembly, read [editing-delivery-and-release.md](references/en/editing-delivery-and-release.md) and use [edit-timeline.csv](assets/templates/edit-timeline.csv) to place only accepted usable ranges, normalize working and delivery formats, retain editable caption/title layers and audio stems, and check missing media, timeline gaps, black/frozen/duplicate frames, loudness, safe areas, and landscape/portrait versions. Generated is not edited; uploaded is not released.
+
 ## Deliver by task scope
 
 Do not impose a full production package on a local request. Create only artifacts that a real next step will read or validate:
@@ -276,8 +286,8 @@ Do not impose a full production package on a local request. Create only artifact
 - **diagnosis/advice:** evidence, priority, and smallest repair; no empty CSVs or production tree;
 - **story/script:** brief, story contract, and script/beats; add bibles only when identity, props, or season state need continuity;
 - **storyboard/production package:** add coverage/frozen frames, blocks, edit beats, reference authority, live capability cards, cost, and audio route;
-- **execution:** add request preview and fingerprints, upload/request IDs, spend ledger, real output, QA evidence, accepted tail frames, and continuity state;
-- **final/publication:** add final timeline, mix, captions/art text, cover, encoding, and cold-viewer report.
+- **execution:** add request preview and fingerprints, idempotency keys, job/recovery records, candidate lineage, spend ledger, real output, QA evidence, accepted tail frames, and continuity state;
+- **final/publication:** add a provenance-bearing timeline, media normalization, mix, captions/art text, cover, encoding, and cold-viewer report.
 
 Reuse sufficient upstream assets instead of recreating them for procedural completeness. Name outputs consistently: `BLOCK_ID_vN.mp4`, `_tail.png`, `_contact_12.jpg`, `_audio.wav`, and `_QA.md`.
 

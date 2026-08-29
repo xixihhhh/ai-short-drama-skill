@@ -71,6 +71,41 @@ SPEND_REQUIRED = {
     "approval_scope_id", "prompt_fingerprint", "params_fingerprint",
     "reference_digest", "schema_checked_at", "task_recovery_note",
 }
+JOBS_REQUIRED = {
+    "job_id", "block_id", "parent_job_id", "provider", "exact_model_id", "mode",
+    "request_fingerprint", "idempotency_key", "prompt_version", "params_version",
+    "reference_digest", "dependency_jobs", "context_path", "authorization_scope_id",
+    "quoted_cost", "currency", "status", "progress", "submitted_at", "last_checked_at",
+    "completed_at", "output_uri", "error_class", "retry_count", "max_retries",
+    "changed_variable", "cancellation_state", "recovery_note", "accepted_ranges", "qa_status",
+}
+SPATIAL_REQUIRED = {
+    "spatial_id", "scene_id", "block_id", "location_id", "anchor_id", "anchor_type",
+    "canonical_relation", "fixed_or_movable", "connected_anchors", "visibility_constraints",
+    "scale_reference", "approved_reference", "subject_id", "start_anchor", "path_anchors",
+    "end_anchor", "facing", "eyeline_target", "camera_anchor", "camera_height_lens",
+    "screen_direction", "occluders", "prop_contacts", "entry_state", "exit_state",
+    "world_rule", "reflection_rule", "variation_rule", "spatial_conflicts", "qa_status",
+}
+MEMORY_REQUIRED = {
+    "fact_id", "series_id", "episode_id", "entity_type", "entity_id", "relation", "target",
+    "valid_from", "valid_to", "source_span", "adaptation_status", "audience_knows_from",
+    "character_knows_from", "reveal_status", "continuity_priority", "conflict_status",
+    "resume_cursor", "canonical_decision",
+}
+CANDIDATE_REQUIRED = {
+    "review_id", "block_id", "job_id", "parent_job_id", "blind_candidate_id",
+    "must_hit_result", "narrative_job", "identity_score", "spatial_score", "physics_score",
+    "acting_score", "audio_score", "editability_score", "useful_surprise_score",
+    "p0_findings", "p1_findings", "accepted_ranges", "rejection_reason", "changed_variable",
+    "reviewer_role", "decision",
+}
+TIMELINE_REQUIRED = {
+    "event_id", "track_type", "block_id", "job_id", "source_uri", "source_in_s",
+    "source_out_s", "timeline_in_s", "timeline_out_s", "speed", "frame_transform",
+    "transition_in", "transition_out", "audio_route", "caption_id", "title_layer_id",
+    "grade_id", "accepted_range_id", "provenance_note", "qa_status",
+}
 
 ACCEPTED = {"accepted", "accepted_with_deviation"}
 CONTINUITY_STATUSES = {
@@ -392,6 +427,150 @@ def validate_spend(path: Path) -> list[str]:
     return errors
 
 
+def validate_jobs(path: Path) -> list[str]:
+    rows, errors = read_csv(path, JOBS_REQUIRED)
+    errors += require_unique(rows, "job_id", path)
+    by_id = {row.get("job_id", ""): row for row in rows if row.get("job_id")}
+    parents: dict[str, str] = {}
+    active_keys: dict[str, str] = {}
+    execution_states = {
+        "submitted", "processing", "completed", "reviewed", "accepted", "repair",
+        "rejected", "cancel_requested", "cancelled", "unknown", "recovered", "failed",
+    }
+    allowed = {"planned", "previewed", "confirmed"} | execution_states
+    for row in rows:
+        line = row["__line__"]
+        job_id = row.get("job_id", "")
+        status = row.get("status", "")
+        parent = row.get("parent_job_id", "")
+        if status not in allowed:
+            errors.append(f"{path}:{line}: invalid job status {status!r}")
+        if parent:
+            parents[job_id] = parent
+            if parent == job_id:
+                errors.append(f"{path}:{line}: job cannot parent itself")
+            elif parent not in by_id:
+                errors.append(f"{path}:{line}: parent_job_id {parent!r} not found")
+            if not row.get("changed_variable"):
+                errors.append(f"{path}:{line}: child candidate requires changed_variable")
+        if status in execution_states:
+            for field in (
+                "block_id", "provider", "exact_model_id", "mode", "request_fingerprint",
+                "idempotency_key", "reference_digest", "context_path", "authorization_scope_id",
+            ):
+                if not row.get(field):
+                    errors.append(f"{path}:{line}: {status} job requires {field}")
+        if status in {"completed", "reviewed", "accepted", "repair", "rejected"} and not row.get("output_uri"):
+            errors.append(f"{path}:{line}: {status} job requires output_uri")
+        if status == "accepted" and (not row.get("accepted_ranges") or not row.get("qa_status")):
+            errors.append(f"{path}:{line}: accepted job requires accepted_ranges and qa_status")
+        try:
+            retry_count = int(row.get("retry_count", "0") or 0)
+            max_retries = int(row.get("max_retries", "0") or 0)
+            if retry_count < 0 or max_retries < 0 or retry_count > max_retries:
+                raise ValueError
+        except ValueError:
+            errors.append(f"{path}:{line}: require 0 <= retry_count <= max_retries")
+        for dependency in split_ids(row.get("dependency_jobs", "")):
+            if dependency not in by_id:
+                errors.append(f"{path}:{line}: dependency job {dependency!r} not found")
+        key = row.get("idempotency_key", "")
+        if key and status in {"submitted", "processing", "unknown", "cancel_requested"}:
+            if key in active_keys:
+                errors.append(f"{path}:{line}: duplicate active idempotency_key; first at line {active_keys[key]}")
+            else:
+                active_keys[key] = line
+    errors += find_cycles(parents, path, "job parent")
+    return errors
+
+
+def validate_spatial(path: Path) -> list[str]:
+    rows, errors = read_csv(path, SPATIAL_REQUIRED)
+    errors += require_unique(rows, "spatial_id", path)
+    anchor_ids = {row.get("anchor_id", "") for row in rows if row.get("anchor_id")}
+    for row in rows:
+        line = row["__line__"]
+        if row.get("fixed_or_movable") and row["fixed_or_movable"] not in {"fixed", "movable"}:
+            errors.append(f"{path}:{line}: fixed_or_movable must be fixed or movable")
+        for anchor in split_ids(row.get("connected_anchors", "")):
+            if anchor not in anchor_ids:
+                errors.append(f"{path}:{line}: connected anchor {anchor!r} not found")
+        if row.get("subject_id"):
+            for field in ("block_id", "start_anchor", "end_anchor", "camera_anchor", "entry_state", "exit_state"):
+                if not row.get(field):
+                    errors.append(f"{path}:{line}: blocking row requires {field}")
+            for field in ("start_anchor", "end_anchor", "camera_anchor"):
+                if row.get(field) and row[field] not in anchor_ids:
+                    errors.append(f"{path}:{line}: {field} {row[field]!r} not found in anchor graph")
+    return errors
+
+
+def validate_memory(path: Path) -> list[str]:
+    rows, errors = read_csv(path, MEMORY_REQUIRED)
+    errors += require_unique(rows, "fact_id", path)
+    for row in rows:
+        line = row["__line__"]
+        for field in ("series_id", "entity_type", "entity_id", "relation", "target", "adaptation_status"):
+            if not row.get(field):
+                errors.append(f"{path}:{line}: empty {field}")
+        if row.get("conflict_status") == "resolved" and not row.get("canonical_decision"):
+            errors.append(f"{path}:{line}: resolved conflict requires canonical_decision")
+    return errors
+
+
+def validate_candidates(path: Path) -> list[str]:
+    rows, errors = read_csv(path, CANDIDATE_REQUIRED)
+    errors += require_unique(rows, "review_id", path)
+    scores = (
+        "identity_score", "spatial_score", "physics_score", "acting_score", "audio_score",
+        "editability_score", "useful_surprise_score",
+    )
+    for row in rows:
+        line = row["__line__"]
+        if row.get("must_hit_result") not in {"pass", "fail"}:
+            errors.append(f"{path}:{line}: must_hit_result must be pass or fail")
+        if row.get("decision") not in {"accepted", "accepted_with_deviation", "repair", "rejected"}:
+            errors.append(f"{path}:{line}: invalid candidate decision {row.get('decision')!r}")
+        for field in scores:
+            try:
+                value = float(row.get(field, ""))
+                if value < 0 or value > 5:
+                    raise ValueError
+            except ValueError:
+                errors.append(f"{path}:{line}: {field} must be between 0 and 5")
+        if row.get("decision") in ACCEPTED:
+            if row.get("must_hit_result") != "pass" or not row.get("accepted_ranges"):
+                errors.append(f"{path}:{line}: accepted candidate requires passed MUST-HIT and accepted_ranges")
+        if row.get("must_hit_result") == "fail" and not row.get("p0_findings"):
+            errors.append(f"{path}:{line}: failed MUST-HIT requires p0_findings")
+    return errors
+
+
+def validate_timeline(path: Path) -> list[str]:
+    rows, errors = read_csv(path, TIMELINE_REQUIRED)
+    errors += require_unique(rows, "event_id", path)
+    allowed_tracks = {"video", "dialogue", "ambience", "music", "sfx", "caption", "title", "overlay"}
+    for row in rows:
+        line = row["__line__"]
+        if row.get("track_type") not in allowed_tracks:
+            errors.append(f"{path}:{line}: invalid track_type {row.get('track_type')!r}")
+        try:
+            source_in = float(row.get("source_in_s", ""))
+            source_out = float(row.get("source_out_s", ""))
+            timeline_in = float(row.get("timeline_in_s", ""))
+            timeline_out = float(row.get("timeline_out_s", ""))
+            speed = float(row.get("speed", ""))
+            if min(source_in, timeline_in) < 0 or source_out <= source_in or timeline_out <= timeline_in or speed <= 0:
+                raise ValueError
+        except ValueError:
+            errors.append(f"{path}:{line}: invalid source/timeline range or speed")
+        if row.get("track_type") in {"video", "dialogue", "ambience", "music", "sfx"} and not row.get("source_uri"):
+            errors.append(f"{path}:{line}: media event requires source_uri")
+        if row.get("track_type") == "video" and (not row.get("job_id") or not row.get("accepted_range_id")):
+            errors.append(f"{path}:{line}: video event requires job_id and accepted_range_id")
+    return errors
+
+
 def validate_cross_files(args: argparse.Namespace) -> list[str]:
     """Validate IDs, durations, state, voices, and audio across supplied manifests."""
     errors: list[str] = []
@@ -402,6 +581,10 @@ def validate_cross_files(args: argparse.Namespace) -> list[str]:
         "shots": (args.shot_plan, SHOT_REQUIRED),
         "voices": (args.voice_bible, VOICE_REQUIRED),
         "audio": (args.audio_continuity, AUDIO_REQUIRED),
+        "jobs": (args.jobs, JOBS_REQUIRED),
+        "spatial": (args.spatial, SPATIAL_REQUIRED),
+        "candidates": (args.candidates, CANDIDATE_REQUIRED),
+        "timeline": (args.timeline, TIMELINE_REQUIRED),
     }
     for name, (path, required) in specs.items():
         if path:
@@ -469,6 +652,36 @@ def validate_cross_files(args: argparse.Namespace) -> list[str]:
                 child_entry = state.get("entry_state", "")
                 if parent_exit and normalize_value(parent_exit) != normalize_value(child_entry):
                     errors.append(f"{continuity_path}:{state['__line__']}: child entry_state does not match accepted parent observed_exit_state")
+
+    job_rows = tables.get("jobs", (Path(), []))[1]
+    job_by_id = {row.get("job_id", ""): row for row in job_rows if row.get("job_id")}
+    if job_rows and block_rows:
+        job_path = tables["jobs"][0]
+        for row in job_rows:
+            if row.get("block_id") and row["block_id"] not in block_by_id:
+                errors.append(f"{job_path}:{row['__line__']}: unknown block_id {row['block_id']!r}")
+
+    if "spatial" in tables and block_rows:
+        spatial_path, spatial_rows = tables["spatial"]
+        for row in spatial_rows:
+            if row.get("block_id") and row["block_id"] not in block_by_id:
+                errors.append(f"{spatial_path}:{row['__line__']}: unknown block_id {row['block_id']!r}")
+
+    if "candidates" in tables:
+        candidate_path, candidate_rows = tables["candidates"]
+        for row in candidate_rows:
+            if block_rows and row.get("block_id") not in block_by_id:
+                errors.append(f"{candidate_path}:{row['__line__']}: unknown block_id {row.get('block_id')!r}")
+            if job_rows and row.get("job_id") not in job_by_id:
+                errors.append(f"{candidate_path}:{row['__line__']}: unknown job_id {row.get('job_id')!r}")
+
+    if "timeline" in tables:
+        timeline_path, timeline_rows = tables["timeline"]
+        for row in timeline_rows:
+            if block_rows and row.get("block_id") and row["block_id"] not in block_by_id:
+                errors.append(f"{timeline_path}:{row['__line__']}: unknown block_id {row['block_id']!r}")
+            if job_rows and row.get("job_id") and row["job_id"] not in job_by_id:
+                errors.append(f"{timeline_path}:{row['__line__']}: unknown job_id {row['job_id']!r}")
     return errors
     rows, errors = read_csv(path, required)
     errors += require_unique(rows, primary, path)
@@ -485,6 +698,11 @@ def main() -> None:
     parser.add_argument("--cost", type=Path)
     parser.add_argument("--coverage", type=Path)
     parser.add_argument("--spend", type=Path)
+    parser.add_argument("--jobs", type=Path)
+    parser.add_argument("--spatial", type=Path)
+    parser.add_argument("--story-memory", type=Path)
+    parser.add_argument("--candidates", type=Path)
+    parser.add_argument("--timeline", type=Path)
     args = parser.parse_args()
     errors: list[str] = []
     if args.continuity:
@@ -503,6 +721,16 @@ def main() -> None:
         errors += validate_coverage(args.coverage)
     if args.spend:
         errors += validate_spend(args.spend)
+    if args.jobs:
+        errors += validate_jobs(args.jobs)
+    if args.spatial:
+        errors += validate_spatial(args.spatial)
+    if args.story_memory:
+        errors += validate_memory(args.story_memory)
+    if args.candidates:
+        errors += validate_candidates(args.candidates)
+    if args.timeline:
+        errors += validate_timeline(args.timeline)
     if not any(vars(args).values()):
         parser.error("provide at least one manifest path")
     errors += validate_cross_files(args)

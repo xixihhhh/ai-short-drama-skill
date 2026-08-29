@@ -4,7 +4,7 @@ description: 面向 Codex、Claude Code、WorkBuddy 和其他 Agent Skills 客�
 license: MIT
 metadata:
   author: Dramake contributors
-  version: 0.5.1
+  version: 0.6.0
   category: video-production
   tags: ai-video, text-to-video, short-drama, codex, claude-code, workbuddy, douyin, hongguo-drama, wan-3, seedance, minimax-h3
 ---
@@ -119,6 +119,10 @@ metadata:
 
 使用 [continuity-ledger.csv](assets/templates/continuity-ledger.csv) 维护正式状态，每个验收段都要更新。
 
+长小说、连续剧或跨集 IP 同时阅读 [series-memory-and-source-adaptation.md](references/series-memory-and-source-adaptation.md)，使用分层事实、人物知识、时间线与揭示状态，而不是把全文反复塞入提示词或依赖对话记忆。
+
+多角色调度、真实地点、追逐、镜面、巨物、设施、复杂出入口或异常空间同时阅读 [spatial-blocking-and-world-state.md](references/spatial-blocking-and-world-state.md)。先锁地点锚点与连通关系，再写角色 `start → path → end`、机位、视线、遮挡、尺度和反射拓扑；提示词不得临时发明位置。
+
 在高风险或强连续项目中，视频生成前阅读 [previsualization-and-coverage.md](references/previsualization-and-coverage.md)：先做角色/地点/道具长期母版，再为关键剧情时刻试拍少量覆盖方案，最后只冻结真正会约束请求的首帧、尾帧或状态帧。简单反应镜头不强制做完整故事板；多角色、巨物尺度、镜面规则、真实地标、精确走位和关键接触不得跳过预演。
 
 需要生成角色设定图、场景图、道具图或分镜图时，同时阅读 [reference-graph-and-storyboard-images.md](references/reference-graph-and-storyboard-images.md)。把素材组织成有职责的依赖图，先验收一个构图母帧，再生成后续分镜；每个参考明确 `controls` 与 `must_not_transfer`，多姿势拼版不得复制成额外角色。
@@ -182,6 +186,8 @@ metadata:
 
 授权另选 [authorization-and-batch.md](references/authorization-and-batch.md) 中的 `plan-only`、`single-test`、`approved-batch` 或 `autopilot-with-cap`。质量档不代表付费许可。用户已预先授权平台、上传规则、预算与重试上限时，不要逐条重复询问；触及边界必须停止。
 
+正式执行同时阅读 [production-operations-and-recovery.md](references/production-operations-and-recovery.md)，用 [generation-jobs.csv](assets/templates/generation-jobs.csv) 保存请求指纹、幂等键、任务状态、依赖、费用、恢复和候选谱系。超时先进入 `unknown` 并找回任务，不能把未知状态当失败后盲目重提；人工修改上游状态后，使受影响的确认和下游任务失效。
+
 ## 选择对白与声音路线
 
 阅读 [audio-and-dubbing.md](references/audio-and-dubbing.md)，按场景选择，而不是整片盲目统一。
@@ -234,6 +240,10 @@ metadata:
 
 只修最小失败单元：局部缺陷用编辑，接缝问题用桥接/续写，身份/解剖/因果崩坏才重生，纯音频问题优先重混。不得用音乐掩盖剧情失败。
 
+多个候选先过 MUST-HIT 二元门，再用 [candidate-scorecard.csv](assets/templates/candidate-scorecard.csv) 比较剧情、身份、空间、物理、表演、声音和可剪辑性；关键候选尽量盲化模型、种子、费用与生成顺序。评审者先负责发现和分级，创作/修复者再决定改法，避免同一轮为自己的结果辩护。
+
+进入成片阶段阅读 [editing-delivery-and-release.md](references/editing-delivery-and-release.md)，用 [edit-timeline.csv](assets/templates/edit-timeline.csv) 只装入已验收的真实可用区间，统一工作格式与交付配置，保留字幕/艺术字和音频分轨，并检查缺失媒体、时间线空洞、黑/冻/重复帧、响度、字幕安全区和横竖版本。生成完成不等于剪辑完成，上传成功不等于发布通过。
+
 ## 按任务范围交付
 
 不要把完整制作包强加给局部请求。只创建下一步确实会读取或验证的文件：
@@ -241,8 +251,8 @@ metadata:
 - **诊断/建议：**问题证据、优先级和最小修复；不生成空白 CSV 或生产目录。
 - **故事/剧本：**生产简报、剧情合同、剧本/节拍；只在身份、道具或季线确有连续性时建对应母版。
 - **分镜/生产包：**加入覆盖方案/冻结关键帧、生成段、剪辑节拍、参考权威、模型能力卡、费用与声音路线。
-- **执行：**加入请求预览与指纹、上传/请求 ID、费用账本、真实输出、QA 证据、验收尾帧和连续性状态。
-- **成片/发布：**加入正式时间线、混音、字幕/艺术字、封面、编码与冷观众报告。
+- **执行：**加入请求预览与指纹、幂等键、任务/恢复记录、候选谱系、费用账本、真实输出、QA 证据、验收尾帧和连续性状态。
+- **成片/发布：**加入带来源链的正式时间线、媒体标准化、混音、字幕/艺术字、封面、编码与冷观众报告。
 
 已有素材或上游状态已足够时复用，不为“流程完整”重复生成。统一命名：`BLOCK_ID_vN.mp4`、`_tail.png`、`_contact_12.jpg`、`_audio.wav`、`_QA.md`。
 

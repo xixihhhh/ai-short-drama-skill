@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.6.0 - 2026-08-30
+
+- Added location anchors, character blocking, reflection topology, giant-scale anchors, impossible-space rules, and a reverse spatial pass to reduce teleportation, wrong exits, duplication, and scale drift.
+- Added long-source and series facts, character knowledge, timeline, reveal state, source slicing, and resume cursors for serialized continuity and large-text adaptation.
+- Added request fingerprints, idempotency keys, job state, cancellation/recovery, concurrency leases, and candidate lineage; unknown jobs must be recovered before any resubmission.
+- Added MUST-HIT-first blind candidate review, single-variable retries, and a separate reviewer role so attractive but unusable takes do not win by default.
+- Added a formal edit timeline, usable ranges, media normalization, stems, editable delivery, and pre-release technical gates.
+- Added five production templates, five validator families, and regression coverage while keeping named case studies and peer products out of Skill instructions.
+
 ## 0.5.1 - 2026-08-28
 
 - Added a reference-asset dependency graph and practical character, location, prop, and storyboard-image methods.

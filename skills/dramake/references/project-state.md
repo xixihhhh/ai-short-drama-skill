@@ -9,8 +9,13 @@
 - `character-world-bible.md`：角色、声线、场景、道具与风格母版；
 - `prop-bible.md`：重复/跨场景/文字道具的几何、材质、图层和状态机；
 - `block-manifest.csv`：场景、生成段、剪辑节拍、模型与声音路线；
+- `spatial-plan.csv`：地点锚点、连通关系、角色走位、镜面与尺度状态；
+- `story-memory.csv`：系列事实、人物知识、时间线、揭示与改编决定；
 - `continuity-ledger.csv`：已验收视觉/声音/物理状态；
 - `cost-plan.csv` 与 `spend-ledger.csv`：动态价格、授权、实际费用；
+- `generation-jobs.csv`：请求身份、幂等、轮询、恢复、取消与候选谱系；
+- `candidate-scorecard.csv`：候选硬门、盲评、可用区间和决定；
+- `edit-timeline.csv`：正式剪辑区间、轨道、变换、字幕/标题和来源链；
 - `qa/`：接触表、转写、时间点缺陷与决定；
 - `accepted/`：正式镜头、尾帧、音轨和最终时间线。
 
@@ -21,6 +26,8 @@
 `generated` 不等于 `accepted`。只有 `accepted` 或明确 `accepted_with_deviation` 的素材可成为父段。
 
 `ready` 只表示创意与素材条件齐备，不代表已授权付费。正式请求另记录 `previewed → confirmed → submitted → recovered/completed`：prompt、参数、参考、模型 schema 的任一实质变化都会让 `confirmed` 回退为 `previewed`。提交超时先用请求 ID 或任务历史找回，不能把未知状态当失败后直接重提。
+
+任务恢复、幂等、取消和候选谱系使用独立运行状态机，详见 [production-operations-and-recovery.md](production-operations-and-recovery.md)。创意段状态、请求状态和时间线使用状态不可互相冒充。
 
 ## 依赖图与并行
 
@@ -33,6 +40,8 @@
 场景内允许从验收状态接续；换地点/时间时从人物与场景母版重新锚定，并把地点变化作为有动机的转场。
 
 输出来源链默认最多连续 2 段，硬上限 3 段。到达上限、跨场景或发现漂移时，从长期母版与当前已验收状态重新锚定。
+
+复杂空间同时维护地点锚点和走位状态；连续剧同时维护系列事实与人物知识状态。父段被人工替换、修剪或重解释后，按依赖边使旧确认、下游任务和时间线事件失效，再从最近仍有效的检查点恢复。
 
 ## 计划与实测冲突
 

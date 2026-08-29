@@ -10,8 +10,8 @@ A director-level Agent Skill for everyday creators. Start from an idea, copy, fi
 
 <p>
   <a href="https://github.com/xixihhhh/ai-short-drama-skill/releases/latest"><img src="https://img.shields.io/github/v/release/xixihhhh/ai-short-drama-skill?style=flat-square&amp;color=7c3aed" alt="Release"></a>
-  <a href="skills/dramake/SKILL.en.md"><img src="https://img.shields.io/badge/Skill-v0.5.1-2563eb?style=flat-square" alt="Skill v0.5.1"></a>
-  <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-18%20passed-16a34a?style=flat-square" alt="18 tests passed"></a>
+  <a href="skills/dramake/SKILL.en.md"><img src="https://img.shields.io/badge/Skill-v0.6.0-2563eb?style=flat-square" alt="Skill v0.6.0"></a>
+  <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-25%20passed-16a34a?style=flat-square" alt="25 tests passed"></a>
   <a href="README.md"><img src="https://img.shields.io/badge/docs-中文%20%7C%20English-0891b2?style=flat-square" alt="Chinese and English"></a>
   <a href="#agent-compatibility"><img src="https://img.shields.io/badge/agents-Codex%20%7C%20Claude_Code%20%7C%20WorkBuddy-f97316?style=flat-square" alt="Codex, Claude Code, and WorkBuddy"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111827?style=flat-square" alt="MIT License"></a>
@@ -78,20 +78,24 @@ Dramake is not a new video model or a generation website. It is a director-and-p
 | **Image-quality-only review** | Beautiful frames with unclear story and fragmented sound | Four independent gates: narrative, identity/style, physics/continuity, and audio |
 | **“Premium” as batch permission** | Unbounded retries and spend | Quality never implies authorization; uploads, candidates, retries, cap, and stop conditions are explicit |
 
-### One entry point, eight built-in capabilities
+### One entry point, twelve built-in capabilities
 
-You install one `dramake` Skill. The following are cooperating capability modules inside it—not eight fragmented Skills that require separate installation.
+You install one `dramake` Skill. The following are cooperating capability modules inside it—not twelve fragmented Skills that require separate installation.
 
 | Built-in capability | Responsibility | Main outputs |
 |---|---|---|
 | **Story Doctor** | Repairs causality, motive, setup, reversal, and pace from an idea, fiction, or script | Story contract, beat sheet, cold-viewer questions |
 | **Visual Director** | Turns an emotional target into shot size, blocking, performance, camera, and cut motivation | Directing contract, storyboard, shot plan |
 | **Continuity Keeper** | Tracks parent state, axis, action phase, props, wetness, light, and scene boundaries | Continuity ledger, accepted tail, transition plan |
+| **Spatial Director** | Locks location anchors, blocking, entrances, reflection topology, giant scale, and impossible-space rules | Spatial map, blocking state, reverse spatial pass |
+| **Series Memory** | Manages long sources, character knowledge, timeline, reveals, and irreversible cross-episode state | Series fact ledger, source slices, resume cursor |
 | **Identity & Style Lock** | Locks people/animals/products, wardrobe topology, recurring props, text plates, materials, and portrait/landscape rules | Character/prop bibles, medium canon, reference-authority matrix |
 | **Voice & Audio Director** | Unifies speaker, voice, lip-sync route, ambience, music, and J/L cuts | Voice Bible, audio continuity, mix map |
 | **Model Router** | Routes Wan 3, Seedance, MiniMax H3, or other models by actual capability | Replaceable model cards and per-block route |
 | **Budget Guard** | Separates quality from spend permission and calculates candidates, retries, and caps | Cost plan, authorization mode, spend ledger |
+| **Job Orchestrator** | Manages fingerprints, idempotency, polling, cancellation, recovery, and candidate lineage | Job ledger, checkpoints, recovery decisions |
 | **QA & Repair** | Reviews frames/audio/story/physics/drift and chooses the smallest repair | QA report and keep/post/edit/reroll/rewrite decision |
+| **Edit & Release** | Places accepted ranges on an editable timeline, normalizes media, and runs release gates | Timeline manifest, stems, delivery master, release checks |
 
 <a id="workflow"></a>
 
@@ -100,11 +104,12 @@ You install one `dramake` Skill. The following are cooperating capability module
 | Stage | What Dramake does | Acceptance gate |
 |---|---|---|
 | **01 Story** | Extracts protagonist, desire, obstacle, escalation, plant, and payoff | A cold viewer can state the goal, action, and result |
-| **02 Canon** | Locks character, wardrobe, material, location, recurring props, text plates, voice, and medium | One authoritative reference per controlled dimension |
-| **03 Direction** | Designs intention, value turn, beats, shot size, performance, and movement | Every shot can answer “why film it this way?” |
+| **02 Memory and canon** | Locks character, wardrobe, material, location, props, voice, and cross-episode fact/knowledge state | One authority per dimension; no timeline or knowledge conflict |
+| **03 Space and direction** | Designs anchors, blocking, intention, value turn, beats, performance, and movement | Every action has a reachable path; every shot answers “why?” |
 | **04 Generation route** | Selects models by long duration, dialogue, keyframes, audio reference, edit, and budget | Quality tier and spend authorization remain separate |
-| **05 Evidence review** | Downloads real outputs and inspects frames, sound, physics, and continuity | A dependent block unlocks only after parent acceptance |
-| **06 Final post** | Continuity edit, dubbing, ambience, score, J/L cuts, and mix | Picture, story, and sound feel like one production |
+| **05 Job execution** | Submits, polls, recovers, and cancels with fingerprints and idempotency while retaining lineage | No duplicate spend; every output returns to request context |
+| **06 Evidence review** | Downloads real outputs, inspects frames/sound/physics, and blind-reviews candidates | A dependent block unlocks only after parent acceptance |
+| **07 Final delivery** | Places accepted ranges on a timeline, edits continuity, mixes stems, normalizes, and checks release | Picture, story, and sound cohere; technical gates pass |
 
 ### Two timescales
 
@@ -167,8 +172,8 @@ Random generated music is never concatenated directly into the final mix. Same-s
 
 | Verification | Current status |
 |---|---:|
-| Automated repository tests | **18 passed** |
-| Chinese/English document pairs | **31 passed** |
+| Automated repository tests | **25 passed** |
+| Chinese/English document pairs | **38 passed** |
 | Official Skill-format validation | **Passed** |
 | Complete valid production plan | **Accepted** |
 | Bad parent dependency, sparse long block, overlong shot, unknown voice | **Rejected** |
@@ -186,9 +191,11 @@ These checks validate workflow, file structure, and planning constraints—not u
 | [Comedy legibility and animated performance](skills/dramake/references/en/comedy-and-animated-performance.md) | Macro reversal, information-gap gags, reaction holds, anthropomorphic acting, and physics boundaries |
 | [Identity, voice, and reference locks](skills/dramake/references/en/identity-voice-and-reference-locks.md) · [Recurring prop bible](skills/dramake/assets/templates/en/prop-bible.md) | Character, wardrobe, recurring/text props, material, voice, and reference authority |
 | [Continuity and transitions](skills/dramake/references/en/continuity-and-transitions.md) | Parent state, tail frames, re-anchoring, and scene boundaries |
+| [Spatial map and blocking](skills/dramake/references/en/spatial-blocking-and-world-state.md) · [Series memory](skills/dramake/references/en/series-memory-and-source-adaptation.md) | Complex space, mirrors/giants, long sources, character knowledge, and cross-episode state |
 | [Dialogue, dubbing, and mix](skills/dramake/references/en/audio-and-dubbing.md) | Native speech, reference audio, external dubbing, and sound continuity |
 | [Model routing](skills/dramake/references/en/model-router.md) · [Spend authorization](skills/dramake/references/en/authorization-and-batch.md) | Replaceable models, budget, batching, and stop conditions |
 | [Physics and failures](skills/dramake/references/en/physics-and-failure-modes.md) · [QA and repair](skills/dramake/references/en/qa-and-repair.md) | Penetration, anatomy, text, phone direction, and minimal repair |
+| [Job recovery and candidate lineage](skills/dramake/references/en/production-operations-and-recovery.md) · [Editing and release](skills/dramake/references/en/editing-delivery-and-release.md) | Idempotency, checkpoints, blind candidate review, final timeline, and technical delivery |
 | [Anonymized observations](benchmarks/tested-observations.en.md) · [Validation report](evals/benchmark-report.md) | Observed failures and evidence limits |
 
 <details>

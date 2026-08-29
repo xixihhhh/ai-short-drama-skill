@@ -10,8 +10,8 @@
 
 <p>
   <a href="https://github.com/xixihhhh/ai-short-drama-skill/releases/latest"><img src="https://img.shields.io/github/v/release/xixihhhh/ai-short-drama-skill?style=flat-square&amp;color=7c3aed" alt="Release"></a>
-  <a href="skills/dramake/SKILL.md"><img src="https://img.shields.io/badge/Skill-v0.5.1-2563eb?style=flat-square" alt="Skill v0.5.1"></a>
-  <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-18%20passed-16a34a?style=flat-square" alt="18 tests passed"></a>
+  <a href="skills/dramake/SKILL.md"><img src="https://img.shields.io/badge/Skill-v0.6.0-2563eb?style=flat-square" alt="Skill v0.6.0"></a>
+  <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-25%20passed-16a34a?style=flat-square" alt="25 tests passed"></a>
   <a href="README.en.md"><img src="https://img.shields.io/badge/docs-中文%20%7C%20English-0891b2?style=flat-square" alt="Chinese and English"></a>
   <a href="#agent-compatibility"><img src="https://img.shields.io/badge/agents-Codex%20%7C%20Claude_Code%20%7C%20WorkBuddy-f97316?style=flat-square" alt="Codex, Claude Code, and WorkBuddy"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111827?style=flat-square" alt="MIT License"></a>
@@ -77,20 +77,24 @@ Dramake 不是新的视频模型，也不是绑定某个网站的生成平台。
 | **只检查画面清晰度** | 技术漂亮，但剧情看不懂、声音像拼接 | 剧情、身份/画风、物理/连续性、声音四道独立门禁 |
 | **“高级档”直接批量付费** | 重试和成本失控 | 质量档不等于消费许可；预算、上传、候选和停止条件单独授权 |
 
-### 一个入口，内置八类能力
+### 一个入口，内置十二类能力
 
-目前只需要安装一个 `dramake` Skill。下面是它内部协同工作的能力模块，不是八个需要分别安装的碎片 Skill。
+目前只需要安装一个 `dramake` Skill。下面是它内部协同工作的能力模块，不是十二个需要分别安装的碎片 Skill。
 
 | 内置能力 | 负责什么 | 主要产物 |
 |---|---|---|
 | **Story Doctor** | 从点子/小说/剧本中修因果、动机、铺垫、反转和节奏 | 剧情合同、节拍表、冷观众问题 |
 | **Visual Director** | 把情绪目标变成景别、调度、表演、运镜和剪辑动机 | 导演合同、分镜与镜头计划 |
 | **Continuity Keeper** | 维护父子段、轴线、动作阶段、道具、湿度、光线和场景边界 | 连续性账本、验收尾帧、转场方案 |
+| **Spatial Director** | 锁地点锚点、走位、出入口、镜面拓扑、巨物尺度和异常空间规则 | 空间图、走位状态、反向空间检查 |
+| **Series Memory** | 管理长篇来源、人物知识、时间线、揭示和跨集不可逆状态 | 系列事实账本、来源切片、恢复游标 |
 | **Identity & Style Lock** | 锁人物/动物/产品、服装拓扑、重复道具、文字图层、材质和横竖屏视觉规则 | 角色/道具圣经、画风母版、参考权威矩阵 |
 | **Voice & Audio Director** | 统一说话人、声线、口型路线、环境、音乐和 J/L cut | Voice Bible、音频连续性与混音图 |
 | **Model Router** | 在 Wan 3、Seedance、MiniMax H3 或其他模型间按能力选路 | 可替换模型卡与逐段生成路线 |
 | **Budget Guard** | 分离质量档与付费权限，计算候选、重试和上限 | 费用计划、授权模式、支出账本 |
+| **Job Orchestrator** | 管理请求指纹、幂等、轮询、取消、断点恢复和候选谱系 | 任务账本、检查点、恢复决定 |
 | **QA & Repair** | 抽帧、听音、检查剧情/物理/漂移，选择最小修复 | QA 报告、保留/后期修/编辑/重抽/重写决定 |
+| **Edit & Release** | 把验收区间装入可编辑时间线，统一媒体并完成发布前技术门 | 时间线清单、分轨、交付母版与发布检查 |
 
 <a id="workflow"></a>
 
@@ -99,11 +103,12 @@ Dramake 不是新的视频模型，也不是绑定某个网站的生成平台。
 | 阶段 | Dramake 做什么 | 通过条件 |
 |---|---|---|
 | **01 故事** | 从文字提取主角、欲望、阻碍、升级、铺垫与回报 | 冷观众能说清目标、行动与结果 |
-| **02 母版** | 锁定角色、服装、材质、场景、重复道具、文字图层、声线与画风 | 每个维度只有一个权威参考 |
-| **03 导演设计** | 编排导演意图、价值变化、节拍、景别、表演和运镜 | 每个镜头都能回答“为什么这样拍” |
+| **02 记忆与母版** | 锁角色、服装、材质、场景、道具、声线，并建立跨集事实/知识状态 | 每个维度一个权威参考；无时间线或知识冲突 |
+| **03 空间与导演设计** | 编排地点锚点、走位、导演意图、价值变化、节拍、表演和运镜 | 每个动作有可达路径；每个镜头能回答“为什么这样拍” |
 | **04 生成路由** | 按长段、对白、首尾帧、参考音频、编辑和预算选模型 | 质量档与付费授权明确分离 |
-| **05 证据验收** | 下载真实素材，抽帧、听音、慢放检查物理和连续性 | 父段验收后才解锁依赖段 |
-| **06 成片后期** | 连续性剪辑、配音、环境、音乐、J/L cut 与终混 | 画面、剧情和声音像同一部影片 |
+| **05 任务执行** | 用指纹和幂等键提交、轮询、恢复、取消并保留候选谱系 | 不重复付费；所有输出可回到请求上下文 |
+| **06 证据验收** | 下载真实素材，抽帧、听音、慢放检查并盲评候选 | 父段验收后才解锁依赖段 |
+| **07 成片交付** | 将验收区间装入时间线，连续性剪辑、分轨混音、标准化和发布检查 | 画面、剧情和声音像同一部影片；技术门全部通过 |
 
 ### 两个时间尺度
 
@@ -166,8 +171,8 @@ Dramake 可按场景选择原生对白、参考音频、外部配音/TTS、画�
 
 | 验证项 | 当前状态 |
 |---|---:|
-| 自动化仓库测试 | **18 项通过** |
-| 中英文文档对应 | **31 组通过** |
+| 自动化仓库测试 | **25 项通过** |
+| 中英文文档对应 | **38 组通过** |
 | Skill 官方格式校验 | **通过** |
 | 完整合法生产计划 | **可通过** |
 | 错误父子依赖、稀疏长段、越界镜头、未知声线 | **会被拒绝** |
@@ -185,9 +190,11 @@ Dramake 可按场景选择原生对白、参考音频、外部配音/TTS、画�
 | [喜剧可读性与动画化表演](skills/dramake/references/comedy-and-animated-performance.md) | 宏观反转、笑点信息差、反应停顿、拟人表演与物理边界 |
 | [角色、声线与参考锁](skills/dramake/references/identity-voice-and-reference-locks.md) · [重复道具圣经](skills/dramake/assets/templates/prop-bible.md) | 人物、服装、重复/文字道具、材质、声音与参考权威 |
 | [连续性与转场](skills/dramake/references/continuity-and-transitions.md) | 父子状态、尾帧、重新锚定与场景边界 |
+| [空间地图与走位](skills/dramake/references/spatial-blocking-and-world-state.md) · [系列记忆](skills/dramake/references/series-memory-and-source-adaptation.md) | 复杂空间、镜面/巨物、长篇来源、人物知识和跨集状态 |
 | [对白、配音与混音](skills/dramake/references/audio-and-dubbing.md) | 原生对白、参考音频、外部配音和声音连续性 |
 | [模型路由](skills/dramake/references/model-router.md) · [费用授权](skills/dramake/references/authorization-and-batch.md) | 可替换模型、预算、批量和停止条件 |
 | [物理与失败模式](skills/dramake/references/physics-and-failure-modes.md) · [QA 修复](skills/dramake/references/qa-and-repair.md) | 穿模、解剖、文字、手机方向与最小修复 |
+| [任务恢复与候选谱系](skills/dramake/references/production-operations-and-recovery.md) · [剪辑与发布](skills/dramake/references/editing-delivery-and-release.md) | 幂等、断点恢复、候选盲评、正式时间线和技术交付 |
 | [匿名实测记录](benchmarks/tested-observations.md) · [验证报告](evals/benchmark-report.md) | 已观察问题与验证边界 |
 
 <details>
@@ -200,7 +207,12 @@ python3 scripts/validate_plan.py \
   --shot-plan skills/dramake/assets/templates/shot-plan.csv \
   --voice-bible skills/dramake/assets/templates/voice-bible.csv \
   --audio-continuity skills/dramake/assets/templates/audio-continuity.csv \
-  --cost skills/dramake/assets/templates/cost-plan.csv
+  --cost skills/dramake/assets/templates/cost-plan.csv \
+  --jobs skills/dramake/assets/templates/generation-jobs.csv \
+  --spatial skills/dramake/assets/templates/spatial-plan.csv \
+  --story-memory skills/dramake/assets/templates/story-memory.csv \
+  --candidates skills/dramake/assets/templates/candidate-scorecard.csv \
+  --timeline skills/dramake/assets/templates/edit-timeline.csv
 
 python3 -m unittest discover -s tests
 python3 scripts/check_bilingual.py
