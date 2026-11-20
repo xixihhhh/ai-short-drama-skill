@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.8.0 - 2026-11-20
+## 0.8.0 - 2026-11-21
 
 Delivery validation links real media to accepted source ranges and checks speed, track gaps and paired transitions. Reference sheets span the whole clip with per-cell timecodes, and tail extraction uses the final decoded frame. The skill includes the validator and a 36-second low-frame-rate example.
 
