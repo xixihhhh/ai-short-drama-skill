@@ -73,6 +73,12 @@ Use a locked voice sample or consistent TTS/actor session. If exact lip sync is 
 - cut to hands/paws, props, listener, environment, or consequence;
 - use a dedicated lip-sync pass where appropriate.
 
+### Local French and German voice-over
+
+For a CPU narration trial, use the int4 weights of KittenTTS 2 Mini. Select a built-in voice for the target language, record its name in the voice bible, and place the WAV on the narration track. Mini covers 16 languages, including French, German, and Japanese. Choose another model for Mandarin. [Official model card](https://huggingface.co/KittenML/kitten-tts-2-mini) · [Local usage examples](https://github.com/KittenML/KittenTTS/blob/main/docs/kitten-tts-2-tiny.md)
+
+In a 2026-11-20 trial, four Apple Silicon CPU threads generated French and German product narration at the default speed into 24 kHz mono audio. An independent Whisper small transcription recovered both prices. It transcribed the French script's `500 ml` as `500 mèles`; expanding the script to `500 millilitres` yielded the intended transcription. Expand units in the spoken script while preserving the product label in on-screen captions. Have a speaker of the target language check names, numbers, and delivery before approving the track.
+
 ## Voice-over over B-roll
 
 Use when exact narration, localization, or speed matters more than visible lip sync. Keep the speaker off-screen or visually silent and let action, evidence, product use, reactions, or environment carry the image. Do not show a speaking mouth with unrelated narration.
