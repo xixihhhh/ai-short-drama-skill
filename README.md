@@ -10,7 +10,7 @@
 
 <p>
   <a href="https://github.com/xixihhhh/ai-short-drama-skill/releases/latest"><img src="https://img.shields.io/github/v/release/xixihhhh/ai-short-drama-skill?style=flat-square&amp;color=7c3aed" alt="Release"></a>
-  <a href="skills/dramake/SKILL.md"><img src="https://img.shields.io/badge/Skill-v0.6.0-2563eb?style=flat-square" alt="Skill v0.6.0"></a>
+  <a href="skills/dramake/SKILL.md"><img src="https://img.shields.io/badge/Skill-v0.7.0-2563eb?style=flat-square" alt="Skill v0.7.0"></a>
   <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-25%20passed-16a34a?style=flat-square" alt="25 tests passed"></a>
   <a href="README.en.md"><img src="https://img.shields.io/badge/docs-中文%20%7C%20English-0891b2?style=flat-square" alt="Chinese and English"></a>
   <a href="#agent-compatibility"><img src="https://img.shields.io/badge/agents-Codex%20%7C%20Claude_Code%20%7C%20WorkBuddy-f97316?style=flat-square" alt="Codex, Claude Code, and WorkBuddy"></a>
@@ -47,6 +47,8 @@ npx skills add xixihhhh/ai-short-drama-skill --skill dramake
 ```
 
 你也可以只让它完成某一段工作：诊断故事、改剧本、做分镜、修站桩对白、统一声线、检查粗剪，或修复一个失败镜头。
+
+已有样片时，可用安装包内的脚本检查画幅、音轨和字幕时间。见[成片交付检查](skills/dramake/references/editing-delivery-and-release.md)。
 
 <a id="agent-compatibility"></a>
 

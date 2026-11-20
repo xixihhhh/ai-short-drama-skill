@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.7.0 - 2026-11-20
+
+- Added an offline export check to the installable skill for display orientation, audio tracks, and sidecar SRT timing.
+- Included a tested local French/German voice-over route, an LTX-2.5 dialogue trial, and corrected package links in both READMEs.
+
 ## 0.6.0 - 2026-08-30
 
 - Added location anchors, character blocking, reflection topology, giant-scale anchors, impossible-space rules, and a reverse spatial pass to reduce teleportation, wrong exits, duplication, and scale drift.
