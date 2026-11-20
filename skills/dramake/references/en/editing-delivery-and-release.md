@@ -39,3 +39,11 @@ Generate an import package for the user's editor when useful, but preserve a pro
 Automate checks for missing media, invalid duration/overlap, timeline gaps, inconsistent resolution/frame rate/color, silence or clipping, loudness violations, black frames, freeze frames, duplicate tails, caption bounds, and cover safe areas.
 
 Human review covers cold-viewer comprehension, phone brightness, subtitle legibility, music dynamics and dialogue ducking, first-frame hook, final button, loop seam, landscape/portrait composition, and detail after platform compression. Successful upload does not equal accepted content.
+
+Run this command from the installed Dramake folder with Python 3 and FFmpeg’s `ffprobe` on PATH.
+
+```bash
+python3 scripts/check_export.py final.mp4 --layout portrait --require-audio --srt final.srt
+```
+
+Supply the options required for your delivery. The command accounts for rotation and sample aspect ratio when checking display orientation, checks for an audio track, and checks that each UTF-8 SRT cue has a valid interval within the video duration. A failed check prints the reason and exits with a nonzero status. Review the audio content, burned-in captions and lip sync during playback.
