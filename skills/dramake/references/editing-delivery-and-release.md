@@ -47,3 +47,22 @@ python3 scripts/check_export.py final.mp4 --layout portrait --require-audio --sr
 ```
 
 按交付要求选填参数。命令按旋转标记和像素宽高比计算显示画幅，检查音轨是否存在，并核对每条 UTF-8 SRT 字幕的起止时间是否落在视频内。失败时返回非零退出码和具体错误。音轨内容、烧录字幕和口型仍需播放确认。
+
+## 可复审的交接
+
+安装后在 Dramake 目录中运行。示例自带已编码素材与验收记录：
+
+```sh
+d=assets/examples/edit-handoff
+python3 scripts/validate_plan.py --delivery --timeline "$d/edit-timeline.csv" --jobs "$d/generation-jobs.csv" --candidates "$d/candidate-scorecard.csv"
+python3 scripts/reference_frames.py sheets "$d/reference.mp4" review.jpg
+python3 scripts/reference_frames.py tail "$d/reference.mp4" last.png
+```
+
+计划阶段沿用普通校验，可以填写待生成的源路径。交付模式从时间线所在目录解析本机媒体，也可用 `--media-root` 指定根目录。视频事件的 block、job、源文件必须与完成的任务一致，引用的候选必须通过 MUST-HIT 且已验收。外部对白、音乐、环境音和音效可直接引用本机音频流；引用生成任务时同样检查验收。远程输出应先归档到本机，再将两张表指向同一文件。视频和音频分别检查实际源流的时长。任务列 `output_sha256` 可选；填写验收时的 SHA-256 后，同名素材被替换也会报错。
+
+候选表的 `accepted_ranges` 示例为 `opening=0-6;ending=30-35.75`（秒，左闭右开），时间线的 `accepted_range_id` 写 `R01:opening`。旧式 `0-6;30-35.75` 分别用 `R01:1`、`R01:2` 引用。源范围必须落在该区间，除以速度后与时间线时长一致，计算允许 1 毫秒舍入误差。
+
+同一 `track_type` 的事件默认属于 `main`；并行层可加 `track_id` 列。主视频从零起连续覆盖。硬切填 `cut` 或留空。溶解或交叉淡化要求前镜 `transition_out`、后镜 `transition_in` 成对填写同名 `dissolve:0.5` 或 `crossfade:0.5`，且实际重叠恰好 0.5 秒；三路覆盖和完全包含的事件不会当作双镜转场。
+
+参考图每页 12 格，默认每 2.5 秒抽取一个实际解码帧，并保留第一帧和最后一帧。短片的中间帧落在首个采样间隔内时也会保留。`--interval 1` 可加密抽样。每格显示相对首帧的时间码；同名 CSV 记录源文件、页名、格号和时间。第一页使用指定文件名，续页为 `review-002.jpg` 等。用新文件名保存不同轮次。均匀抽样会漏掉短于采样间隔的镜头，精确切点需逐帧复核。

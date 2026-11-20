@@ -10,7 +10,7 @@
 
 <p>
   <a href="https://github.com/xixihhhh/ai-short-drama-skill/releases/latest"><img src="https://img.shields.io/github/v/release/xixihhhh/ai-short-drama-skill?style=flat-square&amp;color=7c3aed" alt="Release"></a>
-  <a href="skills/dramake/SKILL.md"><img src="https://img.shields.io/badge/Skill-v0.7.0-2563eb?style=flat-square" alt="Skill v0.7.0"></a>
+  <a href="skills/dramake/SKILL.md"><img src="https://img.shields.io/badge/Skill-v0.8.0-2563eb?style=flat-square" alt="Skill v0.8.0"></a>
   <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-25%20passed-16a34a?style=flat-square" alt="25 tests passed"></a>
   <a href="README.en.md"><img src="https://img.shields.io/badge/docs-中文%20%7C%20English-0891b2?style=flat-square" alt="Chinese and English"></a>
   <a href="#agent-compatibility"><img src="https://img.shields.io/badge/agents-Codex%20%7C%20Claude_Code%20%7C%20WorkBuddy-f97316?style=flat-square" alt="Codex, Claude Code, and WorkBuddy"></a>
@@ -198,6 +198,8 @@ Dramake 可按场景选择原生对白、参考音频、外部配音/TTS、画�
 | [物理与失败模式](skills/dramake/references/physics-and-failure-modes.md) · [QA 修复](skills/dramake/references/qa-and-repair.md) | 穿模、解剖、文字、手机方向与最小修复 |
 | [任务恢复与候选谱系](skills/dramake/references/production-operations-and-recovery.md) · [剪辑与发布](skills/dramake/references/editing-delivery-and-release.md) | 幂等、断点恢复、候选盲评、正式时间线和技术交付 |
 | [匿名实测记录](benchmarks/tested-observations.md) · [验证报告](evals/benchmark-report.md) | 已观察问题与验证边界 |
+
+从参考片生成全片分页时间码图、把验收区间核对到本机实媒，可直接运行[剪辑交接示例](examples/edit-handoff/README.md)。
 
 <details>
 <summary><strong>本地校验命令</strong></summary>

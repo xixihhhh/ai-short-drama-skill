@@ -4,7 +4,7 @@ description: 面向 Codex、Claude Code、WorkBuddy 和其他 Agent Skills 客�
 license: MIT
 metadata:
   author: Dramake contributors
-  version: 0.7.0
+  version: 0.8.0
   category: video-production
   tags: ai-video, text-to-video, short-drama, codex, claude-code, workbuddy, douyin, hongguo-drama, wan-3, seedance, minimax-h3
 ---
@@ -243,6 +243,9 @@ metadata:
 多个候选先过 MUST-HIT 二元门，再用 [candidate-scorecard.csv](assets/templates/candidate-scorecard.csv) 比较剧情、身份、空间、物理、表演、声音和可剪辑性；关键候选尽量盲化模型、种子、费用与生成顺序。评审者先负责发现和分级，创作/修复者再决定改法，避免同一轮为自己的结果辩护。
 
 进入成片阶段阅读 [editing-delivery-and-release.md](references/editing-delivery-and-release.md)，用 [edit-timeline.csv](assets/templates/edit-timeline.csv) 只装入已验收的真实可用区间，统一工作格式与交付配置，保留字幕/艺术字和音频分轨，并检查缺失媒体、时间线空洞、黑/冻/重复帧、响度、字幕安全区和横竖版本。生成完成不等于剪辑完成，上传成功不等于发布通过。
+
+参考片审阅时使用 `python3 scripts/reference_frames.py sheets` 获取包含首尾的分页时间码图；交接实媒时使用 `python3 scripts/validate_plan.py --delivery` 核实已验收源区间和剪辑时间线。示例位于 `assets/examples/edit-handoff/`。
+
 
 ## 按任务范围交付
 
