@@ -59,7 +59,7 @@ Dramake 采用标准 `SKILL.md + references + assets` 目录结构。核心指�
 | **OpenAI Codex** | 当前版本已完成格式、引用、模板和安装包验证 | `npx skills add xixihhhh/ai-short-drama-skill --skill dramake` |
 | **Claude Code** | 遵循 Agent Skills / `SKILL.md` 目录规范 | 使用 Skills 安装器，或复制到 `.claude/skills/dramake/` |
 | **WorkBuddy** | 支持本地 Skill 的版本可手动导入完整 `dramake` 目录 | 复制到用户级 Skills 目录；以当前客户端导入入口为准 |
-| **其他 Agent Skills 客户端** | 能读取 `SKILL.md` 并访问同目录 references/assets 即可 | 下载 [dramake.skill](https://github.com/xixihhhh/ai-short-drama-skill/releases/latest) 或复制目录 |
+| **其他 Agent Skills 客户端** | 能读取 `SKILL.md` 并访问同目录 references/assets 即可 | 下载 [dramake.skill](dist/dramake.skill?raw=true) 或复制目录 |
 
 兼容 Skill 不等于自动拥有视频生成能力。Agent 仍需连接用户选择的网页、API、MCP、本地模型或其他生成工具；Dramake 负责导演、路由、状态、预算与验收。
 
@@ -233,7 +233,7 @@ python3 scripts/check_bilingual.py
 
 ## 安装、贡献与许可
 
-- 下载最新安装包：[Dramake Releases](https://github.com/xixihhhh/ai-short-drama-skill/releases/latest)
+- 下载[当前分支安装包](dist/dramake.skill?raw=true)，或选择[已发布版本](https://github.com/xixihhhh/ai-short-drama-skill/releases)。
 - 提交失败案例或模型兼容信息：[Issues](https://github.com/xixihhhh/ai-short-drama-skill/issues)
 - 参与改进：[贡献指南](CONTRIBUTING.md)
 - 许可证：[MIT](LICENSE)

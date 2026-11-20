@@ -42,6 +42,10 @@ References express control intent, not a guarantee. Images intend to lock identi
 
 As of 2026-08-25, the official Wan 3 API documentation exposes mixed reference images, videos, and audio, output up to 30 seconds, a native-audio switch, and tiers including 720P and 16:9. It also states that reference mode is mutually exclusive with `first_frame`/`last_frame`. With reference-video input, total input-video duration plus output duration must be no more than 30 seconds, so a request with video reference cannot also assume a full 30-second output. Prefer R2V when identity, voice, and natural performance dominate; choose first/last-frame mode when exact boundary composition dominates. Re-check every other execution surface.
 
+## Self-hosted audiovisual trial
+
+The official LTX-2.5 image-to-video pipeline can condition on a starting image and generate video and audio together. Its weights use the LTX-2.x Community License. The model card was checked on 2026-11-20. Dramake has no recorded quality benchmark for this model yet. If the hardware is available, try one dialogue reaction shot using the same first frame, line, and target duration as the current route. Compare who starts speaking, whether the listener's mouth stays closed, whether the line is complete, and how wardrobe and framing hold up at the end. Record both clips, elapsed time, peak memory, and acceptance results in the model card before selecting a route for the remaining shots. [Official model card and inference examples](https://huggingface.co/Lightricks/LTX-2.5)
+
 ## Routing questions
 
 1. What duration is natively supported?
