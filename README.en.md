@@ -60,7 +60,7 @@ Dramake uses a standard `SKILL.md + references + assets` directory. Its core ins
 | **OpenAI Codex** | Current release validated for format, references, templates, and packaged installation | `npx skills add xixihhhh/ai-short-drama-skill --skill dramake` |
 | **Claude Code** | Follows the Agent Skills / `SKILL.md` directory convention | Use a Skills installer or copy to `.claude/skills/dramake/` |
 | **WorkBuddy** | Versions with local Skills can import the complete `dramake` directory | Copy into the user Skills directory; follow the current client's import surface |
-| **Other Agent Skills clients** | Compatible when they load `SKILL.md` and can access sibling references/assets | Download [dramake.skill](https://github.com/xixihhhh/ai-short-drama-skill/releases/latest) or copy the folder |
+| **Other Agent Skills clients** | Compatible when they load `SKILL.md` and can access sibling references/assets | Download [dramake.skill](dist/dramake.skill?raw=true) or copy the folder |
 
 Skill compatibility does not automatically provide a video-generation backend. The agent still needs the user's chosen website, API, MCP, local model, or generation tool; Dramake provides direction, routing, state, budget, and acceptance.
 
@@ -229,7 +229,7 @@ Examples are production manifests. They never present unreviewed model output as
 
 ## Install, contribute, and license
 
-- Download the latest package: [Dramake Releases](https://github.com/xixihhhh/ai-short-drama-skill/releases/latest)
+- Download the [package from this branch](dist/dramake.skill?raw=true), or select a [tagged release](https://github.com/xixihhhh/ai-short-drama-skill/releases).
 - Report failures or model compatibility: [Issues](https://github.com/xixihhhh/ai-short-drama-skill/issues)
 - Improve the project: [Contributing](CONTRIBUTING.en.md)
 - License: [MIT](LICENSE)
