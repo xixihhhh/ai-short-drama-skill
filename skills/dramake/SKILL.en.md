@@ -4,7 +4,7 @@ description: For Codex, Claude Code, WorkBuddy, and other Agent Skills clients, 
 license: MIT
 metadata:
   author: Dramake contributors
-  version: 0.7.0
+  version: 0.8.0
   category: video-production
   tags: ai-video, text-to-video, short-drama, codex, claude-code, workbuddy, douyin, hongguo-drama, wan-3, seedance, minimax-h3
 ---
@@ -278,6 +278,9 @@ Repair the smallest failing unit. Use edit/extend when capable, bridge shots whe
 For multiple candidates, pass binary MUST-HIT gates before using [candidate-scorecard.csv](assets/templates/candidate-scorecard.csv) to compare narrative job, identity, space, physics, acting, audio, and editability. Blind hero reviews to model, seed, cost, and generation order when practical. A reviewer first detects and grades failures; the author or repair role then chooses the intervention, avoiding self-justification in the same pass.
 
 For final assembly, read [editing-delivery-and-release.md](references/en/editing-delivery-and-release.md) and use [edit-timeline.csv](assets/templates/edit-timeline.csv) to place only accepted usable ranges, normalize working and delivery formats, retain editable caption/title layers and audio stems, and check missing media, timeline gaps, black/frozen/duplicate frames, loudness, safe areas, and landscape/portrait versions. Generated is not edited; uploaded is not released.
+
+For reference review, use `python3 scripts/reference_frames.py sheets` for paged timecodes including the first and final frames. For media handoff, use `python3 scripts/validate_plan.py --delivery` to verify approved source ranges against the edit. A runnable example is in `assets/examples/edit-handoff/`.
+
 
 ## Deliver by task scope
 

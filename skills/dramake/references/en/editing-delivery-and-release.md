@@ -47,3 +47,22 @@ python3 scripts/check_export.py final.mp4 --layout portrait --require-audio --sr
 ```
 
 Supply the options required for your delivery. The command accounts for rotation and sample aspect ratio when checking display orientation, checks for an audio track, and checks that each UTF-8 SRT cue has a valid interval within the video duration. A failed check prints the reason and exits with a nonzero status. Review the audio content, burned-in captions and lip sync during playback.
+
+## Reviewable edit handoff
+
+Run the commands from the installed Dramake directory. The example includes encoded media and its review records:
+
+```sh
+d=assets/examples/edit-handoff
+python3 scripts/validate_plan.py --delivery --timeline "$d/edit-timeline.csv" --jobs "$d/generation-jobs.csv" --candidates "$d/candidate-scorecard.csv"
+python3 scripts/reference_frames.py sheets "$d/reference.mp4" review.jpg
+python3 scripts/reference_frames.py tail "$d/reference.mp4" last.png
+```
+
+Use normal plan validation for draft paths before generation. Delivery mode resolves local files relative to the timeline directory or an explicit `--media-root`. A video event must cite the same block, job and media as its completed source job, and a passed MUST-HIT and accepted candidate decision. External dialogue, music, ambience and sound effects can cite a local audio stream directly. Events citing generated assets also need their approval. Archive remote outputs locally and point both manifests at the same file. The validator measures the relevant video or audio stream. Set the optional job column `output_sha256` to the checksum taken at review to detect replacement of a file under the same name.
+
+Enter candidate `accepted_ranges` as `opening=0-6;ending=30-35.75` in seconds, using half-open intervals. A timeline event cites `R01:opening` in `accepted_range_id`. For legacy unnamed ranges `0-6;30-35.75`, use `R01:1` and `R01:2`. Source cuts must lie inside the selected range. Source duration divided by speed must equal timeline duration within 1 ms of rounding.
+
+Events of the same `track_type` default to track `main`. Add a `track_id` column for parallel layers. Primary video covers the timeline from zero without gaps. For cuts, leave transition fields empty or use `cut`. For dissolves or crossfades, the outgoing and incoming events must name the same transition, such as `dissolve:0.5` or `crossfade:0.5`, with exactly that overlap in seconds. Triple overlaps and wholly nested events cannot be paired transitions.
+
+Reference sheets contain up to 12 cells per page. The default samples a decoded frame every 2.5 seconds plus the first and final frame, retaining a short clip’s middle frame when it falls before the first interval; use `--interval 1` for denser sampling. Each cell displays its time relative to the first frame. The matching CSV lists the source file, page, cell and time. Page one uses the requested filename and subsequent pages use names such as `review-002.jpg`. Use a fresh output name for each run. A shot shorter than the interval can fall between samples; confirm exact cuts frame by frame.

@@ -10,7 +10,7 @@ A director-level Agent Skill for everyday creators. Start from an idea, copy, fi
 
 <p>
   <a href="https://github.com/xixihhhh/ai-short-drama-skill/releases/latest"><img src="https://img.shields.io/github/v/release/xixihhhh/ai-short-drama-skill?style=flat-square&amp;color=7c3aed" alt="Release"></a>
-  <a href="skills/dramake/SKILL.en.md"><img src="https://img.shields.io/badge/Skill-v0.7.0-2563eb?style=flat-square" alt="Skill v0.7.0"></a>
+  <a href="skills/dramake/SKILL.en.md"><img src="https://img.shields.io/badge/Skill-v0.8.0-2563eb?style=flat-square" alt="Skill v0.8.0"></a>
   <a href="tests/test_templates.py"><img src="https://img.shields.io/badge/tests-25%20passed-16a34a?style=flat-square" alt="25 tests passed"></a>
   <a href="README.md"><img src="https://img.shields.io/badge/docs-中文%20%7C%20English-0891b2?style=flat-square" alt="Chinese and English"></a>
   <a href="#agent-compatibility"><img src="https://img.shields.io/badge/agents-Codex%20%7C%20Claude_Code%20%7C%20WorkBuddy-f97316?style=flat-square" alt="Codex, Claude Code, and WorkBuddy"></a>
@@ -199,6 +199,8 @@ These checks validate workflow, file structure, and planning constraints—not u
 | [Physics and failures](skills/dramake/references/en/physics-and-failure-modes.md) · [QA and repair](skills/dramake/references/en/qa-and-repair.md) | Penetration, anatomy, text, phone direction, and minimal repair |
 | [Job recovery and candidate lineage](skills/dramake/references/en/production-operations-and-recovery.md) · [Editing and release](skills/dramake/references/en/editing-delivery-and-release.md) | Idempotency, checkpoints, blind candidate review, final timeline, and technical delivery |
 | [Anonymized observations](benchmarks/tested-observations.en.md) · [Validation report](evals/benchmark-report.md) | Observed failures and evidence limits |
+
+Use the [reviewed edit handoff example](examples/edit-handoff/README.en.md) to generate paged, timecoded reference sheets and check approved cuts against local media.
 
 <details>
 <summary><strong>Local validation commands</strong></summary>
